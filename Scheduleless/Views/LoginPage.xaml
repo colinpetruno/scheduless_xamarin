@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<page:LoginPageXaml
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
+	x:Class="Scheduleless.Views.LoginPage"
+	xmlns:controls="clr-namespace:Scheduleless.Controls;assembly=Scheduleless"
+	xmlns:local="clr-namespace:Scheduleless.Helpers;assembly=Scheduleless"
+	xmlns:page="clr-namespace:Scheduleless.Views;assembly=Scheduleless">
+	<page:LoginPageXaml.Resources>
+		<ResourceDictionary>
+			<Style
+				TargetType="Label"
+				BasedOn="{StaticResource whiteLabelStyle}" />
+		</ResourceDictionary>
+	</page:LoginPageXaml.Resources>
+	<xfg:ContentPageGloss.BackgroundGradient>
+		<xfg:Gradient
+			Rotation="150">
+			<xfg:GradientStep
+				StepColor="#512DA8"
+				StepPercentage="0" />
+			<xfg:GradientStep
+				StepColor="#7B1FA2"
+				StepPercentage="1" />
+		</xfg:Gradient>
+	</xfg:ContentPageGloss.BackgroundGradient>
+	<page:LoginPageXaml.Content>
+		<ScrollView>
+			<Grid
+				VerticalOptions="Fill">
+				<StackLayout
+					Padding="10,12,10,0"
+					Orientation="Horizontal"
+					HorizontalOptions="FillAndExpand">
+					<Button
+						x:Name="CancelButton"
+						Command="{Binding DismissModalCommand}"
+						BackgroundColor="Transparent"
+						HeightRequest="40"
+						WidthRequest="40"
+						HorizontalOptions="StartAndExpand" />
+					<controls:SimpleButton
+						x:Name="NextButton"
+						BackgroundColor="Transparent"
+						HeightRequest="40"
+						WidthRequest="40"
+						HorizontalOptions="EndAndExpand" />
+				</StackLayout>
+				<Grid.RowDefinitions>
+					<RowDefinition
+						Height="Auto" />
+					<RowDefinition
+						Height="*" />
+					<RowDefinition
+						Height="120" />
+				</Grid.RowDefinitions>
+				<Grid
+					VerticalOptions="Fill"
+					Grid.Row="1">
+					<StackLayout
+						Padding="24,0"
+						HorizontalOptions="Center"
+						VerticalOptions="Center">
+						<Label
+							x:Name="TitleLabel"
+							Text="Sign Up"
+							FontAttributes="Bold"
+							FontSize="Large"
+							XAlign="Center" />
+						<Label
+							x:Name="DetailLabel"
+							Text="Some text"
+							FontSize="Small"
+							XAlign="Center" />
+					</StackLayout>
+					<StackLayout
+						Grid.Row="1"
+						Spacing="10"
+						VerticalOptions="Center"
+						BackgroundColor="#2FFF">
+						<StackLayout
+							Orientation="Horizontal"
+							Spacing="10"
+							Padding="20,8"
+							HeightRequest="56"
+							HorizontalOptions="Fill">
+							<controls:SimpleEntry
+								x:Name="UserNameEntry"
+								Keyboard="Text"
+								Placeholder="UserName"
+								Text="{Binding UserName}"
+								HeightRequest="45"
+								HorizontalOptions="FillAndExpand" />
+							<Image
+								BackgroundColor="{x:Static local:Colors.SeparatorColor}"
+								HeightRequest="45"
+								WidthRequest="1" />
+							<controls:SimpleEntry
+								x:Name="PasswordEntry"
+								Keyboard="Text"
+								Placeholder="Password"
+								Text="{Binding Password}"
+								HeightRequest="45"
+								HorizontalOptions="FillAndExpand" />
+						</StackLayout>
+					</StackLayout>
+					<StackLayout
+						Grid.Row="2"
+						VerticalOptions="Center"
+						Padding="24,0"
+						HorizontalOptions="Center">
+						<Label
+							x:Name="FooterLabel"
+							FontSize="Small"
+							XAlign="Center" />
+					</StackLayout>
+				</Grid>
+				<StackLayout
+					Padding="24"
+					Grid.Row="2"
+					VerticalOptions="End"
+					Spacing="10">
+					<controls:SimpleButton
+						x:Name="CallToActionButton"
+						Style="{StaticResource wizardButton}"
+						Text="SAVE &amp; CONTINUE"
+						VerticalOptions="EndAndExpand"
+						HorizontalOptions="FillAndExpand" />
+				</StackLayout>
+			</Grid>
+		</ScrollView>
+	</page:LoginPageXaml.Content>
+</page:LoginPageXaml>
