@@ -28,8 +28,6 @@ namespace Scheduleless.Models
 			}
 		}
 
-		public ApiRequest() { }
-
 		public async Task<ApiResponse<T>> GetAsync<T>(
 			string relativeUrl, Dictionary<string, object> parameters = null, string responseMapperKey = null)
 		{

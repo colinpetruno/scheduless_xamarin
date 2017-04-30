@@ -31,6 +31,12 @@
     <EmbeddedResource Include="Views\LoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ShiftsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FutureShiftDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -68,6 +74,19 @@
     <Compile Include="Models\OAuthTokenResponse.cs" />
     <Compile Include="Interfaces\ISecuredDataProvider.cs" />
     <Compile Include="Helpers\RequestBuilder.cs" />
+    <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="Views\ShiftsPage.xaml.cs">
+      <DependentUpon>ShiftsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\ShiftsViewModel.cs" />
+    <Compile Include="Models\FutureShift.cs" />
+    <Compile Include="Endpoints\FutureShiftsEndpoint.cs" />
+    <Compile Include="Models\Converters\JsonIntToDateTimeConverter.cs" />
+    <Compile Include="Controls\FutureShiftCell.cs" />
+    <Compile Include="ViewModels\FutureShiftDetailViewModel.cs" />
+    <Compile Include="Views\FutureShiftDetailPage.xaml.cs">
+      <DependentUpon>FutureShiftDetailPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="XFGloss">
@@ -128,6 +147,7 @@
     <Folder Include="Extensions\" />
     <Folder Include="Endpoints\" />
     <Folder Include="Exceptions\" />
+    <Folder Include="Models\Converters\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

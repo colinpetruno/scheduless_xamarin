@@ -1,15 +1,27 @@
-﻿using Scheduleless.Views;
+﻿using Scheduleless.Services;
+using Scheduleless.Views;
 using Xamarin.Forms;
 
 namespace Scheduleless
 {
 	public partial class App : Application
 	{
+		static App _instance;
+		public static App Instance
+		{
+			get
+			{
+				return _instance;
+			}
+		}
+
 		public App()
 		{
+			_instance = this;
+
 			InitializeComponent();
 
-			MainPage = new LoginPage();
+			MainPage = NavigationService.Instance.GetInitialScreen();
 		}
 
 		protected override void OnStart()

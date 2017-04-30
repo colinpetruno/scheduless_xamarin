@@ -10,6 +10,7 @@ namespace Scheduleless.Views
 	{
 		public LoginPage()
 		{
+			NavigationPage.SetHasNavigationBar(this, false);
 			Initialize();
 		}
 

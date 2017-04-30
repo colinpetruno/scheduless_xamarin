@@ -8,34 +8,22 @@ namespace Scheduleless.Endpoints
 {
 	public class OAuthTokenEndpoint
 	{
-		//private Func<ApiRequest> _apiRequestFactory;
-		//Func<AuthenticatedApiRequest> _authenticatedApiRequestFactory;
 		private const string _baseRelativeUrl = "/oauth";
-		//private OAuthCredentials _oAuthCredentials;
-
-		public OAuthTokenEndpoint()
-		{
-			//_apiRequestFactory = new Func<ApiRequest>();
-			//_authenticatedApiRequestFactory = new AuthenticatedApiRequest();
-			//_oAuthCredentials = new OAuthCredentials();
-		}
 
 		public async Task<ApiResponse<OAuth>> CreateAsync<OAuth>(string email, string password)
 		{
-
-			//"grant_type"    : "password",
+			//  "grant_type"    : "password",
 			//  "username"      : "demo@example.com",
 			//  "password"      : "password"
 			var parameters = new Dictionary<string, object>
-				   {
-					{"grant_type", "password"},
-					{"username", "demo@example.com"},
-					{"password", "password"},
-				   };
+			{
+				{"grant_type", "password"},
+				{"username", "demo@example.com"},
+				{"password", "password"},
+			};
 
 			using (var client = new ApiRequest())
 			{
-				//https://gentle-brushlands-30942.herokuapp.com
 				return await client.PostAsync<OAuth>($"{_baseRelativeUrl}/token", parameters, forceLogoutOnUnauthorized: false);
 			}
 		}
