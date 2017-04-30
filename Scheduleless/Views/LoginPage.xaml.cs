@@ -16,17 +16,6 @@ namespace Scheduleless.Views
 		protected override void Initialize()
 		{
 			InitializeComponent();
-
-			// FIXME: resolve this
-			SetupEventHandlers();
-			//SetupBindings();
-			//SetupPage();
-		}
-
-		private void SetupEventHandlers()
-		{
-			// FIXME: rename this button
-			CallToActionButton.SetBinding(Button.CommandProperty, new Binding("LoginCommand"));
 		}
 	}
 

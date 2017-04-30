@@ -8,6 +8,20 @@ namespace Scheduleless.ViewModels
 {
 	public class LoginViewModel : BaseViewModel
 	{
+		private string _email = string.Empty;
+		public string Email
+		{
+			get { return _email; }
+			set { SetProperty(ref _email, value); }
+		}
+
+		private string _password = string.Empty;
+		public string Password
+		{
+			get { return _password; }
+			set { SetProperty(ref _password, value); }
+		}
+
 		public LoginViewModel()
 		{
 		}

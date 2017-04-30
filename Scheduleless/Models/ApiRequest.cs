@@ -24,7 +24,7 @@ namespace Scheduleless.Models
 		{
 			get
 			{
-				return $"https://gentle-brushlands-30942.herokuapp.com/{_relativeUrl}";
+				return $"https://gentle-brushlands-30942.herokuapp.com{_relativeUrl}";
 			}
 		}
 
