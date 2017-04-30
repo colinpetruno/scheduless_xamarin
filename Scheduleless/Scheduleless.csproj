@@ -41,7 +41,6 @@
     <Compile Include="Views\BaseContentPage.cs" />
     <Compile Include="Renderers\ThemedNavigationPage.cs" />
     <Compile Include="Helpers\Colors.cs" />
-    <Compile Include="Services\CommunicationService.cs" />
     <Compile Include="Interfaces\IBaseContentPage.cs" />
     <Compile Include="Models\UserCredential.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -68,6 +67,7 @@
     <Compile Include="Models\CredentialInfo.cs" />
     <Compile Include="Models\OAuthTokenResponse.cs" />
     <Compile Include="Interfaces\ISecuredDataProvider.cs" />
+    <Compile Include="Helpers\RequestBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="XFGloss">

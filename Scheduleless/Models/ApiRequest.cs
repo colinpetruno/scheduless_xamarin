@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Scheduleless.Extensions;
+using Scheduleless.Helpers;
 using Scheduleless.Interfaces;
 using Scheduleless.Services;
 
@@ -23,7 +24,7 @@ namespace Scheduleless.Models
 		{
 			get
 			{
-				return "https://gentle-brushlands-30942.herokuapp.com/";
+				return $"https://gentle-brushlands-30942.herokuapp.com/{_relativeUrl}";
 			}
 		}
 
@@ -89,13 +90,13 @@ namespace Scheduleless.Models
 			}
 			catch (HttpRequestException ex)
 			{
-				//Debug.WriteLine($"MakeRequest: An exception occured - Message: {ex}\nDetails: {ex.InnerException}");
-				//if (forceLogoutOnUnauthorized && ex.Message.StartsWith("401", StringComparison.Ordinal))
-				//{
-				//	await _authenticationService.LogoutAsync(true);
-				//}
-				//apiResponse.Exception = ex;
-				//return apiResponse;
+				Debug.WriteLine($"MakeRequest: An exception occured - Message: {ex}\nDetails: {ex.InnerException}");
+				if (forceLogoutOnUnauthorized && ex.Message.StartsWith("401", StringComparison.Ordinal))
+				{
+					await AuthenticationService.Instance.LogoutAsync(true);
+				}
+				apiResponse.Exception = ex;
+				return apiResponse;
 			}
 			catch (Exception ex)
 			{
@@ -127,11 +128,8 @@ namespace Scheduleless.Models
 			}
 			else
 			{
-				// TODO: fix me; just kidding
-				return null;
-
 				// default: GET
-				//return await GetAsync($"{FullUrl}{RequestBuilder.BuildQueryString(_parameters)}");
+				return await GetAsync($"{FullUrl}{RequestBuilder.BuildQueryString(_parameters)}");
 			}
 		}
 
@@ -139,7 +137,7 @@ namespace Scheduleless.Models
 		{
 			await Task.Run(() =>
 			{
-				Task continuation = new AuthenticationService<OAuthTokenResponse>().HandleAuthenticationAsync()
+				Task continuation = AuthenticationService.Instance.HandleAuthenticationAsync()
 					.ContinueWith((antecedent) =>
 				{
 					if (!antecedent.IsFaulted)

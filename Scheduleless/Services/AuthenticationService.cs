@@ -5,11 +5,21 @@ using Scheduleless.Models;
 using Scheduleless.Exceptions;
 using Scheduleless.Endpoints;
 using System.Diagnostics;
+using Scheduleless.Services;
 
 namespace Scheduleless.Services
 {
-	public class AuthenticationService<T> : IAuthenticationService where T : IOAuthTokenResponse
+	public class AuthenticationService : IAuthenticationService
 	{
+		private static readonly Lazy<AuthenticationService> lazy = new Lazy<AuthenticationService>(() => new AuthenticationService());
+		public static AuthenticationService Instance
+		{
+			get
+			{
+				return lazy.Value;
+			}
+		}
+
 		protected OAuthTokenEndpoint _oAuthTokenEndpoint;
 		protected CredentialsService _credentialsService;
 
@@ -24,6 +34,7 @@ namespace Scheduleless.Services
 			var response = await _oAuthTokenEndpoint.CreateAsync<TL>(email, password);
 			if (response.IsSuccess)
 			{
+				// SL NOTE: the IOAuthTokenResponse is just returning OAuth
 				_credentialsService.SetCredentials(email, password, response.Result.OAuth);
 			}
 			return response;
@@ -79,7 +90,7 @@ namespace Scheduleless.Services
 				{
 					Debug.WriteLine($"OAuth access token is expired." +
 									$" Attempting to refresh with: {oauthData.RefreshToken}");
-					var response = await _oAuthTokenEndpoint.RefreshAsync<T>(oauthData.RefreshToken);
+					var response = await _oAuthTokenEndpoint.RefreshAsync<OAuthTokenResponse>(oauthData.RefreshToken);
 
 					if (response.IsSuccess)
 					{

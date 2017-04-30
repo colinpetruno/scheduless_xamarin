@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Scheduleless.Models;
+using Scheduleless.Services;
 using Xamarin.Forms;
 
 namespace Scheduleless.ViewModels
@@ -26,6 +28,7 @@ namespace Scheduleless.ViewModels
 			IsBusy = true;
 
 			// TODO: add comm service
+			var response = await AuthenticationService.Instance.AuthenticateAsync<OAuthTokenResponse>("demo@example.com", "password");
 
 		}
 	}

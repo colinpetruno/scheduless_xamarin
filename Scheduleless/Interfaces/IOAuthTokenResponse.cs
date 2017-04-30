@@ -5,7 +5,12 @@ namespace Scheduleless.Interfaces
 {
 	public interface IOAuthTokenResponse
 	{
-		OAuth OAuth { get; set; }
-		User User { get; set; }
+		string AccessToken { get; set; }
+		string TokenType { get; set; }
+		int ExpiresIn { get; set; }
+		string RefreshToken { get; set; }
+		long CreatedAt { get; set; }
+		OAuth OAuth { get; }
+		//User User { get; set; }
 	}
 }

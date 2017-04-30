@@ -8,8 +8,8 @@ namespace Scheduleless.Endpoints
 {
 	public class OAuthTokenEndpoint
 	{
-		private Func<ApiRequest> _apiRequestFactory;
-		Func<AuthenticatedApiRequest> _authenticatedApiRequestFactory;
+		//private Func<ApiRequest> _apiRequestFactory;
+		//Func<AuthenticatedApiRequest> _authenticatedApiRequestFactory;
 		private const string _baseRelativeUrl = "/oauth";
 		//private OAuthCredentials _oAuthCredentials;
 
@@ -20,7 +20,7 @@ namespace Scheduleless.Endpoints
 			//_oAuthCredentials = new OAuthCredentials();
 		}
 
-		public async Task<ApiResponse<T>> CreateAsync<T>(string email, string password) where T : IOAuthTokenResponse
+		public async Task<ApiResponse<OAuth>> CreateAsync<OAuth>(string email, string password)
 		{
 
 			//"grant_type"    : "password",
@@ -36,7 +36,7 @@ namespace Scheduleless.Endpoints
 			using (var client = new ApiRequest())
 			{
 				//https://gentle-brushlands-30942.herokuapp.com
-				return await client.PostAsync<T>($"https://gentle-brushlands-30942.herokuapp.com/oauth/token", parameters, forceLogoutOnUnauthorized: false);
+				return await client.PostAsync<OAuth>($"{_baseRelativeUrl}/token", parameters, forceLogoutOnUnauthorized: false);
 			}
 		}
 
@@ -50,7 +50,7 @@ namespace Scheduleless.Endpoints
 
 			using (var client = new ApiRequest())
 			{
-				return await client.PostAsync<T>($"https://gentle-brushlands-30942.herokuapp.com/oauth/token", parameters);
+				return await client.PostAsync<T>($"{_baseRelativeUrl}/token", parameters);
 			}
 		}
 
@@ -58,7 +58,7 @@ namespace Scheduleless.Endpoints
 		{
 			using (var client = new ApiRequest())
 			{
-				return await client.PostAsync<object>($"https://gentle-brushlands-30942.herokuapp.com/oauth/revoke");
+				return await client.PostAsync<object>($"{_baseRelativeUrl}/revoke");
 			}
 		}
 	}

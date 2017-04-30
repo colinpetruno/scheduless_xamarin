@@ -4,6 +4,7 @@ using System.Linq;
 using Scheduleless.Interfaces;
 using Xamarin.Auth;
 
+[assembly: Xamarin.Forms.Dependency(typeof(Scheduleless.Droid.Providers.SecuredDataProvider_Droid))]
 namespace Scheduleless.Droid.Providers
 {
 	public class SecuredDataProvider_Droid : ISecuredDataProvider

@@ -4,6 +4,7 @@ using System.Linq;
 using Scheduleless.Interfaces;
 using Xamarin.Auth;
 
+[assembly: Xamarin.Forms.Dependency(typeof(Scheduleless.iOS.Providers.SecuredDataProvider_iOS))]
 namespace Scheduleless.iOS.Providers
 {
 	public class SecuredDataProvider_iOS : ISecuredDataProvider
