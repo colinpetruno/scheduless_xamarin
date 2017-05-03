@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Newtonsoft.Json;
 using Scheduleless.Interfaces;
 
@@ -26,8 +27,10 @@ namespace Scheduleless.Models
 		{
 			get
 			{
+				Debug.WriteLine($"OAuthTokenResponse");
+				Debug.WriteLine($"CreatedAt: {CreatedAt}\nExpires In: {ExpiresIn}");
 				// SL NOTE: i normalized the data because  expects OAuthTokenResponse to return an OAuth key and a User key
-				return new OAuth { AccessToken = AccessToken, TokenType = TokenType, RefreshToken = RefreshToken, CreatedAt = CreatedAt };
+				return new OAuth { AccessToken = AccessToken, TokenType = TokenType, RefreshToken = RefreshToken, CreatedAt = CreatedAt, ExpiresIn = ExpiresIn };
 			}
 		}
 		//public User User { get; set; }

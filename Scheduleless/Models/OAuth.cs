@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -46,6 +47,8 @@ namespace Scheduleless.Models
 		{
 			get
 			{
+				Debug.WriteLine("IsExpired?");
+				Debug.WriteLine($"CreatedAt: {CreatedAt}\nExpires In: {ExpiresIn}");
 				return (DateTime.UtcNow.ToUnixTimeStamp() - Constants.ExpirationBuffer) > (CreatedAt + ExpiresIn);
 			}
 		}
