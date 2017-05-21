@@ -45,7 +45,7 @@ namespace Scheduleless.Services
 				var page = new LoginPage();
 				var navPage = new ThemedNavigationPage(page);
 				Navigation = navPage.Navigation;
-				return navPage;	
+				return navPage;
 			}
 		}
 

@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<resheader
+		name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader
+		name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader
+		name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader
+		name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<!--LoginPage-->
+	<data
+		name="EmailPlaceholder"
+		xml:space="preserve">
+    	<value>Email</value>
+    	<comment>Placeholder for Email field</comment>
+	</data>
+	<data
+		name="ForgotPasswordLabel"
+		xml:space="preserve">
+    	<value>Forgot your password?</value>
+    	<comment>Label for forgotten password text</comment>
+	</data>
+	<data
+		name="LoginButton"
+		xml:space="preserve">
+    	<value>Login</value>
+    	<comment>Label for Login button</comment>
+	</data>
+	<data
+		name="PasswordPlaceholder"
+		xml:space="preserve">
+    	<value>Password</value>
+    	<comment>Placeholder for Password field</comment>
+	</data>
+	<!--Login View Model-->
+	<data
+		name="LoginRequiredFieldMissingDialogTitle"
+		xml:space="preserve">
+    	<value>Required Field Missing</value>
+    	<comment>Title for Login missing required field dialog.</comment>
+	</data>
+	<data
+		name="LoginRequiredFieldMissingDialogMessage"
+		xml:space="preserve">
+    	<value>Please enter an email and password in order to login.</value>
+    	<comment>Message for Login missing required field dialog.</comment>
+	</data>
+	<data
+		name="LoginRequiredFieldMissingDialogOk"
+		xml:space="preserve">
+    	<value>OK</value>
+    	<comment>OK button text for Login missing required field dialog.</comment>
+	</data>
+	<data
+		name="LoginFailedTitle"
+		xml:space="preserve">
+    	<value>Login Failed</value>
+    	<comment>Title for Login failed dialog.</comment>
+	</data>
+	<data
+		name="LoginFailedMessage"
+		xml:space="preserve">
+    	<value>Please make sure you entered the correct email and password.</value>
+    	<comment>Message for Login failed dialog.</comment>
+	</data>
+	<data
+		name="LoginFailedOk"
+		xml:space="preserve">
+    	<value>OK</value>
+    	<comment>OK button text for Login failed dialog.</comment>
+	</data>
+	<data
+		name="LoginSigningInMessage"
+		xml:space="preserve">
+    	<value>Signing In...</value>
+    	<comment>Message for when signing in.</comment>
+	</data>
+</root>

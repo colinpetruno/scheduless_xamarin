@@ -5,6 +5,7 @@
 	xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
 	x:Class="Scheduleless.Views.LoginPage"
 	xmlns:controls="clr-namespace:Scheduleless.Controls;assembly=Scheduleless"
+	xmlns:i18n="clr-namespace:Scheduleless.Localization;assembly=Scheduleless"
 	xmlns:local="clr-namespace:Scheduleless.Helpers;assembly=Scheduleless"
 	xmlns:page="clr-namespace:Scheduleless.Views;assembly=Scheduleless">
 	<page:LoginPageXaml.Resources>
@@ -125,7 +126,7 @@
 					<controls:SimpleButton
 						Command="{Binding LoginCommand}"
 						Style="{StaticResource wizardButton}"
-						Text="LOGIN"
+						Text="{i18n:Translate LoginButton}"
 						VerticalOptions="EndAndExpand"
 						HorizontalOptions="FillAndExpand" />
 				</StackLayout>
