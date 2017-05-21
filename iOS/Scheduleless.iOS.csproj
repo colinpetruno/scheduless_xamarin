@@ -151,6 +151,7 @@
     <Folder Include="Resources\" />
     <Folder Include="Providers\" />
     <Folder Include="Utilities\" />
+    <Folder Include="Localization\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -165,6 +166,7 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Providers\SecuredDataProvider_iOS.cs" />
     <Compile Include="Utilities\Utility.cs" />
+    <Compile Include="Localization\Localize_iOS.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

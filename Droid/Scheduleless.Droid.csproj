@@ -139,6 +139,7 @@
     <Compile Include="Providers\SecuredDataProvider_Droid.cs" />
     <Compile Include="Utilities\AppCrashManagerListener.cs" />
     <Compile Include="Utilities\Utility.cs" />
+    <Compile Include="Localization\Localize_Droid.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -158,6 +159,7 @@
   <ItemGroup>
     <Folder Include="Providers\" />
     <Folder Include="Utilities\" />
+    <Folder Include="Localization\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Build.Download.0.4.3\build\Xamarin.Build.Download.targets" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.3\build\Xamarin.Build.Download.targets')" />
