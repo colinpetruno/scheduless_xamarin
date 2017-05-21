@@ -78,4 +78,10 @@
     	<value>OK</value>
     	<comment>OK button text for Login failed dialog.</comment>
 	</data>
+	<data
+		name="LoginSigningInMessage"
+		xml:space="preserve">
+    	<value>Signing In...</value>
+    	<comment>Message for when signing in.</comment>
+	</data>
 </root>

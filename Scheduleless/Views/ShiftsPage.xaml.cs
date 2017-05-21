@@ -46,7 +46,7 @@ namespace Scheduleless.Views
 				if (futureShift != null)
 				{
 					var page = new FutureShiftDetailPage(futureShift);
-					Navigation.PushModalAsync(page.WithinNavigationPage());
+					Navigation.PushAsync(page);
 				}
 			};
 		}

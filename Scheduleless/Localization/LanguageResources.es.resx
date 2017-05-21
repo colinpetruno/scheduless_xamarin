@@ -22,4 +22,10 @@
     	<value>Iniciar sesión</value>
     	<comment>Label for Login button</comment>
 	</data>
+	<data
+		name="LoginSigningInMessage"
+		xml:space="preserve">
+    	<value>Iniciando sesión</value>
+    	<comment>Signing in message</comment>
+	</data>
 </root>

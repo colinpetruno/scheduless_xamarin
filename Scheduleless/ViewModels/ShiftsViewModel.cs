@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Scheduleless.Endpoints;
 using Scheduleless.Models;
+using Scheduleless.Services;
 using Xamarin.Forms;
 
 namespace Scheduleless.ViewModels
@@ -40,7 +41,10 @@ namespace Scheduleless.ViewModels
 
 			IsBusy = true;
 
+			DialogService.ShowLoading(string.Empty);
 			var response = await _futureShiftsEndpoint.IndexAsync<FutureShift>();
+			DialogService.HideLoading();
+
 			if (response.IsSuccess)
 			{
 				FutureShifts = response.Result.ToList();

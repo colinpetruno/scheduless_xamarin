@@ -106,5 +106,11 @@ namespace Scheduleless.Localization {
                 return ResourceManager.GetString("LoginFailedOk", resourceCulture);
             }
         }
+        
+        internal static string LoginSigningInMessage {
+            get {
+                return ResourceManager.GetString("LoginSigningInMessage", resourceCulture);
+            }
+        }
     }
 }

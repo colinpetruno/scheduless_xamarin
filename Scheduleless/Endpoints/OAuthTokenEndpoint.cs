@@ -18,8 +18,8 @@ namespace Scheduleless.Endpoints
 			var parameters = new Dictionary<string, object>
 			{
 				{"grant_type", "password"},
-				{"username", "demo@example.com"},
-				{"password", "password"},
+				{"username", email},
+				{"password", password},
 			};
 
 			using (var client = new ApiRequest())

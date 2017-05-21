@@ -9,6 +9,8 @@ using Android.Widget;
 using Android.OS;
 using HockeyApp.Android;
 using Scheduleless.Droid.Utilities;
+using Acr.UserDialogs;
+
 
 namespace Scheduleless.Droid
 {
@@ -21,6 +23,8 @@ namespace Scheduleless.Droid
 		{
 			TabLayoutResource = Resource.Layout.Tabbar;
 			ToolbarResource = Resource.Layout.Toolbar;
+
+			UserDialogs.Init(this);
 
 			base.OnCreate(bundle);
 
