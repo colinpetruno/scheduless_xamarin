@@ -17,31 +17,31 @@
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
 	<data
-		name="LoginButton"
-		xml:space="preserve">
-    	<value>Iniciar sesión</value>
-    	<comment>Label for Login button</comment>
-	</data>
-	<data
-		name="LoginSigningInMessage"
-		xml:space="preserve">
-    	<value>Iniciando sesión</value>
-    	<comment>Signing in...</comment>
-	</data>
-	<data
-		name="TabbedPageAvailablesShifts"
+		name="AvailableShifts"
 		xml:space="preserve">
     	<value>Desplazamientos disponibles</value>
     	<comment>Available Shifts</comment>
 	</data>
 	<data
-		name="TabbedPageYourSchedule"
+		name="Login"
+		xml:space="preserve">
+    	<value>Iniciar sesión</value>
+    	<comment>Login</comment>
+	</data>
+	<data
+		name="SigningIn"
+		xml:space="preserve">
+    	<value>Iniciando sesión</value>
+    	<comment>Signing in...</comment>
+	</data>
+	<data
+		name="YourSchedule"
 		xml:space="preserve">
     	<value>Tu agenda</value>
     	<comment>Your Schedule</comment>
 	</data>
 	<data
-		name="TabbedPageYourTrades"
+		name="YourTrades"
 		xml:space="preserve">
     	<value>Sus Oficios</value>
     	<comment>Your Trades</comment>

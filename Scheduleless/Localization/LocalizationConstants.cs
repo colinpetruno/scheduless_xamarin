@@ -1,20 +1,15 @@
 namespace Scheduleless.Localization
 {
-	// NOTE: Keep alphabetized
+	/// <summary>
+	/// NOTE: Add to LanguageResources.resx for annotation and LanguageResources.{locale_id}.resx 
+	/// when adding a key here
+	/// </summary>
 	public struct LocalizationConstants
 	{
-		/// <summary>
-		/// NOTE: Add to LanguageResources.resx for annotation and LanguageResources.{locale_id}.resx 
-		/// when adding a key here
-		/// </summary>
-		public struct Keys
-		{
-			public const string LoginFailedTitle = "LoginFailedTitle";
-			public const string LoginFailedMessage = "LoginFailedMessage";
-			public const string LoginSigningInMessage = "LoginSigningInMessage";
-			public const string TabbedPageAvailablesShifts = "TabbedPageAvailablesShifts";
-			public const string TabbedPageYourSchedule = "TabbedPageYourSchedule";
-			public const string TabbedPageYourTrades = "TabbedPageYourTrades";
-		}
+		// NOTE: Keep alphabetized
+		public const string AvailableShifts = "AvailableShifts";
+		public const string SigningIn = "SigningIn";
+		public const string YourSchedule = "YourSchedule";
+		public const string YourTrades = "YourTrades";
 	}
 }

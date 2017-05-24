@@ -16,88 +16,32 @@
 		name="writer">
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
-	<!--LoginPage-->
 	<data
-		name="EmailPlaceholder"
-		xml:space="preserve">
-    	<value>Email</value>
-    	<comment>Email</comment>
-	</data>
-	<data
-		name="ForgotPasswordLabel"
-		xml:space="preserve">
-    	<value>Forgot your password?</value>
-    	<comment>Forgot your password?</comment>
-	</data>
-	<data
-		name="LoginButton"
-		xml:space="preserve">
-    	<value>Login</value>
-    	<comment>Login</comment>
-	</data>
-	<data
-		name="PasswordPlaceholder"
-		xml:space="preserve">
-    	<value>Password</value>
-    	<comment>Password</comment>
-	</data>
-	<!--Login View Model-->
-	<data
-		name="LoginRequiredFieldMissingDialogTitle"
-		xml:space="preserve">
-    	<value>Required Field Missing</value>
-    	<comment>Required Field Missing</comment>
-	</data>
-	<data
-		name="LoginRequiredFieldMissingDialogMessage"
-		xml:space="preserve">
-    	<value>Please enter an email and password in order to login</value>
-    	<comment>Please enter an email and password in order to login</comment>
-	</data>
-	<data
-		name="LoginRequiredFieldMissingDialogOk"
-		xml:space="preserve">
-    	<value>OK</value>
-    	<comment>OK</comment>
-	</data>
-	<data
-		name="LoginFailedTitle"
-		xml:space="preserve">
-    	<value>Login Failed</value>
-    	<comment>Login Failed</comment>
-	</data>
-	<data
-		name="LoginFailedMessage"
-		xml:space="preserve">
-    	<value>Please make sure you entered the correct email and password</value>
-    	<comment>Please make sure you entered the correct email and password</comment>
-	</data>
-	<data
-		name="LoginFailedOk"
-		xml:space="preserve">
-    	<value>OK</value>
-    	<comment>OK</comment>
-	</data>
-	<data
-		name="LoginSigningInMessage"
-		xml:space="preserve">
-    	<value>Signing In...</value>
-    	<comment>Signing In...</comment>
-	</data>
-	<data
-		name="TabbedPageAvailablesShifts"
+		name="AvailableShifts"
 		xml:space="preserve">
     	<value>Available Shifts</value>
     	<comment>Available Shifts</comment>
 	</data>
 	<data
-		name="TabbedPageYourSchedule"
+		name="Login"
+		xml:space="preserve">
+    	<value>Login</value>
+    	<comment>Login</comment>
+	</data>
+	<data
+		name="SigningIn"
+		xml:space="preserve">
+    	<value>Signing In...</value>
+    	<comment>Signing In...</comment>
+	</data>
+	<data
+		name="YourSchedule"
 		xml:space="preserve">
     	<value>Your Schedule</value>
     	<comment>Your Schedule</comment>
 	</data>
 	<data
-		name="TabbedPageYourTrades"
+		name="YourTrades"
 		xml:space="preserve">
     	<value>Your Trades</value>
     	<comment>Your Trades</comment>

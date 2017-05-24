@@ -22,19 +22,19 @@ namespace Scheduleless.Views
 
 			this.Children.Add(AddTabbedPage(
 				new ShiftsPage(),
-				TranslationService.Localize(LocalizationConstants.Keys.TabbedPageYourSchedule),
+				TranslationService.Localize(LocalizationConstants.YourSchedule),
 				FontIcons.CalendarCheck));
 
 			// SL NOTE: an example to add others; can be removed
 			this.Children.Add(AddTabbedPage(
 				new ContentPage(),
-				TranslationService.Localize(LocalizationConstants.Keys.TabbedPageAvailablesShifts),
+				TranslationService.Localize(LocalizationConstants.AvailableShifts),
 				FontIcons.CalendarPlus)
 			);
 
 			this.Children.Add(AddTabbedPage(
 				new ContentPage(),
-				TranslationService.Localize(LocalizationConstants.Keys.TabbedPageYourTrades),
+				TranslationService.Localize(LocalizationConstants.YourTrades),
 				FontIcons.MapSigns)
 			);
 		}
