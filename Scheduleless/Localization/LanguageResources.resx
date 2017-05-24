@@ -21,67 +21,85 @@
 		name="EmailPlaceholder"
 		xml:space="preserve">
     	<value>Email</value>
-    	<comment>Placeholder for Email field</comment>
+    	<comment>Email</comment>
 	</data>
 	<data
 		name="ForgotPasswordLabel"
 		xml:space="preserve">
     	<value>Forgot your password?</value>
-    	<comment>Label for forgotten password text</comment>
+    	<comment>Forgot your password?</comment>
 	</data>
 	<data
 		name="LoginButton"
 		xml:space="preserve">
     	<value>Login</value>
-    	<comment>Label for Login button</comment>
+    	<comment>Login</comment>
 	</data>
 	<data
 		name="PasswordPlaceholder"
 		xml:space="preserve">
     	<value>Password</value>
-    	<comment>Placeholder for Password field</comment>
+    	<comment>Password</comment>
 	</data>
 	<!--Login View Model-->
 	<data
 		name="LoginRequiredFieldMissingDialogTitle"
 		xml:space="preserve">
     	<value>Required Field Missing</value>
-    	<comment>Title for Login missing required field dialog.</comment>
+    	<comment>Required Field Missing</comment>
 	</data>
 	<data
 		name="LoginRequiredFieldMissingDialogMessage"
 		xml:space="preserve">
-    	<value>Please enter an email and password in order to login.</value>
-    	<comment>Message for Login missing required field dialog.</comment>
+    	<value>Please enter an email and password in order to login</value>
+    	<comment>Please enter an email and password in order to login</comment>
 	</data>
 	<data
 		name="LoginRequiredFieldMissingDialogOk"
 		xml:space="preserve">
     	<value>OK</value>
-    	<comment>OK button text for Login missing required field dialog.</comment>
+    	<comment>OK</comment>
 	</data>
 	<data
 		name="LoginFailedTitle"
 		xml:space="preserve">
     	<value>Login Failed</value>
-    	<comment>Title for Login failed dialog.</comment>
+    	<comment>Login Failed</comment>
 	</data>
 	<data
 		name="LoginFailedMessage"
 		xml:space="preserve">
-    	<value>Please make sure you entered the correct email and password.</value>
-    	<comment>Message for Login failed dialog.</comment>
+    	<value>Please make sure you entered the correct email and password</value>
+    	<comment>Please make sure you entered the correct email and password</comment>
 	</data>
 	<data
 		name="LoginFailedOk"
 		xml:space="preserve">
     	<value>OK</value>
-    	<comment>OK button text for Login failed dialog.</comment>
+    	<comment>OK</comment>
 	</data>
 	<data
 		name="LoginSigningInMessage"
 		xml:space="preserve">
     	<value>Signing In...</value>
-    	<comment>Message for when signing in.</comment>
+    	<comment>Signing In...</comment>
+	</data>
+	<data
+		name="TabbedPageAvailablesShifts"
+		xml:space="preserve">
+    	<value>Available Shifts</value>
+    	<comment>Available Shifts</comment>
+	</data>
+	<data
+		name="TabbedPageYourSchedule"
+		xml:space="preserve">
+    	<value>Your Schedule</value>
+    	<comment>Your Schedule</comment>
+	</data>
+	<data
+		name="TabbedPageYourTrades"
+		xml:space="preserve">
+    	<value>Your Trades</value>
+    	<comment>Your Trades</comment>
 	</data>
 </root>

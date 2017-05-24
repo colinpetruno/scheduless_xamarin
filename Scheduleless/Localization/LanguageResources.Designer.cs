@@ -112,5 +112,23 @@ namespace Scheduleless.Localization {
                 return ResourceManager.GetString("LoginSigningInMessage", resourceCulture);
             }
         }
+        
+        internal static string TabbedPageAvailablesShifts {
+            get {
+                return ResourceManager.GetString("TabbedPageAvailablesShifts", resourceCulture);
+            }
+        }
+        
+        internal static string TabbedPageYourSchedule {
+            get {
+                return ResourceManager.GetString("TabbedPageYourSchedule", resourceCulture);
+            }
+        }
+        
+        internal static string TabbedPageYourTrades {
+            get {
+                return ResourceManager.GetString("TabbedPageYourTrades", resourceCulture);
+            }
+        }
     }
 }

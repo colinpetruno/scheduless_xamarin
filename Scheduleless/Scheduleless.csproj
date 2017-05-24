@@ -101,6 +101,10 @@
       <DependentUpon>LanguageResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Services\DialogService.cs" />
+    <Compile Include="Views\MainTabbedPage.cs" />
+    <Compile Include="Helpers\Iconic.cs" />
+    <Compile Include="Fonts\ModuleWrapper.cs" />
+    <Compile Include="Fonts\FontIcons.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="XFGloss">
@@ -157,6 +161,12 @@
     <Reference Include="Acr.UserDialogs.Interface">
       <HintPath>..\packages\Acr.UserDialogs.6.4.1\lib\portable-net45+wp8+win8+wpa81\Acr.UserDialogs.Interface.dll</HintPath>
     </Reference>
+    <Reference Include="Plugin.Iconize">
+      <HintPath>..\packages\Xam.Plugin.Iconize.1.0.10\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Plugin.Iconize.dll</HintPath>
+    </Reference>
+    <Reference Include="FormsPlugin.Iconize">
+      <HintPath>..\packages\Xam.FormsPlugin.Iconize.1.0.10\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\FormsPlugin.Iconize.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -175,6 +185,7 @@
     <Folder Include="Exceptions\" />
     <Folder Include="Models\Converters\" />
     <Folder Include="Localization\" />
+    <Folder Include="Fonts\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

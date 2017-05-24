@@ -140,6 +140,18 @@
     <Reference Include="Acr.UserDialogs.Interface">
       <HintPath>..\packages\Acr.UserDialogs.6.4.1\lib\MonoAndroid10\Acr.UserDialogs.Interface.dll</HintPath>
     </Reference>
+    <Reference Include="Plugin.Iconize">
+      <HintPath>..\packages\Xam.Plugin.Iconize.1.0.10\lib\MonoAndroid10\Plugin.Iconize.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Iconize.Droid">
+      <HintPath>..\packages\Xam.Plugin.Iconize.1.0.10\lib\MonoAndroid10\Plugin.Iconize.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="FormsPlugin.Iconize">
+      <HintPath>..\packages\Xam.FormsPlugin.Iconize.1.0.10\lib\MonoAndroid10\FormsPlugin.Iconize.dll</HintPath>
+    </Reference>
+    <Reference Include="FormsPlugin.Iconize.Droid">
+      <HintPath>..\packages\Xam.FormsPlugin.Iconize.1.0.10\lib\MonoAndroid10\FormsPlugin.Iconize.Droid.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Scheduleless\Scheduleless.csproj">
@@ -155,6 +167,10 @@
     <Compile Include="Utilities\AppCrashManagerListener.cs" />
     <Compile Include="Utilities\Utility.cs" />
     <Compile Include="Localization\Localize_Droid.cs" />
+    <Compile Include="Fonts\IconicCollection.cs" />
+    <Compile Include="Fonts\IconicModule.cs" />
+    <Compile Include="Fonts\FontAwesomeCollection.cs" />
+    <Compile Include="Fonts\FontAwesomeModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -175,6 +191,11 @@
     <Folder Include="Providers\" />
     <Folder Include="Utilities\" />
     <Folder Include="Localization\" />
+    <Folder Include="Fonts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\fontawesome.ttf" />
+    <AndroidAsset Include="Assets\open-iconic.ttf" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Build.Download.0.4.3\build\Xamarin.Build.Download.targets" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.3\build\Xamarin.Build.Download.targets')" />

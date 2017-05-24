@@ -26,6 +26,24 @@
 		name="LoginSigningInMessage"
 		xml:space="preserve">
     	<value>Iniciando sesión</value>
-    	<comment>Signing in message</comment>
+    	<comment>Signing in...</comment>
+	</data>
+	<data
+		name="TabbedPageAvailablesShifts"
+		xml:space="preserve">
+    	<value>Desplazamientos disponibles</value>
+    	<comment>Available Shifts</comment>
+	</data>
+	<data
+		name="TabbedPageYourSchedule"
+		xml:space="preserve">
+    	<value>Tu agenda</value>
+    	<comment>Your Schedule</comment>
+	</data>
+	<data
+		name="TabbedPageYourTrades"
+		xml:space="preserve">
+    	<value>Sus Oficios</value>
+    	<comment>Your Trades</comment>
 	</data>
 </root>
