@@ -126,7 +126,7 @@
 					<controls:SimpleButton
 						Command="{Binding LoginCommand}"
 						Style="{StaticResource wizardButton}"
-						Text="{i18n:Translate LoginButton}"
+						Text="{i18n:Translate Login}"
 						VerticalOptions="EndAndExpand"
 						HorizontalOptions="FillAndExpand" />
 				</StackLayout>

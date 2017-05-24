@@ -44,18 +44,18 @@ namespace Scheduleless.ViewModels
 
 			IsBusy = true;
 
-			DialogService.ShowLoading(TranslationService.Localize(LocalizationConstants.Keys.LoginSigningInMessage));
+			DialogService.ShowLoading(TranslationService.Localize(LocalizationConstants.SigningIn));
 			var response = await AuthenticationService.Instance.AuthenticateAsync<OAuthTokenResponse>(Email, Password);
 			DialogService.HideLoading();
 
 			if (response.IsSuccess)
 			{
-				await NavigationService.Instance.DisplayShiftsPageAsync();
+				await NavigationService.Instance.DisplayShiftsPageAsync(isFromLoginScreen: true);
 			}
 			else
 			{
 				Debug.WriteLine($"Login failed: {response.Exception}");
-				DialogService.ShowLoading(TranslationService.Localize(LocalizationConstants.Keys.LoginFailedMessage));
+				DialogService.ShowLoading(TranslationService.Localize(LocalizationConstants.SigningIn));
 			}
 
 			IsBusy = false;

@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using HockeyApp.iOS;
+using Scheduleless.iOS.Fonts;
 using Scheduleless.iOS.Utilities;
 using UIKit;
 
@@ -16,6 +17,12 @@ namespace Scheduleless.iOS
 
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
+			// Load up custom fonts
+			Plugin.Iconize.Iconize
+				  //.With(new IconicModule())
+				  .With(new FontAwesomeModule()
+			);
+
 			// only record crashes if on a device
 			if (!Utility.IsSimulator())
 			{
@@ -27,6 +34,9 @@ namespace Scheduleless.iOS
 			}
 
 			global::Xamarin.Forms.Forms.Init();
+
+			// NOTE: order matters here
+			FormsPlugin.Iconize.iOS.IconControls.Init();
 
 			LoadApplication(new App());
 

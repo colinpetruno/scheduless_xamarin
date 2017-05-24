@@ -10,7 +10,7 @@ using Android.OS;
 using HockeyApp.Android;
 using Scheduleless.Droid.Utilities;
 using Acr.UserDialogs;
-
+using Scheduleless.Droid.Fonts;
 
 namespace Scheduleless.Droid
 {
@@ -28,6 +28,12 @@ namespace Scheduleless.Droid
 
 			base.OnCreate(bundle);
 
+			// Load up custom fonts
+			Plugin.Iconize.Iconize
+				  //.With(new IconicModule())
+				  .With(new FontAwesomeModule()
+			);
+
 			// only record crashes if it's on a device
 			if (!Utility.IsEmulator())
 			{
@@ -35,6 +41,8 @@ namespace Scheduleless.Droid
 			}
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
+
+			FormsPlugin.Iconize.Droid.IconControls.Init(Resource.Id.toolbar);
 
 			LoadApplication(new App());
 

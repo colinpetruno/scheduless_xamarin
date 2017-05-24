@@ -47,69 +47,33 @@ namespace Scheduleless.Localization {
             }
         }
         
-        internal static string EmailPlaceholder {
+        internal static string AvailableShifts {
             get {
-                return ResourceManager.GetString("EmailPlaceholder", resourceCulture);
+                return ResourceManager.GetString("AvailableShifts", resourceCulture);
             }
         }
         
-        internal static string ForgotPasswordLabel {
+        internal static string Login {
             get {
-                return ResourceManager.GetString("ForgotPasswordLabel", resourceCulture);
+                return ResourceManager.GetString("Login", resourceCulture);
             }
         }
         
-        internal static string LoginButton {
+        internal static string SigningIn {
             get {
-                return ResourceManager.GetString("LoginButton", resourceCulture);
+                return ResourceManager.GetString("SigningIn", resourceCulture);
             }
         }
         
-        internal static string PasswordPlaceholder {
+        internal static string YourSchedule {
             get {
-                return ResourceManager.GetString("PasswordPlaceholder", resourceCulture);
+                return ResourceManager.GetString("YourSchedule", resourceCulture);
             }
         }
         
-        internal static string LoginRequiredFieldMissingDialogTitle {
+        internal static string YourTrades {
             get {
-                return ResourceManager.GetString("LoginRequiredFieldMissingDialogTitle", resourceCulture);
-            }
-        }
-        
-        internal static string LoginRequiredFieldMissingDialogMessage {
-            get {
-                return ResourceManager.GetString("LoginRequiredFieldMissingDialogMessage", resourceCulture);
-            }
-        }
-        
-        internal static string LoginRequiredFieldMissingDialogOk {
-            get {
-                return ResourceManager.GetString("LoginRequiredFieldMissingDialogOk", resourceCulture);
-            }
-        }
-        
-        internal static string LoginFailedTitle {
-            get {
-                return ResourceManager.GetString("LoginFailedTitle", resourceCulture);
-            }
-        }
-        
-        internal static string LoginFailedMessage {
-            get {
-                return ResourceManager.GetString("LoginFailedMessage", resourceCulture);
-            }
-        }
-        
-        internal static string LoginFailedOk {
-            get {
-                return ResourceManager.GetString("LoginFailedOk", resourceCulture);
-            }
-        }
-        
-        internal static string LoginSigningInMessage {
-            get {
-                return ResourceManager.GetString("LoginSigningInMessage", resourceCulture);
+                return ResourceManager.GetString("YourTrades", resourceCulture);
             }
         }
     }

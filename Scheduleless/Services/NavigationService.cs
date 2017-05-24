@@ -34,10 +34,9 @@ namespace Scheduleless.Services
 			if (_credentialsService.IsAuthenticated)
 			{
 				Debug.WriteLine($"CredentialsSerivce Is Authenticated");
-				var page = new ShiftsPage();
-				var navPage = new ThemedNavigationPage(page);
-				Navigation = navPage.Navigation;
-				return navPage;
+				var tabbedPage = GetInitialTabbedPages();
+				Navigation = tabbedPage.Navigation;
+				return tabbedPage;
 			}
 			else
 			{
@@ -49,10 +48,25 @@ namespace Scheduleless.Services
 			}
 		}
 
-		public async Task DisplayShiftsPageAsync()
+		public async Task DisplayShiftsPageAsync(bool isFromLoginScreen)
 		{
-			var page = new ShiftsPage();
-			await Navigation.PushModalAsync(page.WithinNavigationPage());
+			if (isFromLoginScreen)
+			{
+				var tabbedPage = GetInitialTabbedPages();
+				await Navigation.PushModalAsync(tabbedPage);
+			}
+			else
+			{
+				var page = new ShiftsPage();
+				await Navigation.PushModalAsync(page.WithinNavigationPage());
+			}
+		}
+
+		private Page GetInitialTabbedPages()
+		{
+			var tabbedPage = new MainTabbedPage();
+			tabbedPage.SetupTabbedPages();
+			return tabbedPage;
 		}
 	}
 }
