@@ -33,7 +33,6 @@ namespace Scheduleless.Localization
 		{
 			Debug.WriteLine("Localize " + key);
 
-			// TODO: Figure out how to inject into TranslateExtension and then remove the DependencyService static reference
 			cultureInfo = cultureInfo ?? DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
 
 			string translation = _resourceManager.Value.GetString(key, cultureInfo);

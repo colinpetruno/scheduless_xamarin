@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "288123513525",
+    "firebase_url": "https://scheduleless.firebaseio.com",
+    "project_id": "scheduleless",
+    "storage_bucket": "scheduleless.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:288123513525:android:3e6ee55b8b276a2f",
+        "android_client_info": {
+          "package_name": "com.scheduleless.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "288123513525-fab5b1r7rg12nm4nnqm9ob7i679tgdr7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKm0JosFbb29EF-Za5IKc7r1w5z7JG6x4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
