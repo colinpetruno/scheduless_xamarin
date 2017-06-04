@@ -105,6 +105,8 @@
     <Compile Include="Helpers\Iconic.cs" />
     <Compile Include="Fonts\ModuleWrapper.cs" />
     <Compile Include="Fonts\FontIcons.cs" />
+    <Compile Include="Services\PushNotificationService.cs" />
+    <Compile Include="Interfaces\IPushNotificationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="XFGloss">
