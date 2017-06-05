@@ -17,10 +17,21 @@ namespace Scheduleless.Droid
 	[Activity(Label = "Scheduleless.Droid", Icon = "@drawable/icon", Theme = "@style/MyTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
 	{
+		static MainActivity _instance = null;
+		public static MainActivity CurrentActivity
+		{
+			get
+			{
+				return _instance;
+			}
+		}
+
 		private const string HockeyAppId = "938821bc74244436a8380ee15befc913";
 
 		protected override void OnCreate(Bundle bundle)
 		{
+			_instance = this;
+
 			TabLayoutResource = Resource.Layout.Tabbar;
 			ToolbarResource = Resource.Layout.Toolbar;
 

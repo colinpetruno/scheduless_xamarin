@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Scheduleless.Models;
+using Scheduleless.Services;
 using Scheduleless.ViewModels;
 using Xamarin.Forms;
 
@@ -36,6 +37,7 @@ namespace Scheduleless.Views
 		{
 			FutureShiftsListView.ItemSelected += (s, e) =>
 			{
+				PushNotificationService.Instance.HandleRegister(null);
 				FutureShiftsListView.SelectedItem = null;
 				if (e.SelectedItem == null)
 				{

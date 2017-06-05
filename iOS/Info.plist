@@ -7,7 +7,7 @@
 	<key>CFBundleName</key>
 	<string>Scheduleless</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.lazilyinspired.scheduleless</string>
+	<string>com.scheduleless.ios</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -46,6 +46,10 @@
 	<array>
 		<string>open-iconic.ttf</string>
 		<string>fontawesome.ttf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
 	</array>
 </dict>
 </plist>
