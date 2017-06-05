@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using FirebaseApp = Firebase.Analytics.App;
 using HockeyApp.iOS;
 using Scheduleless.iOS.Fonts;
 using Scheduleless.iOS.Utilities;
@@ -46,6 +47,7 @@ namespace Scheduleless.iOS
 				manager.Authenticator.AuthenticateInstallation(); // This line is obsolete in crash only builds
 			}
 
+            FirebaseApp.Configure();
 			global::Xamarin.Forms.Forms.Init();
 
 			// NOTE: order matters here
