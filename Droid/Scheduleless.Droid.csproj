@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Scheduleless.Droid</RootNamespace>
     <AssemblyName>Scheduleless.Droid</AssemblyName>
-    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
@@ -207,6 +207,7 @@
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable\scheduleless-logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Providers\" />
