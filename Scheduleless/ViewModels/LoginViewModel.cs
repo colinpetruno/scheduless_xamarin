@@ -55,7 +55,8 @@ namespace Scheduleless.ViewModels
 			else
 			{
 				Debug.WriteLine($"Login failed: {response.Exception}");
-				DialogService.ShowLoading(TranslationService.Localize(LocalizationConstants.SigningIn));
+                DialogService.HideLoading();
+				// DialogService.ShowLoading(TranslationService.Localize(LocalizationConstants.SigningIn));
 			}
 
 			IsBusy = false;
