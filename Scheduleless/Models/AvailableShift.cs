@@ -15,7 +15,7 @@ namespace Scheduleless.Models
     //  "updated_at": "2017-04-29T18:16:26.142Z"
     //}
 
-    public class AvailableShift
+	public class AvailableShift
 	{
 		[JsonProperty("id")]
 		public int Id { get; set; }
@@ -36,31 +36,41 @@ namespace Scheduleless.Models
 		public long Date { get; set; }
 
 		[JsonProperty("created_at")]
-		// FIXME: create a converter to convert the format of 2017-04-29T18:16:26.147Z
-		//[JsonConverter(typeof(JsonIntToDateTimeConverter))]
 		public string CreatedAt { get; set; }
 
 		[JsonProperty("updated_at")]
-		// FIXME: create a converter to convert the format of 2017-04-29T18:16:26.147Z
-		//[JsonConverter(typeof(JsonIntToDateTimeConverter))]
 		public string UpdatedAt { get; set; }
 
-        public string Month {
-            get {
-                return "July";
-            }
-        }
+		public DateTime UpdateAtDate
+		{
+			get
+			{
+				return Convert.ToDateTime(UpdatedAt);
+			}
+		}
 
-        public string Day {
-            get {
-                return "10";
-            }
-        }
+		public string Month
+		{
+			get
+			{
+				return "July";
+			}
+		}
 
-        public string Label {
-            get {
-                return $"{MinuteStart} - {MinuteEnd}";
-            }
-        }
+		public string Day
+		{
+			get
+			{
+				return "10";
+			}
+		}
+
+		public string Label
+		{
+			get
+			{
+				return $"{MinuteStart} - {MinuteEnd}";
+			}
+		}
 	}
 }

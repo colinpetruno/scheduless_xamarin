@@ -17,11 +17,13 @@ namespace Scheduleless.Views
 			Initialize();
 		}
 
-        public string Month {
-            get {
-                return ViewModel.FutureShift.Month;
-            }
-        }
+		public string Month
+		{
+			get
+			{
+				return ViewModel.FutureShift.Month;
+			}
+		}
 
 		protected override void Initialize()
 		{
@@ -40,16 +42,16 @@ namespace Scheduleless.Views
 			ViewModel.FetchShiftDetailCommand.Execute(null);
 		}
 
-        public async void OnTradeShiftButtonClicked(object sender, EventArgs e)
-        {
-            Debug.WriteLine("Transitioning to New Trade Page");
-            // await NavigationService.Instance.DisplayNewTradePageAsync(ViewModel.FutureShift);
+		public async void OnTradeShiftButtonClicked(object sender, EventArgs e)
+		{
+			Debug.WriteLine("Transitioning to New Trade Page");
+			// await NavigationService.Instance.DisplayNewTradePageAsync(ViewModel.FutureShift);
 
-            var page = new NewTradePage(ViewModel.FutureShift);
-            await Navigation.PushAsync(page);
-        }
+			var page = new NewTradePage(ViewModel.FutureShift);
+			await Navigation.PushAsync(page);
+		}
 
-        
+
 	}
 
 	public partial class FutureShiftDetailPageXaml : BaseContentPage<FutureShiftDetailViewModel> { }

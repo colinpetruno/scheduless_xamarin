@@ -33,34 +33,39 @@ namespace Scheduleless.Models
 		public int MinuteEnd { get; set; }
 
 		[JsonProperty("date")]
-		public long Date { get; set; }
+		[JsonConverter(typeof(JsonIntToDateTimeConverter))]
+		public DateTime Date { get; set; }
 
 		[JsonProperty("created_at")]
-		// FIXME: create a converter to convert the format of 2017-04-29T18:16:26.147Z
-		//[JsonConverter(typeof(JsonIntToDateTimeConverter))]
-		public string CreatedAt { get; set; }
+		[JsonConverter(typeof(JsonIntToDateTimeConverter))]
+		public DateTime CreatedAt { get; set; }
 
 		[JsonProperty("updated_at")]
-		// FIXME: create a converter to convert the format of 2017-04-29T18:16:26.147Z
-		//[JsonConverter(typeof(JsonIntToDateTimeConverter))]
-		public string UpdatedAt { get; set; }
+		[JsonConverter(typeof(JsonIntToDateTimeConverter))]
+		public DateTime UpdatedAt { get; set; }
 
-        public string Month {
-            get {
-                return "July";
-            }
-        }
+		public string Month
+		{
+			get
+			{
+				return "July";
+			}
+		}
 
-        public string Day {
-            get {
-                return "10";
-            }
-        }
+		public string Day
+		{
+			get
+			{
+				return "10";
+			}
+		}
 
-        public string Label {
-            get {
-                return $"{MinuteStart} - {MinuteEnd}";
-            }
-        }
+		public string Label
+		{
+			get
+			{
+				return $"{MinuteStart} - {MinuteEnd}";
+			}
+		}
 	}
 }

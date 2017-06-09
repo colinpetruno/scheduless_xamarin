@@ -14,9 +14,24 @@ namespace Scheduleless.Models.Converters
 			return objectType == typeof(DateTime);
 		}
 
+		/// <summary>
+		/// When deserializing, this attempts to convert an object to a DateTime object.
+		/// </summary>
+		/// <returns>The json.</returns>
+		/// <param name="reader">Reader.</param>
+		/// <param name="objectType">Object type.</param>
+		/// <param name="existingValue">Existing value.</param>
+		/// <param name="serializer">Serializer.</param>
 		public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
 		{
-			return ((long)reader.Value).FromUnixTimeStamp();
+			if (reader.Value is DateTime)
+			{
+				return reader.Value;
+			}
+
+			var stringValue = reader.Value.ToString();
+			var convertedDateTime = DateTime.ParseExact(stringValue, "yyyyMMdd", System.Globalization.CultureInfo.InvariantCulture);
+			return convertedDateTime;
 		}
 
 		public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
