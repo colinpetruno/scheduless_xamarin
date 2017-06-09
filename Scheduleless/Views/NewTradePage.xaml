@@ -3,8 +3,29 @@
   xmlns="http://xamarin.com/schemas/2014/forms" 
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
   xmlns:page="clr-namespace:Scheduleless.Views;assembly=Scheduleless" 
+  xmlns:controls="clr-namespace:Scheduleless.Controls;assembly=Scheduleless"
   x:Class="Scheduleless.Views.NewTradePage"
   Title="New Trade">
 	<page:NewTradePageXaml.Content>
+      <StackLayout 
+        Padding="5,10"
+        Orientation="Vertical">
+        
+        <Label TextColor="#77d065" FontSize = "20" Text="Offer this shift for trade!" />
+         
+        <controls:SimpleEntry
+          x:Name="NoteEntry"
+          Keyboard="Text"
+          Placeholder="Note"
+          TextColor="Black"
+          Text="{Binding Note}"
+          HeightRequest="45"
+          HorizontalOptions="FillAndExpand" />
+                                    
+         <Button 
+            Text="Trade Shift"
+            Command="{Binding CreateTradeCommand}"
+            BorderWidth="0" />
+      </StackLayout>
 	</page:NewTradePageXaml.Content>
 </page:NewTradePageXaml>

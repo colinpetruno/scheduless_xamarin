@@ -63,12 +63,6 @@ namespace Scheduleless.Services
 			}
 		}
 
-        public async Task DisplayNewTradePageAsync(FutureShift shift)
-        {
-            var page = new NewTradePage(shift);
-            await Navigation.PushAsync(page);
-        }
-
 		private Page GetInitialTabbedPages()
 		{
 			var tabbedPage = new MainTabbedPage();
