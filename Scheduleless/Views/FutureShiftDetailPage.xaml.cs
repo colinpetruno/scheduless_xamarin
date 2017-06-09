@@ -15,6 +15,12 @@ namespace Scheduleless.Views
 			Initialize();
 		}
 
+        public string Month {
+            get {
+                return ViewModel.FutureShift.Month;
+            }
+        }
+
 		protected override void Initialize()
 		{
 			InitializeComponent();
@@ -31,6 +37,8 @@ namespace Scheduleless.Views
 
 			ViewModel.FetchShiftDetailCommand.Execute(null);
 		}
+
+        
 	}
 
 	public partial class FutureShiftDetailPageXaml : BaseContentPage<FutureShiftDetailViewModel> { }

@@ -42,6 +42,9 @@
       <LastGenOutput>LanguageResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Localization\LanguageResources.es.resx" />
+    <EmbeddedResource Include="Views\NewTradePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -108,6 +111,9 @@
     <Compile Include="Services\PushNotificationService.cs" />
     <Compile Include="Interfaces\IPushNotificationService.cs" />
     <Compile Include="Endpoints\PushNotificationsEndpoint.cs" />
+    <Compile Include="Views\NewTradePage.xaml.cs">
+      <DependentUpon>NewTradePage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="XFGloss">

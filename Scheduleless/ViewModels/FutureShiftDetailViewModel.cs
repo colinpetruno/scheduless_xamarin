@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Scheduleless.Endpoints;
 using Scheduleless.Models;
+using Scheduleless.Services;
 using Xamarin.Forms;
 
 namespace Scheduleless.ViewModels
@@ -18,6 +19,11 @@ namespace Scheduleless.ViewModels
 			set { SetProperty(ref _futureShift, value); }
 		}
 
+        public string Month 
+        {
+            get { return "Test String"; }
+        }
+
 		public FutureShiftDetailViewModel()
 		{
 			_futureShiftsEndpoint = new FutureShiftsEndpoint();
@@ -28,6 +34,15 @@ namespace Scheduleless.ViewModels
 		{
 			get { return _fetchShiftDetailCommand ?? (_fetchShiftDetailCommand = new Command(async () => await ExecuteFetchShiftDetailCommandAsync())); }
 		}
+// FIXME HALP
+//        Command _TapTradeShiftButton;
+//        public Command TapTradeShiftButton
+//        {
+//            get { 
+//                var page = new FutureShiftDetailPage(futureShift);
+//                Navigation.PushAsync(page);
+//            }
+//        }
 
 		private async Task ExecuteFetchShiftDetailCommandAsync()
 		{

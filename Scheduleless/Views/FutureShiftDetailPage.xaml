@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <page:FutureShiftDetailPageXaml
 	xmlns="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -6,5 +6,15 @@
 	xmlns:page="clr-namespace:Scheduleless.Views;assembly=Scheduleless"
 	Title="Shift Detail">
 	<page:FutureShiftDetailPageXaml.Content>
+
+      <StackLayout Padding="5,10">
+         <Label TextColor="#77d065" FontSize = "20" Text="{Binding FutureShift.Month}" />
+         
+         
+         <Button Text="Trade Shift"
+                BorderWidth="0" />
+      </StackLayout>
+
+        
 	</page:FutureShiftDetailPageXaml.Content>
 </page:FutureShiftDetailPageXaml>

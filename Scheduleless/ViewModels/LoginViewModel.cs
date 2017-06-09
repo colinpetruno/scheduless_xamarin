@@ -11,7 +11,7 @@ namespace Scheduleless.ViewModels
 	public class LoginViewModel : BaseViewModel
 	{
 		// FIXME: change back
-		private string _email = "demo@example.com";
+		private string _email = "seedling.14@example.com";
 		//private string _email = string.Empty;
 
 		public string Email
