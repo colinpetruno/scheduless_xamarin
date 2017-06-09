@@ -11,8 +11,10 @@
          <Label TextColor="#77d065" FontSize = "20" Text="{Binding FutureShift.Month}" />
          
          
-         <Button Text="Trade Shift"
-                BorderWidth="0" />
+         <Button 
+            Text="Trade Shift"
+            Clicked="OnTradeShiftButtonClicked"
+            BorderWidth="0" />
       </StackLayout>
 
         

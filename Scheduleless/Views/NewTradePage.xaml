@@ -1,5 +1,10 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Scheduleless.Views.NewTradePage">
-	<ContentPage.Content>
-	</ContentPage.Content>
-</ContentPage>
+<?xml version="1.0" encoding="UTF-8"?>
+<page:NewTradePageXaml 
+  xmlns="http://xamarin.com/schemas/2014/forms" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:page="clr-namespace:Scheduleless.Views;assembly=Scheduleless" 
+  x:Class="Scheduleless.Views.NewTradePage"
+  Title="New Trade">
+	<page:NewTradePageXaml.Content>
+	</page:NewTradePageXaml.Content>
+</page:NewTradePageXaml>

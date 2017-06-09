@@ -134,6 +134,7 @@
     <Compile Include="Endpoints\MyTradesEndpoint.cs" />
     <Compile Include="ViewModels\MyTradesViewModel.cs" />
     <Compile Include="Controls\MyTradeCell.cs" />
+    <Compile Include="ViewModels\NewTradeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="XFGloss">

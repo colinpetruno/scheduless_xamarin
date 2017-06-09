@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Scheduleless.Renderers;
 using Scheduleless.Views;
+using Scheduleless.Models;
 using Xamarin.Forms;
 
 namespace Scheduleless.Services
@@ -61,6 +62,12 @@ namespace Scheduleless.Services
 				await Navigation.PushModalAsync(page.WithinNavigationPage());
 			}
 		}
+
+        public async Task DisplayNewTradePageAsync(FutureShift shift)
+        {
+            var page = new NewTradePage(shift);
+            await Navigation.PushAsync(page);
+        }
 
 		private Page GetInitialTabbedPages()
 		{
