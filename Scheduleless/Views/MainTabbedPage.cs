@@ -27,7 +27,7 @@ namespace Scheduleless.Views
 
 			// SL NOTE: an example to add others; can be removed
 			this.Children.Add(AddTabbedPage(
-				new ContentPage(),
+				new AvailableShiftsPage(),
 				TranslationService.Localize(LocalizationConstants.AvailableShifts),
 				FontIcons.CalendarPlus)
 			);

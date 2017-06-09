@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page:AvailableShiftsPageXaml
+  xmlns="http://xamarin.com/schemas/2014/forms" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+  x:Class="Scheduleless.Views.AvailableShiftsPage"
+  xmlns:controls="clr-namespace:Scheduleless.Controls;assembly=Scheduleless"
+  xmlns:page="clr-namespace:Scheduleless.Views;assembly=Scheduleless"
+  Title="Available Shifts">
+  
+	<page:AvailableShiftsPageXaml.Content>
+  
+        <ListView
+            x:Name="AvailableShiftsListView"
+            ItemsSource="{Binding AvailableShifts}"
+            IsPullToRefreshEnabled="true"
+            HasUnevenRows="true"
+            BackgroundColor="White">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <controls:AvailableShiftCell>
+                    </controls:AvailableShiftCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Footer>
+                <Label
+                    HeightRequest="0" />
+            </ListView.Footer>
+        </ListView>
+        
+	</page:AvailableShiftsPageXaml.Content>
+    
+</page:AvailableShiftsPageXaml>
