@@ -33,7 +33,7 @@ namespace Scheduleless.Views
 			);
 
 			this.Children.Add(AddTabbedPage(
-				new ContentPage(),
+				new MyTradesPage(),
 				TranslationService.Localize(LocalizationConstants.YourTrades),
 				FontIcons.MapSigns)
 			);

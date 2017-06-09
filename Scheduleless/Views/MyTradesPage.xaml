@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page:MyTradesPageXaml
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="Scheduleless.Views.MyTradesPage"
+	xmlns:controls="clr-namespace:Scheduleless.Controls;assembly=Scheduleless"
+	xmlns:page="clr-namespace:Scheduleless.Views;assembly=Scheduleless"
+	Title="My Trades">
+	<page:MyTradesPageXaml.Content>
+		<ListView
+			x:Name="MyTradesListView"
+			ItemsSource="{Binding MyTrades}"
+			IsPullToRefreshEnabled="true"
+            HasUnevenRows="true"
+			BackgroundColor="White">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<controls:MyTradeCell>
+					</controls:MyTradeCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+			<ListView.Footer>
+				<Label
+					HeightRequest="0" />
+			</ListView.Footer>
+		</ListView>
+	</page:MyTradesPageXaml.Content>
+</page:MyTradesPageXaml>

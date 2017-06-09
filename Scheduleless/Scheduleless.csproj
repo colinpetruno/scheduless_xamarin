@@ -48,6 +48,9 @@
     <EmbeddedResource Include="Views\AvailableShiftsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\MyTradesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -124,6 +127,13 @@
     <Compile Include="Models\AvailableShift.cs" />
     <Compile Include="Endpoints\AvailableShiftsEndpoint.cs" />
     <Compile Include="Controls\AvailableShiftCell.cs" />
+    <Compile Include="Views\MyTradesPage.xaml.cs">
+      <DependentUpon>MyTradesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Trade.cs" />
+    <Compile Include="Endpoints\MyTradesEndpoint.cs" />
+    <Compile Include="ViewModels\MyTradesViewModel.cs" />
+    <Compile Include="Controls\MyTradeCell.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="XFGloss">
