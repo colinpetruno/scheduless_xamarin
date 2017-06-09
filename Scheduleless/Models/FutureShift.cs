@@ -44,5 +44,23 @@ namespace Scheduleless.Models
 		// FIXME: create a converter to convert the format of 2017-04-29T18:16:26.147Z
 		//[JsonConverter(typeof(JsonIntToDateTimeConverter))]
 		public string UpdatedAt { get; set; }
+
+        public string Month {
+            get {
+                return "July";
+            }
+        }
+
+        public string Day {
+            get {
+                return "10";
+            }
+        }
+
+        public string Label {
+            get {
+                return $"{MinuteStart} - {MinuteEnd}";
+            }
+        }
 	}
 }

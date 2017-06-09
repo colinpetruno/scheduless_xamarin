@@ -7,6 +7,8 @@ namespace Scheduleless.Controls
 	public class FutureShiftCell : ViewCell
 	{
 		Label NameLabel;
+        Label MonthLabel;
+        Label DayLabel;
 		StackLayout MainLayout;
 
 		public FutureShiftCell()
@@ -22,27 +24,71 @@ namespace Scheduleless.Controls
 				BackgroundColor = Color.Transparent,
 				FontAttributes = FontAttributes.None,
 				LineBreakMode = LineBreakMode.TailTruncation,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
 				FontSize = 16,
-				TextColor = Color.Black,
-				HorizontalOptions = LayoutOptions.StartAndExpand,
-				VerticalOptions = LayoutOptions.Center
+				TextColor = Color.Black
 			};
+
+            MonthLabel = new Label
+            {
+                Text = "Jul",
+                TextColor = Color.Black,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                FontSize = 18
+            };
+
+			DayLabel = new Label
+			{
+				Text = "10",
+				TextColor = Color.Black,
+                HorizontalOptions = LayoutOptions.Center,
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				FontSize = 18
+			};
+
+            var frameLayout = new StackLayout
+			{
+                Children = { MonthLabel, DayLabel },
+                Orientation = StackOrientation.Vertical,
+                HorizontalOptions = LayoutOptions.Center,
+				VerticalOptions = LayoutOptions.FillAndExpand,
+				Padding = 0
+			};
+
+            var frame = new Frame
+            {
+                Content = frameLayout,
+                OutlineColor = Color.Silver,
+                HasShadow = false,
+                CornerRadius = 0,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                HeightRequest = 60,
+                WidthRequest = 60
+            };
+
+
 
 			MainLayout = new StackLayout
 			{
-				Children = { NameLabel },
+                Children = { frame, NameLabel },
 				Orientation = StackOrientation.Horizontal,
-				HorizontalOptions = LayoutOptions.FillAndExpand,
-				Padding = new Thickness(10, 0, 10, 0)
+                HeightRequest = 120,
+				HorizontalOptions = LayoutOptions.StartAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+				Padding = new Thickness(10, 10, 10, 10)
 			};
 
-			View = MainLayout;
+            View = MainLayout;
 		}
 
 		private void SetupBindings()
 		{
 			// FIXME: resolve this warning
-			NameLabel.SetBinding<FutureShift>(Label.TextProperty, futureShift => futureShift.Id);
+            NameLabel.SetBinding<FutureShift>(Label.TextProperty, futureShift => futureShift.Label);
+            MonthLabel.SetBinding<FutureShift>(Label.TextProperty, futureShift => futureShift.Month);
+            DayLabel.SetBinding<FutureShift>(Label.TextProperty, futureShift => futureShift.Day);
 		}
 	}
 }

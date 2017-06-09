@@ -31,7 +31,7 @@ namespace Scheduleless.Services
 		{
 			Debug.WriteLine($"GetInitialScreen");
 
-            if (false == true)
+            if (_credentialsService.IsAuthenticated)
 			{
 				Debug.WriteLine($"CredentialsSerivce Is Authenticated");
 				var tabbedPage = GetInitialTabbedPages();
