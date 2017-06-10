@@ -48,8 +48,8 @@ namespace Scheduleless.Views
                 if (offer != null)
                 {
                     // TODO: GO SOMEWHERE
-                    // var page = new FutureShiftDetailPage(futureShift);
-                    // Navigation.PushAsync(page);
+                    var page = new OfferDetailPage(offer);
+                    Navigation.PushAsync(page);
                 }
             };
         }

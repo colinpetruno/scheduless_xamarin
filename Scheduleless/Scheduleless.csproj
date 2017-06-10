@@ -54,6 +54,9 @@
     <EmbeddedResource Include="Views\OffersPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\OfferDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -146,6 +149,10 @@
     <Compile Include="Endpoints\OffersEndpoint.cs" />
     <Compile Include="Models\Offer.cs" />
     <Compile Include="Controls\OfferCell.cs" />
+    <Compile Include="Views\OfferDetailPage.xaml.cs">
+      <DependentUpon>OfferDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\OfferDetailViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="XFGloss">

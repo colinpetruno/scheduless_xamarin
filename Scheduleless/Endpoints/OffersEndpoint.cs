@@ -23,5 +23,34 @@ namespace Scheduleless.Endpoints
                 );
             }
         }
+
+        public async Task<ApiResponse<Offer>> AcceptAsync<Offer>(int offer_id)
+        {
+
+
+            using (var client = new AuthenticatedApiRequest())
+            {
+                return await client.PostAsync<Offer>(
+                    $"/mobile_api/offers/{offer_id}/accept",
+                    // parameters: parameters,
+                    responseMapperKey: "offer"
+                );
+            }
+        }
+
+        // FIXME: WHY WON'T IT LET ME PASS THE REFERENCE? <Offer>(Offer offer)... 
+        public async Task<ApiResponse<Offer>> DeclineAsync<Offer>(int offer_id)
+        {
+            //     var parameters = new Dictionary<string, object> { };
+
+            using (var client = new AuthenticatedApiRequest())
+            {
+                return await client.PostAsync<Offer>(
+                    $"/mobile_api/offers/{offer_id}/decline",
+                    //           parameters: parameters,
+                    responseMapperKey: "offer"
+                );
+            }
+        }
     }
 }

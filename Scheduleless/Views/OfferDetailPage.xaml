@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page:OfferDetailPageXaml
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="Scheduleless.Views.OfferDetailPage"
+	xmlns:page="clr-namespace:Scheduleless.Views;assembly=Scheduleless"
+	Title="Offer">
+	<page:OfferDetailPageXaml.Content>
+
+      <StackLayout 
+        Padding="5,10"
+        Orientation="Vertical">
+        
+         <Label TextColor="#77d065" FontSize = "20" Text="Accept or Decline" />
+         
+         <Button 
+            Text="Accept"
+            Command="{Binding AcceptOfferCommand}"
+            BorderWidth="0" />
+         <Button 
+            Text="Decline"
+            Command="{Binding DeclineOfferCommand}"
+            BorderWidth="0" />
+      </StackLayout>
+
+        
+	</page:OfferDetailPageXaml.Content>
+</page:OfferDetailPageXaml>
