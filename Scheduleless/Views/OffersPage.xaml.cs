@@ -7,10 +7,11 @@ using Xamarin.Forms;
 
 namespace Scheduleless.Views
 {
-    public partial class MyTradesPage : MyTradesPageXaml
+    public partial class OffersPage : OffersPageXaml
     {
-        public MyTradesPage()
+        public OffersPage(Trade trade)
         {
+            ViewModel.Trade = trade;
             Initialize();
         }
 
@@ -30,29 +31,29 @@ namespace Scheduleless.Views
                 return;
             }
 
-            ViewModel.FetchMyTradesCommand.Execute(null);
+            ViewModel.FetchOffersCommand.Execute(null);
         }
 
         private void SetupEventHandlers()
         {
-            MyTradesListView.ItemSelected += (s, e) =>
+            OffersListView.ItemSelected += (s, e) =>
             {
-
-                MyTradesListView.SelectedItem = null;
+                OffersListView.SelectedItem = null;
                 if (e.SelectedItem == null)
                 {
                     return; // ItemSelected is called on deselection, which results in SelectedItem being set to null
                 }
 
-                var trade = e.SelectedItem as Trade;
-                if (trade != null)
+                var offer = e.SelectedItem as Offer;
+                if (offer != null)
                 {
-                    var page = new OffersPage(trade);
-                    Navigation.PushAsync(page);
+                    // TODO: GO SOMEWHERE
+                    // var page = new FutureShiftDetailPage(futureShift);
+                    // Navigation.PushAsync(page);
                 }
             };
         }
     }
 
-    public partial class MyTradesPageXaml : BaseContentPage<MyTradesViewModel> { }
+    public partial class OffersPageXaml : BaseContentPage<OffersViewModel> { }
 }

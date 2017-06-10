@@ -23,7 +23,6 @@ namespace Scheduleless.Endpoints
                         {"accept_offers", true}
                     }
                 }
-
             };
 
             using (var client = new AuthenticatedApiRequest())
