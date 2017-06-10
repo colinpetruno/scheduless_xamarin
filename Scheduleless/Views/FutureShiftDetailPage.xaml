@@ -15,6 +15,11 @@
             Text="Trade Shift"
             Clicked="OnTradeShiftButtonClicked"
             BorderWidth="0" />
+            
+         <Button 
+            Text="Cancel Shift"
+            Clicked="OnCancelShiftButtonClicked"
+            BorderWidth="0" />
       </StackLayout>
 
         

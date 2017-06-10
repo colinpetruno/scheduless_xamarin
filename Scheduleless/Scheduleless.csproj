@@ -57,6 +57,9 @@
     <EmbeddedResource Include="Views\OfferDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\CancelShiftPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -153,6 +156,10 @@
       <DependentUpon>OfferDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\OfferDetailViewModel.cs" />
+    <Compile Include="Views\CancelShiftPage.xaml.cs">
+      <DependentUpon>CancelShiftPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\CancelShiftViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="XFGloss">
