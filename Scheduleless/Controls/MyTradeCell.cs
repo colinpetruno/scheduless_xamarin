@@ -4,30 +4,30 @@ using Xamarin.Forms;
 
 namespace Scheduleless.Controls
 {
-	public class MyTradeCell : ViewCell
-	{
-		Label NameLabel;
+    public class MyTradeCell : ViewCell
+    {
+        Label NameLabel;
         Label MonthLabel;
         Label DayLabel;
-		StackLayout MainLayout;
+        StackLayout MainLayout;
 
-		public MyTradeCell()
-		{
-			SetupUserInterface();
-			SetupBindings();
-		}
+        public MyTradeCell()
+        {
+            SetupUserInterface();
+            SetupBindings();
+        }
 
-		private void SetupUserInterface()
-		{
-			NameLabel = new Label
-			{
-				BackgroundColor = Color.Transparent,
-				FontAttributes = FontAttributes.None,
-				LineBreakMode = LineBreakMode.TailTruncation,
+        private void SetupUserInterface()
+        {
+            NameLabel = new Label
+            {
+                BackgroundColor = Color.Transparent,
+                FontAttributes = FontAttributes.None,
+                LineBreakMode = LineBreakMode.TailTruncation,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-				FontSize = 16,
-				TextColor = Color.Black
-			};
+                FontSize = 16,
+                TextColor = Color.Black
+            };
 
             MonthLabel = new Label
             {
@@ -38,23 +38,23 @@ namespace Scheduleless.Controls
                 FontSize = 18
             };
 
-			DayLabel = new Label
-			{
-				Text = "10",
-				TextColor = Color.Black,
+            DayLabel = new Label
+            {
+                Text = "10",
+                TextColor = Color.Black,
                 HorizontalOptions = LayoutOptions.Center,
-				VerticalOptions = LayoutOptions.CenterAndExpand,
-				FontSize = 18
-			};
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                FontSize = 18
+            };
 
             var frameLayout = new StackLayout
-			{
+            {
                 Children = { MonthLabel, DayLabel },
                 Orientation = StackOrientation.Vertical,
                 HorizontalOptions = LayoutOptions.Center,
-				VerticalOptions = LayoutOptions.FillAndExpand,
-				Padding = 0
-			};
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                Padding = 0
+            };
 
             var frame = new Frame
             {
@@ -70,25 +70,25 @@ namespace Scheduleless.Controls
 
 
 
-			MainLayout = new StackLayout
-			{
+            MainLayout = new StackLayout
+            {
                 Children = { frame, NameLabel },
-				Orientation = StackOrientation.Horizontal,
+                Orientation = StackOrientation.Horizontal,
                 HeightRequest = 120,
-				HorizontalOptions = LayoutOptions.StartAndExpand,
+                HorizontalOptions = LayoutOptions.StartAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
-				Padding = new Thickness(10, 10, 10, 10)
-			};
+                Padding = new Thickness(10, 10, 10, 10)
+            };
 
             View = MainLayout;
-		}
+        }
 
-		private void SetupBindings()
-		{
-			// FIXME: resolve this warning
-            NameLabel.SetBinding<Trade>(Label.TextProperty, trade => trade.Label);
-            MonthLabel.SetBinding<Trade>(Label.TextProperty, trade => trade.Month);
-            DayLabel.SetBinding<Trade>(Label.TextProperty, trade => trade.Day);
-		}
-	}
+        private void SetupBindings()
+        {
+            // FIXME: resolve this warning
+            NameLabel.SetBinding<Trade>(Label.TextProperty, trade => trade.ShiftLabel);
+            MonthLabel.SetBinding<Trade>(Label.TextProperty, trade => trade.ShiftShortMonth);
+            DayLabel.SetBinding<Trade>(Label.TextProperty, trade => trade.ShiftDate);
+        }
+    }
 }

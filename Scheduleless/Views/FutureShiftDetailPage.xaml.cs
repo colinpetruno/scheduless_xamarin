@@ -21,7 +21,7 @@ namespace Scheduleless.Views
         {
             get
             {
-                return ViewModel.FutureShift.Month;
+                return ViewModel.FutureShift.ShortMonth;
             }
         }
 

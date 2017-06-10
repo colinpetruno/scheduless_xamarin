@@ -14,7 +14,7 @@
             ItemsSource="{Binding AvailableShifts}"
             IsPullToRefreshEnabled="true"
             HasUnevenRows="true"
-            BackgroundColor="White">
+            BackgroundColor="#ebf0f8">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <controls:AvailableShiftCell>

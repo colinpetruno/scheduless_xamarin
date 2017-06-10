@@ -4,68 +4,49 @@ using Scheduleless.Models.Converters;
 
 namespace Scheduleless.Models
 {
-	// {
-	//  "id": 59,
-	//  "user_location_id": 1,
-	//  "company_id": 2,
-	//  "minute_start": 780,
-	//  "minute_end": 1080,
-	//  "date": 20170430,
-	//  "created_at": "2017-04-29T18:16:26.142Z",
-	//  "updated_at": "2017-04-29T18:16:26.142Z"
-	//}
+    // {
+    //  "id": 59,
+    //  "user_location_id": 1,
+    //  "company_id": 2,
+    //  "minute_start": 780,
+    //  "minute_end": 1080,
+    //  "date": 20170430,
+    //  "created_at": "2017-04-29T18:16:26.142Z",
+    //  "updated_at": "2017-04-29T18:16:26.142Z"
+    //}
 
-	public class FutureShift
-	{
-		[JsonProperty("id")]
-		public int Id { get; set; }
+    public class FutureShift
+    {
+        [JsonProperty("id")]
+        public int Id { get; set; }
 
-		[JsonProperty("user_location_id")]
-		public int UserLocationId { get; set; }
+        [JsonProperty("city_state_zip")]
+        public string CityStateZip { get; set; }
 
-		[JsonProperty("company_id")]
-		public int CompanyId { get; set; }
+        [JsonProperty("day")]
+        public string Day { get; set; }
 
-		[JsonProperty("minute_start")]
-		public int MinuteStart { get; set; }
+        [JsonProperty("short_month")]
+        public string ShortMonth { get; set; }
 
-		[JsonProperty("minute_end")]
-		public int MinuteEnd { get; set; }
+        [JsonProperty("label")]
+        public string Label { get; set; }
 
-		[JsonProperty("date")]
-		[JsonConverter(typeof(JsonIntToDateTimeConverter))]
-		public DateTime Date { get; set; }
+        [JsonProperty("location_name")]
+        public string LocationName { get; set; }
 
-		[JsonProperty("created_at")]
-		[JsonConverter(typeof(JsonIntToDateTimeConverter))]
-		public DateTime CreatedAt { get; set; }
+        [JsonProperty("location_line_1")]
+        public string LocationLine1 { get; set; }
 
-		[JsonProperty("updated_at")]
-		[JsonConverter(typeof(JsonIntToDateTimeConverter))]
-		public DateTime UpdatedAt { get; set; }
+        [JsonProperty("location_line_2")]
+        public string LocationLine2 { get; set; }
 
-		public string Month
-		{
-			get
-			{
-				return "July";
-			}
-		}
+        [JsonProperty("created_at")]
+        [JsonConverter(typeof(JsonIntToDateTimeConverter))]
+        public DateTime CreatedAt { get; set; }
 
-		public string Day
-		{
-			get
-			{
-				return "10";
-			}
-		}
-
-		public string Label
-		{
-			get
-			{
-				return $"{MinuteStart} - {MinuteEnd}";
-			}
-		}
-	}
+        [JsonProperty("updated_at")]
+        [JsonConverter(typeof(JsonIntToDateTimeConverter))]
+        public DateTime UpdatedAt { get; set; }
+    }
 }
