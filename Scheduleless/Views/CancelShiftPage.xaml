@@ -5,27 +5,44 @@
   xmlns:page="clr-namespace:Scheduleless.Views;assembly=Scheduleless" 
   xmlns:controls="clr-namespace:Scheduleless.Controls;assembly=Scheduleless"
   x:Class="Scheduleless.Views.CancelShiftPage"
-  Title="New Trade">
+  BackgroundColor="#ebf0f8"
+  Title="Cancel Shift">
 	<page:CancelShiftPageXaml.Content>
-      <StackLayout 
-        Padding="5,10"
-        Orientation="Vertical">
+        <StackLayout 
+          Padding="5,10"
+          Orientation="Vertical">
         
-        <Label TextColor="#77d065" FontSize = "20" Text="Offer this shift for trade!" />
-         
-        <controls:SimpleEntry
-          x:Name="NoteEntry"
-          Keyboard="Text"
-          Placeholder="Note"
-          TextColor="Black"
-          Text="{Binding Note}"
-          HeightRequest="45"
-          HorizontalOptions="FillAndExpand" />
-                                    
-         <Button 
-            Text="Cancel Shift"
-            Command="{Binding CancelShiftCommand}"
-            BorderWidth="0" />
-      </StackLayout>
+            <StackLayout VerticalOptions="Start">
+                <Label 
+                  TextColor="#41454b" 
+                  FontSize = "20" 
+                  HorizontalOptions="Center"
+                  Text="Let us know why are you canceling this shift." />
+             </StackLayout>
+            
+             <StackLayout VerticalOptions="Start">
+                <Editor Text="{Binding Note}" 
+                   HeightRequest="150" 
+                   VerticalOptions="Start" /> 
+             </StackLayout>
+             
+             <StackLayout VerticalOptions="StartAndExpand">
+                <Label 
+                  TextColor="#d9534f" 
+                  FontSize = "14" 
+                  HorizontalOptions="Center"
+                  Text="Try trading this shift instead. Cancelling a shift is usually a bad thing, particulary last minute without good reason." />
+             </StackLayout>
+              
+             <StackLayout VerticalOptions="Start">                         
+                <Button 
+                  Text="Cancel Shift"
+                  Command="{Binding CancelShiftCommand}"
+                  TextColor="#ffffff"
+                  BackgroundColor="#6695fb"
+                  BorderColor="#6695fb"
+                  BorderWidth="1" />
+            </StackLayout>
+        </StackLayout>
 	</page:CancelShiftPageXaml.Content>
 </page:CancelShiftPageXaml>
