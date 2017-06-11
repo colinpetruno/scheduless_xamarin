@@ -24,6 +24,21 @@ namespace Scheduleless.Endpoints
             }
         }
 
+        public async Task<ApiResponse<Offer>> CreateAsync<Offer>(int offer_id)
+        {
+
+
+            using (var client = new AuthenticatedApiRequest())
+            {
+                return await client.PostAsync<Offer>(
+                    $"/mobile_api/offers/{offer_id}",
+                    // parameters: parameters,
+                    responseMapperKey: "offer"
+                );
+            }
+        }
+
+
         public async Task<ApiResponse<Offer>> AcceptAsync<Offer>(int offer_id)
         {
 
