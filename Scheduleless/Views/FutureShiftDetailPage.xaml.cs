@@ -38,8 +38,6 @@ namespace Scheduleless.Views
             {
                 return;
             }
-
-            ViewModel.FetchShiftDetailCommand.Execute(null);
         }
 
         public async void OnTradeShiftButtonClicked(object sender, EventArgs e)

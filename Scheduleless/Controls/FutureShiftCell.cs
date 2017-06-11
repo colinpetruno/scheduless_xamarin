@@ -64,19 +64,16 @@ namespace Scheduleless.Controls
                 Content = frameLayout,
                 OutlineColor = Color.Silver,
                 HasShadow = false,
-                BackgroundColor = Color.FromHex("5f97ff"), // Color.FromHex("a0acb9"),
+                BackgroundColor = Color.FromHex("5f97ff"),
                 CornerRadius = 0,
                 Padding = -5,
                 HeightRequest = 60,
                 WidthRequest = 102
             };
 
-
-
             MainLayout = new StackLayout
             {
-                Children = { frame, NameLabel
-    },
+                Children = { frame, NameLabel },
                 Orientation = StackOrientation.Horizontal,
                 HeightRequest = 120,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -84,7 +81,6 @@ namespace Scheduleless.Controls
                 Padding = new Thickness(0, 0, 0, 0),
                 Margin = new Thickness(10, 10, 10, 10),
                 BackgroundColor = Color.White
-
             };
 
             var outerFrame = new Frame
