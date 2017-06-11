@@ -33,35 +33,45 @@ namespace Scheduleless.Services
         {
             Debug.WriteLine($"GetInitialScreen");
 
+
             TabbedPage = GetInitialTabbedPages() as TabbedPage;
             Navigation = TabbedPage.Navigation;
 
             if (_credentialsService.IsAuthenticated)
             {
                 Debug.WriteLine($"CredentialsSerivce Is Authenticated");
+                var return_page = TabbedPage;
+                Navigation = TabbedPage.Navigation;
+                return return_page;
             }
             else
             {
                 Debug.WriteLine($"CredentialsSerivce Is Not Authenticated");
                 var page = new LoginPage();
-                Navigation.PushModalAsync(page);
+                var navPage = new ThemedNavigationPage(page);
+                Navigation = navPage.Navigation;
+                return navPage;
             }
-
-            return TabbedPage;
         }
 
-        public async void ShowLoginScreen()
-        {
-            Debug.WriteLine("Displaying Login Modal");
-            var page = new LoginPage();
-            await Navigation.PushModalAsync(page);
-        }
 
-        public async void CloseLoginScreen()
+        public async Task DisplayShiftsPageAsync(bool isFromLoginScreen)
         {
-            await Navigation.PopModalAsync();
             TabbedPage = GetInitialTabbedPages() as TabbedPage;
-            Application.Current.MainPage = TabbedPage;
+            await Navigation.PushModalAsync(TabbedPage);
+
+        }
+
+        public async Task GoToRoot()
+        {
+            Debug.WriteLine($"Going to root of tab");
+            await Navigation.PopToRootAsync();
+        }
+
+        public void DisplayTabFor(int tabPageIndex)
+        {
+
+            TabbedPage.CurrentPage = TabbedPage.Children[tabPageIndex];
         }
 
         private Page GetInitialTabbedPages()

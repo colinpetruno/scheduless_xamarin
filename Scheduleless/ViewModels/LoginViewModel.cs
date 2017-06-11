@@ -50,7 +50,7 @@ namespace Scheduleless.ViewModels
 
             if (response.IsSuccess)
             {
-                NavigationService.Instance.CloseLoginScreen();
+                await NavigationService.Instance.DisplayShiftsPageAsync(isFromLoginScreen: true);
             }
             else
             {

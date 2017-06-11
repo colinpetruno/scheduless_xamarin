@@ -50,7 +50,8 @@ namespace Scheduleless.ViewModels
 
             if (response.IsSuccess)
             {
-                // TODO: Navigate properly to my trades tab
+                await NavigationService.Instance.GoToRoot();
+                //NavigationService.Instance.DisplayTabFor(2);
                 Debug.WriteLine($"Create Trade Succeeded: {response}");
             }
             else
