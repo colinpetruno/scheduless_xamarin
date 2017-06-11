@@ -9,162 +9,148 @@ using Xamarin.Forms;
 
 namespace Scheduleless.Views
 {
-	/// <summary>
-	/// Each ContentPage is required to align with a corresponding ViewModel
-	/// ViewModels will be the BindingContext by default
-	/// </summary>
-	public class BaseContentPage<T> : MainBaseContentPage where T : BaseViewModel, new()
-	{
-		public BaseContentPage()
-		{
-			try
-			{
-				BindingContext = ViewModel;
-			}
-			catch (Exception)
-			{
-				// FIXME: address this
-				//NavigationService.Instance.Logout();
-				//FirebaseService.Instance.Revoke();
-				//"Sorry, there was an issue fetching your account. Please sign back in.".ToToast(ToastNotificationType.Error);
-			}
-		}
+    /// <summary>
+    /// Each ContentPage is required to align with a corresponding ViewModel
+    /// ViewModels will be the BindingContext by default
+    /// </summary>
+    public class BaseContentPage<T> : MainBaseContentPage where T : BaseViewModel, new()
+    {
+        public BaseContentPage()
+        {
+            try
+            {
+                BindingContext = ViewModel;
+            }
+            catch (Exception)
+            {
+                // FIXME: address this
+                //NavigationService.Instance.Logout();
+                //FirebaseService.Instance.Revoke();
+                //"Sorry, there was an issue fetching your account. Please sign back in.".ToToast(ToastNotificationType.Error);
+            }
+        }
 
-		~BaseContentPage()
-		{
-			_viewModel = null;
-		}
+        ~BaseContentPage()
+        {
+            _viewModel = null;
+        }
 
-		protected T _viewModel;
-		public T ViewModel
-		{
-			get
-			{
-				return _viewModel ?? (_viewModel = new T());
-			}
-		}
-	}
+        protected T _viewModel;
+        public T ViewModel
+        {
+            get
+            {
+                return _viewModel ?? (_viewModel = new T());
+            }
+        }
+    }
 
-	public class MainBaseContentPage : ContentPage
-	{
-		public MainBaseContentPage()
-		{
-			LeftToolbarItems = new ObservableCollection<ToolbarItem>();
+    public class MainBaseContentPage : ContentPage
+    {
+        public MainBaseContentPage()
+        {
+            BarBackgroundColor = Colors.NavigationBarColor;
+            BarTextColor = Colors.NavigationBarTextColor;
+            BackgroundColor = Color.White;
+        }
 
-			BarBackgroundColor = Colors.NavigationBarColor;
-			BarTextColor = Colors.NavigationBarTextColor;
-			BackgroundColor = Color.White;
-		}
+        public void HandleAddToolbarItem(string imageName, string buttonText, Command action)
+        {
+            if (Device.OS == TargetPlatform.iOS)
+            {
+                DependencyService.Get<IBaseContentPage>().UpdateToolbarItems();
+            }
+            else
+            {
+                var item = new ToolbarItem
+                {
+                    Text = buttonText,
+                    Icon = imageName,
+                    Command = action
+                };
+                ToolbarItems.Add(item);
+            }
+        }
 
-		public ObservableCollection<ToolbarItem> LeftToolbarItems { get; set; }
+        public Color BarTextColor
+        {
+            get;
+            set;
+        }
 
-		public void HandleAddToolbarItem(string imageName, string buttonText, Command action)
-		{
-			if (Device.OS == TargetPlatform.iOS)
-			{
-				// Add icon to the left
-				LeftToolbarItems.Add(new ToolbarItem
-				{
-					Icon = imageName,
-					Command = action,
-					Priority = 1
-				});
+        public Color BarBackgroundColor
+        {
+            get;
+            set;
+        }
 
-				DependencyService.Get<IBaseContentPage>().UpdateToolbarItems();
-			}
-			else
-			{
-				var item = new ToolbarItem
-				{
-					Text = buttonText,
-					Icon = imageName,
-					Command = action
-				};
-				ToolbarItems.Add(item);
-			}
-		}
+        public bool HasInitialized
+        {
+            get;
+            private set;
+        }
 
-		public Color BarTextColor
-		{
-			get;
-			set;
-		}
+        protected virtual void OnLoaded()
+        {
+            // TODO: add tracking?
+            //TrackPage(new Dictionary<string, string>());
+        }
 
-		public Color BarBackgroundColor
-		{
-			get;
-			set;
-		}
+        protected virtual void Initialize()
+        {
+            SetBinding(Page.TitleProperty, new Binding(BaseViewModel.TitlePropertyName));
+            SetBinding(Page.IconProperty, new Binding(BaseViewModel.IconPropertyName));
+            SetBinding(Page.IsBusyProperty, new Binding(BaseViewModel.IsBusyPropertyName));
+        }
 
-		public bool HasInitialized
-		{
-			get;
-			private set;
-		}
+        protected override void OnAppearing()
+        {
+            var nav = Parent as NavigationPage;
+            if (nav != null)
+            {
+                nav.BarBackgroundColor = Colors.NavigationBarColor;
+                nav.BarTextColor = Colors.NavigationBarTextColor;
+            }
 
-		protected virtual void OnLoaded()
-		{
-			// TODO: add tracking?
-			//TrackPage(new Dictionary<string, string>());
-		}
+            if (!HasInitialized)
+            {
+                HasInitialized = true;
+                OnLoaded();
+            }
 
-		protected virtual void Initialize()
-		{
-			LeftToolbarItems = new ObservableCollection<ToolbarItem>();
+            base.OnAppearing();
+        }
 
-			SetBinding(Page.TitleProperty, new Binding(BaseViewModel.TitlePropertyName));
-			SetBinding(Page.IconProperty, new Binding(BaseViewModel.IconPropertyName));
-			SetBinding(Page.IsBusyProperty, new Binding(BaseViewModel.IsBusyPropertyName));
-		}
+        protected override void OnDisappearing()
+        {
+            //MessagingCenter.Unsubscribe<AuthenticationViewModel>(this, Messages.UserAuthenticated);
+            //_hasSubscribed = false;
 
-		protected override void OnAppearing()
-		{
-			var nav = Parent as NavigationPage;
-			if (nav != null)
-			{
-				nav.BarBackgroundColor = Colors.NavigationBarColor;
-				nav.BarTextColor = Colors.NavigationBarTextColor;
-			}
+            base.OnDisappearing();
+            //EvaluateNavigationStack();
+        }
 
-			if (!HasInitialized)
-			{
-				HasInitialized = true;
-				OnLoaded();
-			}
+        /// <summary>
+        /// Wraps the ContentPage within a NavigationPage
+        /// </summary>
+        /// <returns>The navigation page.</returns>
+        public NavigationPage WithinNavigationPage()
+        {
+            var nav = new ThemedNavigationPage(this);
+            ApplyTheme(nav);
+            return nav;
+        }
 
-			base.OnAppearing();
-		}
+        protected void SetTheme()
+        {
+            BarBackgroundColor = Colors.NavigationBarColor;
+            BarTextColor = Colors.NavigationBarTextColor;
+        }
 
-		protected override void OnDisappearing()
-		{
-			//MessagingCenter.Unsubscribe<AuthenticationViewModel>(this, Messages.UserAuthenticated);
-			//_hasSubscribed = false;
-
-			base.OnDisappearing();
-			//EvaluateNavigationStack();
-		}
-
-		/// <summary>
-		/// Wraps the ContentPage within a NavigationPage
-		/// </summary>
-		/// <returns>The navigation page.</returns>
-		public NavigationPage WithinNavigationPage()
-		{
-			var nav = new ThemedNavigationPage(this);
-			ApplyTheme(nav);
-			return nav;
-		}
-
-		protected void SetTheme()
-		{
-			BarBackgroundColor = Colors.NavigationBarColor;
-			BarTextColor = Colors.NavigationBarTextColor;
-		}
-
-		public void ApplyTheme(NavigationPage nav)
-		{
-			nav.BarBackgroundColor = BarBackgroundColor;
-			nav.BarTextColor = BarTextColor;
-		}
-	}
+        public void ApplyTheme(NavigationPage nav)
+        {
+            nav.BarBackgroundColor = BarBackgroundColor;
+            nav.BarTextColor = BarTextColor;
+        }
+    }
 }

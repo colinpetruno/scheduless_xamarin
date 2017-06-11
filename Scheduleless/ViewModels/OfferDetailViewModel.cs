@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Scheduleless.Endpoints;
 using Scheduleless.Models;
 using Scheduleless.Services;
+using Scheduleless.Views;
 using Xamarin.Forms;
 
 namespace Scheduleless.ViewModels
@@ -17,6 +18,41 @@ namespace Scheduleless.ViewModels
         public OfferDetailViewModel()
         {
             _offersEndpoint = new OffersEndpoint();
+        }
+
+        public string Day
+        {
+            get { return Offer.ShiftDate; }
+        }
+
+        public string Month
+        {
+            get { return Offer.ShiftShortMonth; }
+        }
+
+        public string Label
+        {
+            get { return Offer.ShiftLabel; }
+        }
+
+        public string LocationName
+        {
+            get { return Offer.LocationName; }
+        }
+
+        public string LocationLine1
+        {
+            get { return Offer.LocationLine1; }
+        }
+
+        public string LocationLine2
+        {
+            get { return Offer.LocationLine2; }
+        }
+
+        public string LocationCityStateZip
+        {
+            get { return Offer.LocationCityStateZip; }
         }
 
         Command _acceptOfferCommand;
@@ -74,8 +110,12 @@ namespace Scheduleless.ViewModels
 
             if (response.IsSuccess)
             {
-                // TODO: Navigate properly to my trades tab
                 Debug.WriteLine($"Decline Offer Succeeded: {response}");
+                Debug.WriteLine($"Attempt to Transition");
+                // TODO: Navigate properly to my trades tab
+
+                Application.Current.MainPage = new MyTradesPage();
+
             }
             else
             {

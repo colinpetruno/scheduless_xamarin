@@ -6,22 +6,83 @@
 	xmlns:page="clr-namespace:Scheduleless.Views;assembly=Scheduleless"
 	Title="Offer">
 	<page:OfferDetailPageXaml.Content>
-
-      <StackLayout 
-        Padding="5,10"
-        Orientation="Vertical">
-        
-         <Label TextColor="#77d065" FontSize = "20" Text="Accept or Decline" />
+        <StackLayout Padding="5,10">
+            <StackLayout VerticalOptions="Start">
+               <Frame 
+                 BackgroundColor="#5f97ff"
+                 CornerRadius="0"
+                 HasShadow="false"
+                 HeightRequest="150"
+                 HorizontalOptions="Center"
+                 Padding="0"
+                 WidthRequest="150">
+                    <StackLayout 
+                      BackgroundColor="White" 
+                      WidthRequest="130" 
+                      HeightRequest="130" 
+                      VerticalOptions="Center" 
+                      HorizontalOptions="Center">
+                        <Label TextColor="#5f97ff" FontSize = "50" Text="{Binding Day}" HorizontalOptions="Center"  Margin="0, 20, 0, 0" />
+                        <Label TextColor="#5f97ff" FontSize = "25" Text="{Binding Month}" HorizontalOptions="Center" />
+                    </StackLayout>
+               </Frame>
+             </StackLayout>
          
-         <Button 
-            Text="Accept"
-            Command="{Binding AcceptOfferCommand}"
-            BorderWidth="0" />
-         <Button 
-            Text="Decline"
-            Command="{Binding DeclineOfferCommand}"
-            BorderWidth="0" />
-      </StackLayout>
+             <StackLayout VerticalOptions="Start">
+               <Label 
+                 TextColor="#41454b" 
+                 FontSize = "25" 
+                 Text="{Binding Label}"  
+                 HorizontalOptions="Center"/>
+             </StackLayout>
+             
+             <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+               <Label 
+                 TextColor="#41454b" 
+                 FontSize = "18"
+                 Text="{Binding LocationName}"  
+                 HorizontalOptions="Center"/>
+                 <!-- FIXME: Hide if Empty -->
+               <Label 
+                 TextColor="#41454b" 
+                 FontSize = "18"
+                 Text="{Binding LocationLine1}"  
+                 HorizontalOptions="Center"/>
+                 
+               <Label 
+                 TextColor="#41454b" 
+                 FontSize = "18"
+                 Text="{Binding LocationLine2}"
+                 HorizontalOptions="Center"/>
+                 
+               <Label 
+                 TextColor="#41454b" 
+                 FontSize = "18"
+                 Text="{Binding LocationCityStateZip}"  
+                 HorizontalOptions="Center"/>
+             </StackLayout>
+         
+             <StackLayout VerticalOptions="End">
+                 <Button 
+                    Text="Accept"
+                    TextColor="#ffffff"
+                    BackgroundColor="#6695fb"
+                    BorderColor="#6695fb"
+                    BorderWidth="1"
+                    Command="{Binding AcceptOfferCommand}" />
+                    
+                 <Button 
+                    Text="Decline"
+                    Command="{Binding DeclineOfferCommand}"
+                    TextColor="#747c85"
+                    BorderColor="#a0acb9"
+                    BackgroundColor="#ffffff"
+                    BorderWidth="1" />
+             </StackLayout>
+        </StackLayout>
+    
+  
+
 
         
 	</page:OfferDetailPageXaml.Content>
