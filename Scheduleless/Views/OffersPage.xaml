@@ -12,7 +12,7 @@
 			ItemsSource="{Binding Offers}"
 			IsPullToRefreshEnabled="true"
             HasUnevenRows="true"
-			BackgroundColor="White">
+			BackgroundColor="#ebf0f8">
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<controls:OfferCell>
@@ -20,7 +20,14 @@
 				</DataTemplate>
 			</ListView.ItemTemplate>
 			<ListView.Footer>
-				<Label HeightRequest="0" />
+				<StackLayout Padding="0, 20, 0, 0">
+                    <Label 
+                      Text="No one has offered any shifts for yours yet. We will let you know when they do!" 
+                      HorizontalOptions="Center"
+                      TextColor="#41454b"
+                      HorizontalTextAlignment="Center"
+                      IsVisible="{Binding Offers, Converter={StaticResource dataSourceConverter}}" />
+                </StackLayout>
 			</ListView.Footer>
 		</ListView>
 	</page:OffersPageXaml.Content>

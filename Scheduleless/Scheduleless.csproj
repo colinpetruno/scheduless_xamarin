@@ -160,6 +160,7 @@
       <DependentUpon>CancelShiftPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\CancelShiftViewModel.cs" />
+    <Compile Include="Models\Converters\DataSourceConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="XFGloss">

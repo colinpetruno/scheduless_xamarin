@@ -3,16 +3,21 @@
 	xmlns="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	x:Class="Scheduleless.Views.MyTradesPage"
+    xmlns:local="clr-namespace:Scheduleless;assembly=Scheduleless"
 	xmlns:controls="clr-namespace:Scheduleless.Controls;assembly=Scheduleless"
 	xmlns:page="clr-namespace:Scheduleless.Views;assembly=Scheduleless"
 	Title="My Trades">
+    
 	<page:MyTradesPageXaml.Content>
+        
+          
 		<ListView
 			x:Name="MyTradesListView"
 			ItemsSource="{Binding MyTrades}"
 			IsPullToRefreshEnabled="true"
             HasUnevenRows="true"
 			BackgroundColor="#ebf0f8">
+          
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<controls:MyTradeCell>
@@ -20,8 +25,14 @@
 				</DataTemplate>
 			</ListView.ItemTemplate>
 			<ListView.Footer>
-				<Label
-					HeightRequest="0" />
+                <StackLayout Padding="0, 20, 0, 0">
+    				<Label 
+                      Text="You haven't offered any of your shifts for trade yet!" 
+                      HorizontalOptions="Center"
+                      TextColor="#41454b"
+                      HorizontalTextAlignment="Center"
+                      IsVisible="{Binding MyTrades, Converter={StaticResource dataSourceConverter}}" />
+                </StackLayout>
 			</ListView.Footer>
 		</ListView>
 	</page:MyTradesPageXaml.Content>

@@ -38,6 +38,7 @@ namespace Scheduleless.Controls
                 LineBreakMode = LineBreakMode.TailTruncation,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 FontSize = 15,
+                WidthRequest = 200,
                 Text = "Created by me.",
                 TextColor = Color.FromHex("848d98")
             };
@@ -50,7 +51,8 @@ namespace Scheduleless.Controls
                 LineBreakMode = LineBreakMode.TailTruncation,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 FontSize = 15,
-                HorizontalOptions = LayoutOptions.Fill,
+                WidthRequest = 200,
+                HorizontalOptions = LayoutOptions.Start,
                 TextColor = Color.FromHex("848d98")
             };
 

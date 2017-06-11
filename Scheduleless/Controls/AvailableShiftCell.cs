@@ -37,6 +37,7 @@ namespace Scheduleless.Controls
                 FontAttributes = FontAttributes.None,
                 LineBreakMode = LineBreakMode.TailTruncation,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
+                WidthRequest = 200,
                 FontSize = 15,
                 TextColor = Color.FromHex("848d98")
             };
@@ -49,6 +50,7 @@ namespace Scheduleless.Controls
                 LineBreakMode = LineBreakMode.TailTruncation,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 FontSize = 15,
+                WidthRequest = 200,
                 TextColor = Color.FromHex("848d98")
             };
 

@@ -1,11 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Application
 	xmlns="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	x:Class="Scheduleless.App"
+    xmlns:local="clr-namespace:Scheduleless;assembly=Scheduleless"
 	xmlns:controls="clr-namespace:Scheduleless.Controls;assembly=Scheduleless">
 	<Application.Resources>
 		<ResourceDictionary>
+            <local:DataSourceConverter x:Key="dataSourceConverter"></local:DataSourceConverter>
+            
 			<Color
 				x:Key="orangeLight">#f76d45</Color>
 			<Color
