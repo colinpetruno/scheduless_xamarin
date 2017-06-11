@@ -9,7 +9,6 @@
 	<page:FutureShiftDetailPageXaml.Content>
 
       <StackLayout Padding="5,10">
-         <Label TextColor="#77d065" FontSize = "20" Text="{Binding FutureShift.Month}" />
          <!-- 
          <Grid VerticalOptions="StartAndExpand">
            <Grid.RowDefinitions>

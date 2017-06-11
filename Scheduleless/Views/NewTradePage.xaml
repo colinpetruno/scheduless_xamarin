@@ -5,27 +5,35 @@
   xmlns:page="clr-namespace:Scheduleless.Views;assembly=Scheduleless" 
   xmlns:controls="clr-namespace:Scheduleless.Controls;assembly=Scheduleless"
   x:Class="Scheduleless.Views.NewTradePage"
-  Title="New Trade">
+  BackgroundColor="#ebf0f8"
+  Title="Trade Shift">
 	<page:NewTradePageXaml.Content>
       <StackLayout 
         Padding="5,10"
         Orientation="Vertical">
-        
-        <Label TextColor="#77d065" FontSize = "20" Text="Offer this shift for trade!" />
+
+         <StackLayout VerticalOptions="Start">
+             <Label 
+               TextColor="#41454b" 
+               FontSize = "16"
+               HorizontalOptions="Center"
+               Text="Add a note to other users as to why they should take this shift!" />
+         </StackLayout>
+           
+         <StackLayout VerticalOptions="StartAndExpand">  
+            <Editor Text="{Binding Note}" HeightRequest="150" VerticalOptions="Start" /> 
+         </StackLayout>
          
-        <controls:SimpleEntry
-          x:Name="NoteEntry"
-          Keyboard="Text"
-          Placeholder="Note"
-          TextColor="Black"
-          Text="{Binding Note}"
-          HeightRequest="45"
-          HorizontalOptions="FillAndExpand" />
-                                    
-         <Button 
-            Text="Trade Shift"
-            Command="{Binding CreateTradeCommand}"
-            BorderWidth="0" />
+         <StackLayout VerticalOptions="End">                       
+             <Button 
+                Text="Create Trade Request"
+                Command="{Binding CreateTradeCommand}"
+                VerticalOptions="End"
+                TextColor="#ffffff"
+                BackgroundColor="#6695fb"
+                BorderColor="#6695fb"
+                BorderWidth="1" />
+         </StackLayout>
       </StackLayout>
 	</page:NewTradePageXaml.Content>
 </page:NewTradePageXaml>

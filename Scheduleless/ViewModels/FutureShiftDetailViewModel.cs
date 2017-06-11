@@ -55,28 +55,29 @@ namespace Scheduleless.ViewModels
         }
 
 
-        public string Address
-        {
-            get
-            {
-                string[] addressLines = new string[4];
-                addressLines[0] = FutureShift.LocationName;
-                addressLines[1] = FutureShift.LocationLine1;
-                addressLines[2] = FutureShift.LocationLine2;
-                addressLines[3] = FutureShift.CityStateZip;
+        //public string Address
+        //{
+        //    get
+        //    {
+        //        string[] addressLines = new string[4];
+        //        addressLines[0] = FutureShift.LocationName;
+        //        addressLines[1] = FutureShift.LocationLine1;
+        //        addressLines[2] = FutureShift.LocationLine2;
+        //        addressLines[3] = FutureShift.CityStateZip;
 
-                // TODO: There should be a better way than this
-                var temp = new List<string>();
-                foreach (var s in addressLines)
-                {
-                    if (!string.IsNullOrEmpty(s))
-                        temp.Add(s);
-                }
-                addressLines = temp.ToArray();
+        //        // TODO: There should be a better way than this
+        //         /// unfortunately this is not centered... 
+        //        var temp = new List<string>();
+        //        foreach (var s in addressLines)
+        //        {
+        //            if (!string.IsNullOrEmpty(s))
+        //                temp.Add(s);
+        //        }
+        //        addressLines = temp.ToArray();
 
-                return String.Join(System.Environment.NewLine, addressLines);
-            }
-        }
+        //        return String.Join(System.Environment.NewLine, addressLines);
+        //    }
+        //}
 
 
         // FIXME HALP
