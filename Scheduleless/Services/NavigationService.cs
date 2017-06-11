@@ -8,66 +8,67 @@ using Xamarin.Forms;
 
 namespace Scheduleless.Services
 {
-	public class NavigationService
-	{
-		private static readonly Lazy<NavigationService> lazy = new Lazy<NavigationService>(() => new NavigationService());
-		private CredentialsService _credentialsService;
+    public class NavigationService
+    {
+        private static readonly Lazy<NavigationService> lazy = new Lazy<NavigationService>(() => new NavigationService());
+        private CredentialsService _credentialsService;
+        private TabbedPage TabbedPage { get; set; } = new TabbedPage();
 
-		private NavigationService()
-		{
-			_credentialsService = new CredentialsService();
-		}
+        private NavigationService()
+        {
+            _credentialsService = new CredentialsService();
+        }
 
-		public static NavigationService Instance
-		{
-			get
-			{
-				return lazy.Value;
-			}
-		}
+        public static NavigationService Instance
+        {
+            get
+            {
+                return lazy.Value;
+            }
+        }
 
-		public INavigation Navigation { get; private set; }
+        public INavigation Navigation { get; private set; }
 
-		public Page GetInitialScreen()
-		{
-			Debug.WriteLine($"GetInitialScreen");
+        public Page GetInitialScreen()
+        {
+            Debug.WriteLine($"GetInitialScreen");
+
+            TabbedPage = GetInitialTabbedPages() as TabbedPage;
+            Navigation = TabbedPage.Navigation;
 
             if (_credentialsService.IsAuthenticated)
-			{
-				Debug.WriteLine($"CredentialsSerivce Is Authenticated");
-				var tabbedPage = GetInitialTabbedPages();
-				Navigation = tabbedPage.Navigation;
-				return tabbedPage;
-			}
-			else
-			{
-				Debug.WriteLine($"CredentialsSerivce Is Not Authenticated");
-				var page = new LoginPage();
-				var navPage = new ThemedNavigationPage(page);
-				Navigation = navPage.Navigation;
-				return navPage;
-			}
-		}
+            {
+                Debug.WriteLine($"CredentialsSerivce Is Authenticated");
+            }
+            else
+            {
+                Debug.WriteLine($"CredentialsSerivce Is Not Authenticated");
+                var page = new LoginPage();
+                Navigation.PushModalAsync(page);
+            }
 
-		public async Task DisplayShiftsPageAsync(bool isFromLoginScreen)
-		{
-			if (isFromLoginScreen)
-			{
-				var tabbedPage = GetInitialTabbedPages();
-				await Navigation.PushModalAsync(tabbedPage);
-			}
-			else
-			{
-				var page = new ShiftsPage();
-				await Navigation.PushModalAsync(page.WithinNavigationPage());
-			}
-		}
+            return TabbedPage;
+        }
 
-		private Page GetInitialTabbedPages()
-		{
-			var tabbedPage = new MainTabbedPage();
-			tabbedPage.SetupTabbedPages();
-			return tabbedPage;
-		}
-	}
+        public async void ShowLoginScreen()
+        {
+            Debug.WriteLine("Displaying Login Modal");
+            var page = new LoginPage();
+            await Navigation.PushModalAsync(page);
+        }
+
+        public async void CloseLoginScreen()
+        {
+            await Navigation.PopModalAsync();
+            TabbedPage = GetInitialTabbedPages() as TabbedPage;
+            Application.Current.MainPage = TabbedPage;
+        }
+
+        private Page GetInitialTabbedPages()
+        {
+            var tabbedPage = new MainTabbedPage();
+            tabbedPage.SetupTabbedPages();
+            return tabbedPage;
+        }
+    }
 }
