@@ -11,53 +11,40 @@ namespace Scheduleless.Models
         [JsonProperty("id")]
         public int Id { get; set; }
 
-        [JsonProperty("user_location_id")]
-        public int UserLocationId { get; set; }
+        [JsonProperty("location_city_state_zip")]
+        public string LocationCityStateZip { get; set; }
 
-        [JsonProperty("company_id")]
-        public int CompanyId { get; set; }
+        [JsonProperty("location_name")]
+        public string LocationName { get; set; }
 
-        [JsonProperty("minute_start")]
-        public int MinuteStart { get; set; }
+        [JsonProperty("location_line_1")]
+        public string LocationLine1 { get; set; }
 
-        [JsonProperty("minute_end")]
-        public int MinuteEnd { get; set; }
+        [JsonProperty("location_line_2")]
+        public string LocationLine2 { get; set; }
 
-        [JsonProperty("date")]
-        public long Date { get; set; }
+        [JsonProperty("location_postalcode")]
+        public string LocationPostalcode { get; set; }
 
-        [JsonProperty("created_at")]
-        // FIXME: create a converter to convert the format of 2017-04-29T18:16:26.147Z
-        //[JsonConverter(typeof(JsonIntToDateTimeConverter))]
-        public string CreatedAt { get; set; }
+        [JsonProperty("note")]
+        public string Note { get; set; }
 
-        [JsonProperty("updated_at")]
-        // FIXME: create a converter to convert the format of 2017-04-29T18:16:26.147Z
-        //[JsonConverter(typeof(JsonIntToDateTimeConverter))]
-        public string UpdatedAt { get; set; }
+        [JsonProperty("offered_by_name")]
+        public string OfferedByName { get; set; }
 
-        public string Month
-        {
-            get
-            {
-                return "July";
-            }
-        }
+        [JsonProperty("shift_end_time")]
+        public string ShiftEndTime { get; set; }
 
-        public string Day
-        {
-            get
-            {
-                return "10";
-            }
-        }
+        [JsonProperty("shift_date")]
+        public string ShiftDate { get; set; }
 
-        public string Label
-        {
-            get
-            {
-                return $"{MinuteStart} - {MinuteEnd}";
-            }
-        }
+        [JsonProperty("shift_label")]
+        public string ShiftLabel { get; set; }
+
+        [JsonProperty("shift_short_month")]
+        public string ShiftShortMonth { get; set; }
+
+        [JsonProperty("shift_start_time")]
+        public string ShiftStartTime { get; set; }
     }
 }
