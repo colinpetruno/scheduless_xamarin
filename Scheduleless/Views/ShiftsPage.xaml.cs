@@ -48,8 +48,7 @@ namespace Scheduleless.Views
                 var futureShift = e.SelectedItem as FutureShift;
                 if (futureShift != null)
                 {
-                    var page = new FutureShiftDetailPage(futureShift);
-                    Navigation.PushAsync(page);
+                    NavigationService.Instance.DisplayFutureShiftDetailFor(this, futureShift);
                 }
             };
         }

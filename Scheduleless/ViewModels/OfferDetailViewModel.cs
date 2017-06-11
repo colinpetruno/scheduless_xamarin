@@ -76,12 +76,13 @@ namespace Scheduleless.ViewModels
 
             if (response.IsSuccess)
             {
-                // TODO: Navigate properly to my trades tab
+                await NavigationService.Instance.GoToRoot();
                 Debug.WriteLine($"Accept Offer Succeeded: {response}");
             }
             else
             {
-                // TODO: Figure out how to show error
+                // TODO: Show Toast error
+                // TODO: Report to Bugsnag
                 Debug.WriteLine($"Accept Offer Failed: {response.Exception}");
                 DialogService.HideLoading();
             }
@@ -110,16 +111,12 @@ namespace Scheduleless.ViewModels
 
             if (response.IsSuccess)
             {
-                Debug.WriteLine($"Decline Offer Succeeded: {response}");
-                Debug.WriteLine($"Attempt to Transition");
-                // TODO: Navigate properly to my trades tab
-
-                Application.Current.MainPage = new MyTradesPage();
-
+                await NavigationService.Instance.GoBack();
             }
             else
             {
-                // TODO: Figure out how to show error
+                // TODO: Show toast error
+                // TODO: Bonus report to bugsnag
                 Debug.WriteLine($"Decline Offer Failed: {response.Exception}");
                 DialogService.HideLoading();
             }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Scheduleless.Models;
+using Scheduleless.Services;
 using Scheduleless.ViewModels;
 
 using Xamarin.Forms;
@@ -47,8 +48,7 @@ namespace Scheduleless.Views
                 var availableShift = e.SelectedItem as AvailableShift;
                 if (availableShift != null)
                 {
-                    var page = new NewOfferPage(availableShift);
-                    Navigation.PushAsync(page);
+                    NavigationService.Instance.DisplayNewOfferPageFor(this, availableShift);
                 }
             };
         }

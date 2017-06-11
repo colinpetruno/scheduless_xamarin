@@ -50,12 +50,13 @@ namespace Scheduleless.ViewModels
 
             if (response.IsSuccess)
             {
-                // TODO: Navigate properly to my trades tab
                 Debug.WriteLine($"Create Trade Succeeded: {response}");
+                await NavigationService.Instance.GoToRoot();
             }
             else
             {
-                // TODO: Figure out how to show error
+                // TODO: Display toast notification
+                // TODO: BONUS: Report to bugsnag
                 Debug.WriteLine($"Create Trade Failed: {response.Exception}");
                 DialogService.HideLoading();
             }

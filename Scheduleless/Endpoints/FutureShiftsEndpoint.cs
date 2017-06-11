@@ -40,7 +40,7 @@ namespace Scheduleless.Endpoints
                 return await client.PostAsync<FutureShift>(
                     $"/mobile_api/shifts/{shift_id}/cancel",
                     parameters: parameters,
-                    responseMapperKey: "shift",
+                    responseMapperKey: "cancellation",
                     forceLogoutOnUnauthorized: false
                 );
             }
