@@ -52,9 +52,7 @@
                                 BackgroundColor="#ffffff"
                                 Command="{Binding CheckOutCommand}"
                                 IsVisible="{Binding FeaturedShift.CheckedIn}"
-                                BorderWidth="1" />    
-                                
-                                
+                                BorderWidth="1" />
                         </StackLayout>
                    </StackLayout>
                  </StackLayout>

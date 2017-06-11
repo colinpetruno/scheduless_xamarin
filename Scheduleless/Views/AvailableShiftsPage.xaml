@@ -15,6 +15,7 @@
             IsPullToRefreshEnabled="true"
             HasUnevenRows="true"
             SeparatorVisibility="None"
+            IsVisible="{Binding DataLoaded}"
             BackgroundColor="#ebf0f8">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -23,8 +24,14 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
             <ListView.Footer>
-                <Label
-                    HeightRequest="0" />
+                <StackLayout Padding="0, 20, 0, 0">
+                    <Label 
+                      Text="There are no shifts available for you to take right now. We will let you know when some become available!" 
+                      HorizontalOptions="Center"
+                      TextColor="#41454b"
+                      HorizontalTextAlignment="Center"
+                      IsVisible="{Binding AvailableShifts, Converter={StaticResource dataSourceConverter}}" />
+                </StackLayout>
             </ListView.Footer>
         </ListView>
         

@@ -12,6 +12,7 @@
 			ItemsSource="{Binding Offers}"
 			IsPullToRefreshEnabled="true"
             HasUnevenRows="true"
+            SeparatorVisibility="None"
 			BackgroundColor="#ebf0f8">
 			<ListView.ItemTemplate>
 				<DataTemplate>

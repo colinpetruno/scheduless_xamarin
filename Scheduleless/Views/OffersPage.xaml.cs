@@ -47,9 +47,7 @@ namespace Scheduleless.Views
                 var offer = e.SelectedItem as Offer;
                 if (offer != null)
                 {
-                    // TODO: GO SOMEWHERE
-                    var page = new OfferDetailPage(offer);
-                    Navigation.PushAsync(page);
+                    NavigationService.Instance.DisplayOfferDetailFor(this, offer);
                 }
             };
         }

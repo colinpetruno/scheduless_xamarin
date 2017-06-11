@@ -6,19 +6,19 @@ using Xamarin.Forms;
 
 namespace Scheduleless.Views
 {
-	public partial class LoginPage : LoginPageXaml
-	{
-		public LoginPage()
-		{
-			NavigationPage.SetHasNavigationBar(this, false);
-			Initialize();
-		}
+    public partial class LoginPage : LoginPageXaml
+    {
+        public LoginPage()
+        {
+            NavigationPage.SetHasNavigationBar(this, false);
+            Initialize();
+        }
 
-		protected override void Initialize()
-		{
-			InitializeComponent();
-		}
-	}
+        protected override void Initialize()
+        {
+            InitializeComponent();
+        }
+    }
 
-	public partial class LoginPageXaml : BaseContentPage<LoginViewModel> { }
+    public partial class LoginPageXaml : BaseContentPage<LoginViewModel> { }
 }

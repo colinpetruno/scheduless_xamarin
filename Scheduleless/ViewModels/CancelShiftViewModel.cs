@@ -50,12 +50,14 @@ namespace Scheduleless.ViewModels
 
             if (response.IsSuccess)
             {
-                // TODO: Navigate properly to my trades tab
                 Debug.WriteLine($"Cancel Shift Succeeded: {response}");
+                await NavigationService.Instance.GoToRoot();
+                // TODO: Add toast notification
             }
             else
             {
-                // TODO: Figure out how to show error
+                // TODO: Add toast notification error
+                // TODO: Bonus? Can we report to bugsnag?
                 Debug.WriteLine($"Cancel Shift Failed: {response.Exception}");
                 DialogService.HideLoading();
             }

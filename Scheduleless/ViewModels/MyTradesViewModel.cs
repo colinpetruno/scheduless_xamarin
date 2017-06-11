@@ -12,6 +12,13 @@ namespace Scheduleless.ViewModels
 {
     public class MyTradesViewModel : BaseViewModel
     {
+        private Boolean _dataLoaded = false;
+        public Boolean DataLoaded
+        {
+            get { return _dataLoaded; }
+            set { SetProperty(ref _dataLoaded, value); }
+        }
+
         // TODO: create a ShiftsService to manage all the shifts, but for now this is just POC
         private List<Trade> _myTrades = new List<Trade>();
         public List<Trade> MyTrades
@@ -52,6 +59,7 @@ namespace Scheduleless.ViewModels
                 MyTrades = response.Result.ToList();
             }
 
+            DataLoaded = true;
             IsBusy = false;
         }
     }

@@ -10,47 +10,55 @@ using Xamarin.Forms;
 namespace Scheduleless.ViewModels
 {
     public class AvailableShiftsViewModel : BaseViewModel
-	{
-		// TODO: create a ShiftsService to manage all the shifts, but for now this is just POC
-		private List<AvailableShift> _availableShifts = new List<AvailableShift>();
-		public List<AvailableShift> AvailableShifts
-		{
-			get { return _availableShifts; }
-			set { SetProperty(ref _availableShifts, value); }
-		}
+    {
+        private Boolean _dataLoaded = false;
+        public Boolean DataLoaded
+        {
+            get { return _dataLoaded; }
+            set { SetProperty(ref _dataLoaded, value); }
+        }
 
-		private AvailableShiftsEndpoint _availableShiftsEndpoint;
+        // TODO: create a ShiftsService to manage all the shifts, but for now this is just POC
+        private List<AvailableShift> _availableShifts = new List<AvailableShift>();
+        public List<AvailableShift> AvailableShifts
+        {
+            get { return _availableShifts; }
+            set { SetProperty(ref _availableShifts, value); }
+        }
 
-		public AvailableShiftsViewModel()
-		{
-			_availableShiftsEndpoint = new AvailableShiftsEndpoint();
-		}
+        private AvailableShiftsEndpoint _availableShiftsEndpoint;
 
-		Command _fetchShiftsCommand;
-		public Command FetchShiftsCommand
-		{
-			get { return _fetchShiftsCommand ?? (_fetchShiftsCommand = new Command(async () => await ExecuteFetchShiftsCommandAsync())); }
-		}
+        public AvailableShiftsViewModel()
+        {
+            _availableShiftsEndpoint = new AvailableShiftsEndpoint();
+        }
 
-		private async Task ExecuteFetchShiftsCommandAsync()
-		{
-			if (IsBusy)
-			{
-				return;
-			}
+        Command _fetchShiftsCommand;
+        public Command FetchShiftsCommand
+        {
+            get { return _fetchShiftsCommand ?? (_fetchShiftsCommand = new Command(async () => await ExecuteFetchShiftsCommandAsync())); }
+        }
 
-			IsBusy = true;
+        private async Task ExecuteFetchShiftsCommandAsync()
+        {
+            if (IsBusy)
+            {
+                return;
+            }
 
-			DialogService.ShowLoading(string.Empty);
-			var response = await _availableShiftsEndpoint.IndexAsync<AvailableShift>();
-			DialogService.HideLoading();
+            IsBusy = true;
 
-			if (response.IsSuccess)
-			{
-				AvailableShifts = response.Result.ToList();
-			}
+            DialogService.ShowLoading(string.Empty);
+            var response = await _availableShiftsEndpoint.IndexAsync<AvailableShift>();
+            DialogService.HideLoading();
 
-			IsBusy = false;
-		}
-	}
+            if (response.IsSuccess)
+            {
+                AvailableShifts = response.Result.ToList();
+            }
+
+            DataLoaded = true;
+            IsBusy = false;
+        }
+    }
 }

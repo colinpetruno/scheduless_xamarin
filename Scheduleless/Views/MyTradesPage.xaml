@@ -16,6 +16,7 @@
 			ItemsSource="{Binding MyTrades}"
 			IsPullToRefreshEnabled="true"
             HasUnevenRows="true"
+            IsVisible="{Binding DataLoaded}"
 			BackgroundColor="#ebf0f8">
           
 			<ListView.ItemTemplate>
