@@ -5,25 +5,70 @@
 	x:Class="Scheduleless.Views.ShiftsPage"
 	xmlns:controls="clr-namespace:Scheduleless.Controls;assembly=Scheduleless"
 	xmlns:page="clr-namespace:Scheduleless.Views;assembly=Scheduleless"
+    BackgroundColor="#ebf0f8"
 	Title="Shifts">
 	<page:ShiftsPageXaml.Content>
-		<ListView
-			x:Name="FutureShiftsListView"
-			ItemsSource="{Binding FutureShifts}"
-			IsPullToRefreshEnabled="true"
-            HasUnevenRows="true"
-            SeparatorVisibility="None"
-			BackgroundColor="#ebf0f8">
-			<ListView.ItemTemplate>
-				<DataTemplate>
-					<controls:FutureShiftCell>
-					</controls:FutureShiftCell>
-				</DataTemplate>
-			</ListView.ItemTemplate>
-			<ListView.Footer>
-				<Label
-					HeightRequest="0" />
-			</ListView.Footer>
-		</ListView>
+        <StackLayout Orientation="Vertical">
+            <StackLayout Orientation="Vertical">
+            
+                <StackLayout    
+                  BackgroundColor="#ebf0f8"
+                  Margin="20"
+                  VerticalOptions="Start">
+                   <StackLayout 
+                     BackgroundColor="#5f97ff"
+                     HorizontalOptions="FillAndExpand"
+                     Padding="15">
+                        <StackLayout 
+                          BackgroundColor="White"  
+                          VerticalOptions="CenterAndExpand"
+                          HorizontalOptions="FillAndExpand"
+                          Padding="10">
+                            <Label TextColor="#5f97ff" FontSize = "35" Text="{Binding FeaturedShift.FeaturedDate}" HorizontalOptions="Center"  Margin="0, 20, 0, 0" />
+                            <Label TextColor="#41454b" FontSize = "20" Text="{Binding FeaturedShift.Label}" HorizontalOptions="Center" />
+                            
+                            <Button 
+                                Text="Check In"
+                                TextColor="#ffffff"
+                                BorderColor="#ffb329"
+                                BackgroundColor="#ffbc42"
+                                BorderWidth="1" />
+                        </StackLayout>
+                   </StackLayout>
+                 </StackLayout>
+              
+                
+
+                    
+                    <!--
+                <Button 
+                    Text="White Button"
+                    Clicked="OnCancelShiftButtonClicked"
+                    TextColor="#747c85"
+                    BorderColor="#a0acb9"
+                    BackgroundColor="#ffffff"
+                    BorderWidth="1" /> -->
+            </StackLayout>
+        
+        
+    		<ListView
+    			x:Name="FutureShiftsListView"
+    			ItemsSource="{Binding FutureShifts}"
+    			IsPullToRefreshEnabled="true"
+                HasUnevenRows="true"
+                SeparatorVisibility="None"
+    			BackgroundColor="#ebf0f8">
+    			<ListView.ItemTemplate>
+    				<DataTemplate>
+    					<controls:FutureShiftCell>
+    					</controls:FutureShiftCell>
+    				</DataTemplate>
+    			</ListView.ItemTemplate>
+    			<ListView.Footer>
+    				<Label
+    					HeightRequest="0" />
+    			</ListView.Footer>
+    		</ListView>
+        </StackLayout>
 	</page:ShiftsPageXaml.Content>
 </page:ShiftsPageXaml>

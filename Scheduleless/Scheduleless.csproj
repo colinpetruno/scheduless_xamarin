@@ -60,6 +60,9 @@
     <EmbeddedResource Include="Views\CancelShiftPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\NewOfferPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -161,6 +164,11 @@
     </Compile>
     <Compile Include="ViewModels\CancelShiftViewModel.cs" />
     <Compile Include="Models\Converters\DataSourceConverter.cs" />
+    <Compile Include="Views\NewOfferPage.xaml.cs">
+      <DependentUpon>NewOfferPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\NewOfferViewModel.cs" />
+    <Compile Include="Endpoints\FeaturedShiftEndpoint.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="XFGloss">

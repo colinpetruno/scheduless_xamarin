@@ -52,5 +52,27 @@ namespace Scheduleless.Endpoints
                 );
             }
         }
+
+        public async Task<ApiResponse<Offer>> CreateAsync<Offer>(string note, int offered_shift_id, int trade_id)
+        {
+            var parameters = new Dictionary<string, object>
+            {
+                {"offer", new Dictionary<string, object>
+                    {
+                        {"note", note},
+                        {"offered_shift_id", offered_shift_id}
+                    }
+                }
+            };
+
+            using (var client = new AuthenticatedApiRequest())
+            {
+                return await client.PostAsync<Offer>(
+                    $"/mobile_api/trades/{trade_id}/offers",
+                    parameters: parameters,
+                    responseMapperKey: "offer"
+                );
+            }
+        }
     }
 }

@@ -12,9 +12,6 @@ namespace Scheduleless.Endpoints
 
         public async Task<ApiResponse<Trade>> CreateAsync<Trade>(string note, FutureShift shift)
         {
-            //  "grant_type"    : "password",
-            //  "username"      : "demo@example.com",
-            //  "password"      : "password"
             var parameters = new Dictionary<string, object>
             {
                 {"trade", new Dictionary<string, object>

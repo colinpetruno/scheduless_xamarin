@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page:NewOfferPageXaml 
+  xmlns="http://xamarin.com/schemas/2014/forms" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:page="clr-namespace:Scheduleless.Views;assembly=Scheduleless" 
+  xmlns:controls="clr-namespace:Scheduleless.Controls;assembly=Scheduleless"
+  x:Class="Scheduleless.Views.NewOfferPage"
+  BackgroundColor="#ebf0f8"
+  Title="Make an Offer">
+	<page:NewOfferPageXaml.Content>
+      <StackLayout 
+        Padding="5,10"
+        Orientation="Vertical">
+
+         <StackLayout VerticalOptions="Start" Margin="0,15,0,0">
+             <Label 
+               TextColor="#41454b" 
+               FontSize = "16"
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center"
+               Text="Select one of your shifts to trade with your coworker." />
+         </StackLayout>
+         
+         <StackLayout VerticalOptions="Start">
+            <Picker ItemsSource="{Binding AvailableShifts}" SelectedIndex="{Binding SelectedShiftIndex}" />
+         </StackLayout>
+         
+         <StackLayout VerticalOptions="Start" Margin="0,15,0,0">
+             <Label 
+               TextColor="#41454b" 
+               FontSize = "16"
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center"
+               Text="Add a note that your coworker know what else they owe you!" />
+         </StackLayout>
+           
+         <StackLayout VerticalOptions="StartAndExpand">  
+            <Editor Text="{Binding Note}" HeightRequest="150" VerticalOptions="Start" /> 
+         </StackLayout>
+         
+         <StackLayout VerticalOptions="End">                       
+             <Button 
+                Text="Create Trade Request"
+                Command="{Binding CreateOfferCommand}"
+                VerticalOptions="End"
+                TextColor="#ffffff"
+                BackgroundColor="#6695fb"
+                BorderColor="#6695fb"
+                BorderWidth="1" />
+         </StackLayout>
+         
+      </StackLayout>
+	</page:NewOfferPageXaml.Content>
+</page:NewOfferPageXaml>

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using Scheduleless.Models;
 using Scheduleless.ViewModels;
 
 using Xamarin.Forms;
@@ -35,10 +35,24 @@ namespace Scheduleless.Views
 
         private void SetupEventHandlers()
         {
-           // FIXME this needs to have the handler setup to go into the trade
-           // view
+            AvailableShiftsListView.ItemSelected += (s, e) =>
+            {
+
+                AvailableShiftsListView.SelectedItem = null;
+                if (e.SelectedItem == null)
+                {
+                    return; // ItemSelected is called on deselection, which results in SelectedItem being set to null
+                }
+
+                var availableShift = e.SelectedItem as AvailableShift;
+                if (availableShift != null)
+                {
+                    var page = new NewOfferPage(availableShift);
+                    Navigation.PushAsync(page);
+                }
+            };
         }
     }
-    
+
     public partial class AvailableShiftsPageXaml : BaseContentPage<AvailableShiftsViewModel> { }
 }

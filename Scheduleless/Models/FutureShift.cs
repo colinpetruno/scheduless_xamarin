@@ -23,6 +23,9 @@ namespace Scheduleless.Models
         [JsonProperty("city_state_zip")]
         public string CityStateZip { get; set; }
 
+        [JsonProperty("checked_in")]
+        public Boolean CheckedIn { get; set; }
+
         [JsonProperty("day")]
         public string Day { get; set; }
 
@@ -31,6 +34,9 @@ namespace Scheduleless.Models
 
         [JsonProperty("label")]
         public string Label { get; set; }
+
+        [JsonProperty("month")]
+        public string Month { get; set; }
 
         [JsonProperty("location_name")]
         public string LocationName { get; set; }
@@ -48,5 +54,15 @@ namespace Scheduleless.Models
         [JsonProperty("updated_at")]
         [JsonConverter(typeof(JsonIntToDateTimeConverter))]
         public DateTime UpdatedAt { get; set; }
+
+        public String FeaturedDate
+        {
+            get { return $"{Month} {Day}"; }
+        }
+
+        public override string ToString()
+        {
+            return $"{ShortMonth} {Day}, {Label}";
+        }
     }
 }
