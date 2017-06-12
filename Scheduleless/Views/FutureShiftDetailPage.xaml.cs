@@ -8,56 +8,52 @@ using Xamarin.Forms;
 
 namespace Scheduleless.Views
 {
-    public partial class FutureShiftDetailPage : FutureShiftDetailPageXaml
-    {
-        public FutureShiftDetailPage(FutureShift futureShift)
-        {
-            ViewModel.FutureShift = futureShift;
+	public partial class FutureShiftDetailPage : FutureShiftDetailPageXaml
+	{
+		public FutureShiftDetailPage(FutureShift futureShift)
+		{
+			ViewModel.FutureShift = futureShift;
 
-            Initialize();
-        }
+			Initialize();
+		}
 
-        public string Month
-        {
-            get
-            {
-                return ViewModel.FutureShift.ShortMonth;
-            }
-        }
+		public string Month
+		{
+			get
+			{
+				return ViewModel.FutureShift.ShortMonth;
+			}
+		}
 
-        protected override void Initialize()
-        {
-            InitializeComponent();
-        }
+		protected override void Initialize()
+		{
+			InitializeComponent();
+		}
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
+		protected override void OnAppearing()
+		{
+			base.OnAppearing();
 
-            if (ViewModel == null || ViewModel.IsBusy)
-            {
-                return;
-            }
-        }
+			if (ViewModel == null || ViewModel.IsBusy)
+			{
+				return;
+			}
+		}
 
-        public async void OnTradeShiftButtonClicked(object sender, EventArgs e)
-        {
-            Debug.WriteLine("Transitioning to New Trade Page");
+		public async void OnTradeShiftButtonClicked(object sender, EventArgs e)
+		{
+			Debug.WriteLine("Transitioning to New Trade Page");
 
-            var page = new NewTradePage(ViewModel.FutureShift);
-            await Navigation.PushAsync(page);
-        }
+			await NavigationService.Instance.DisplayNewTradePageAsync(this, ViewModel.FutureShift);
+		}
 
-        public async void OnCancelShiftButtonClicked(object sender, EventArgs e)
-        {
-            Debug.WriteLine("Transitioning to Cancel Shift Page");
+		public async void OnCancelShiftButtonClicked(object sender, EventArgs e)
+		{
+			Debug.WriteLine("Transitioning to Cancel Shift Page");
 
-            var page = new CancelShiftPage(ViewModel.FutureShift);
-            await Navigation.PushAsync(page);
-        }
+			await NavigationService.Instance.DisplayCancelShiftPageAsync(this, ViewModel.FutureShift);
+		}
+	}
 
-
-    }
-
-    public partial class FutureShiftDetailPageXaml : BaseContentPage<FutureShiftDetailViewModel> { }
+	public partial class FutureShiftDetailPageXaml : BaseContentPage<FutureShiftDetailViewModel> { }
 }

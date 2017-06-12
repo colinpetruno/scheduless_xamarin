@@ -8,6 +8,7 @@ using Xamarin.Forms;
 
 namespace Scheduleless.Views
 {
+<<<<<<< ff2f9d4c657d9fa47671db2eec37eeca6995f22a
     public partial class ShiftsPage : ShiftsPageXaml
     {
         public ShiftsPage()
@@ -61,4 +62,53 @@ namespace Scheduleless.Views
     }
 
     public partial class ShiftsPageXaml : BaseContentPage<ShiftsViewModel> { }
+=======
+	public partial class ShiftsPage : ShiftsPageXaml
+	{
+		public ShiftsPage()
+		{
+			Initialize();
+		}
+
+		protected override void Initialize()
+		{
+			InitializeComponent();
+
+			SetupEventHandlers();
+		}
+
+		protected override void OnAppearing()
+		{
+			base.OnAppearing();
+
+			if (ViewModel == null || ViewModel.IsBusy)
+			{
+				return;
+			}
+
+			ViewModel.FetchShiftsCommand.Execute(null);
+		}
+
+		private void SetupEventHandlers()
+		{
+			FutureShiftsListView.ItemSelected += (s, e) =>
+			{
+				PushNotificationService.Instance.HandleRegister(null);
+				FutureShiftsListView.SelectedItem = null;
+				if (e.SelectedItem == null)
+				{
+					return; // ItemSelected is called on deselection, which results in SelectedItem being set to null
+				}
+
+				var futureShift = e.SelectedItem as FutureShift;
+				if (futureShift != null)
+				{
+					NavigationService.Instance.DisplayFutureShiftDetailFor(this, futureShift);
+				}
+			};
+		}
+	}
+
+	public partial class ShiftsPageXaml : BaseContentPage<ShiftsViewModel> { }
+>>>>>>> Make navigation work
 }
