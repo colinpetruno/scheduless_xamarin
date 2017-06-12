@@ -122,6 +122,73 @@ namespace Scheduleless.ViewModels
             IsBusy = false;
         }
 
+
+
+
+
+
+        Command _checkInCommand;
+        public Command CheckInCommand
+        {
+            get { return _checkInCommand ?? (_checkInCommand = new Command(async () => await ExecuteCheckInCommandAsync())); }
+        }
+        private async Task ExecuteCheckInCommandAsync()
+        {
+            Debug.WriteLine("ExecuteFetchFeatureShiftCommandAsync");
+            if (IsBusy)
+            {
+                return;
+            }
+
+            IsBusy = true;
+
+            DialogService.ShowLoading(string.Empty);
+            var response = await _featuredShiftEndpoint.CheckInAsync<FutureShift>(FeaturedShift.Id);
+            DialogService.HideLoading();
+
+            if (response.IsSuccess)
+            {
+                FeaturedShift = response.Result;
+            }
+
+            IsBusy = false;
+        }
+
+
+
+        Command _checkOutCommand;
+        public Command CheckOutCommand
+        {
+            get { return _checkOutCommand ?? (_checkOutCommand = new Command(async () => await ExecuteCheckOutCommandAsync())); }
+        }
+        private async Task ExecuteCheckOutCommandAsync()
+        {
+            Debug.WriteLine("ExecuteFetchFeatureShiftCommandAsync");
+            if (IsBusy)
+            {
+                return;
+            }
+
+            IsBusy = true;
+
+            DialogService.ShowLoading(string.Empty);
+            var response = await _featuredShiftEndpoint.CheckOutAsync<FutureShift>(FeaturedShift.Id);
+            DialogService.HideLoading();
+
+            if (response.IsSuccess)
+            {
+                FeaturedShift = response.Result;
+            }
+
+            IsBusy = false;
+        }
+
+
+
+
+
+
+
         Command _fetchFeaturedShiftCommand;
         public Command FetchFeaturedShiftCommand
         {

@@ -19,5 +19,27 @@ namespace Scheduleless.Endpoints
                 return await client.GetAsync<FutureShift>(_baseRelativeUrl, responseMapperKey: "featured_shift");
             }
         }
+
+        public async Task<ApiResponse<FutureShift>> CheckInAsync<FutureShift>(int shift_id)
+        {
+            using (var client = new AuthenticatedApiRequest())
+            {
+                return await client.PostAsync<FutureShift>(
+                    $"/mobile_api/shifts/{shift_id}/check_in",
+                    responseMapperKey: "featured_shift"
+                );
+            }
+        }
+
+        public async Task<ApiResponse<FutureShift>> CheckOutAsync<FutureShift>(int shift_id)
+        {
+            using (var client = new AuthenticatedApiRequest())
+            {
+                return await client.PostAsync<FutureShift>(
+                    $"/mobile_api/shifts/{shift_id}/check_out",
+                    responseMapperKey: "featured_shift"
+                );
+            }
+        }
     }
 }

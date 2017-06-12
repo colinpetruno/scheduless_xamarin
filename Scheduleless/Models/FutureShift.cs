@@ -26,6 +26,11 @@ namespace Scheduleless.Models
         [JsonProperty("checked_in")]
         public Boolean CheckedIn { get; set; }
 
+        public Boolean CheckedOut
+        {
+            get { return !CheckedIn; }
+        }
+
         [JsonProperty("day")]
         public string Day { get; set; }
 

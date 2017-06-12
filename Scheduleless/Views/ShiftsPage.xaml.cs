@@ -58,6 +58,11 @@ namespace Scheduleless.Views
                 }
             };
         }
+
+        public void TappedCheckInOutButton(object sender, EventArgs e)
+        {
+
+        }
     }
 
     public partial class ShiftsPageXaml : BaseContentPage<ShiftsViewModel> { }

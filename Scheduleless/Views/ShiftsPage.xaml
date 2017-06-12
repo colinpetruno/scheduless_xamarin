@@ -24,15 +24,37 @@
                           VerticalOptions="CenterAndExpand"
                           HorizontalOptions="FillAndExpand"
                           Padding="10">
-                            <Label TextColor="#5f97ff" FontSize = "35" Text="{Binding FeaturedShift.FeaturedDate}" HorizontalOptions="Center"  Margin="0, 20, 0, 0" />
-                            <Label TextColor="#41454b" FontSize = "20" Text="{Binding FeaturedShift.Label}" HorizontalOptions="Center" />
+                            <Label 
+                              TextColor="#5f97ff" 
+                              FontSize = "35" 
+                              Text="{Binding FeaturedShift.FeaturedDate}" 
+                              HorizontalOptions="Center"  
+                              Margin="0, 20, 0, 0" />
+                            <Label 
+                              TextColor="#41454b" 
+                              FontSize = "20" 
+                              Text="{Binding FeaturedShift.Label}" 
+                              HorizontalOptions="Center" />
                             
-                            <Button 
+                            <controls:SimpleButton
                                 Text="Check In"
                                 TextColor="#ffffff"
                                 BorderColor="#ffb329"
                                 BackgroundColor="#ffbc42"
+                                Command="{Binding CheckInCommand}"
+                                IsVisible="{Binding FeaturedShift.CheckedOut}"
                                 BorderWidth="1" />
+                                
+                            <controls:SimpleButton
+                                Text="Check Out"
+                                TextColor="#747c85"
+                                BorderColor="#a0acb9"
+                                BackgroundColor="#ffffff"
+                                Command="{Binding CheckOutCommand}"
+                                IsVisible="{Binding FeaturedShift.CheckedIn}"
+                                BorderWidth="1" />    
+                                
+                                
                         </StackLayout>
                    </StackLayout>
                  </StackLayout>
