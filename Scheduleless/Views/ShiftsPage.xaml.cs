@@ -31,19 +31,14 @@ namespace Scheduleless.Views
                 return;
             }
 
-            //Debug.WriteLine("Getting Featured");
-            //ViewModel.FetchFeaturedShiftCommand.Execute(null);
-            //Debug.WriteLine("Getting List");
-            //ViewModel.FetchShiftsCommand.Execute(null);
             ViewModel.FetchAllDataCommand.Execute(null);
-
+            PushNotificationService.Instance.HandleRegister(null);
         }
 
         private void SetupEventHandlers()
         {
             FutureShiftsListView.ItemSelected += (s, e) =>
             {
-                PushNotificationService.Instance.HandleRegister(null);
                 FutureShiftsListView.SelectedItem = null;
                 if (e.SelectedItem == null)
                 {
