@@ -183,6 +183,19 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ico_120.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ico_180.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ico_40.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\screen-iphone-568h-2x.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\screen-iphone-portrait-2x-960h.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\screen-ipad-portrait-768w-1024h.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\screen-ipad-portrait-1536w -2048h.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\screen-ipad-landscape-1024 w-768h.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\screen-ipad-landscape-2048w-1536h.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\screen-iphone-portrait-320w-480h.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\screen-iphone-portrait-640w-960h.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\screen-iphone-640 w-1136h.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\screen-iphone-landscape-2208w-1242h.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\screen-iphone-portrait-1242w-2208h.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\screen-iphone-portrait-750w-1334h.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -190,9 +203,6 @@
     <Folder Include="Utilities\" />
     <Folder Include="Localization\" />
     <Folder Include="Fonts\" />
-  </ItemGroup>
-  <ItemGroup>
-    <InterfaceDefinition Include="LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -217,6 +227,10 @@
     <BundleResource Include="Resources\fontawesome.ttf" />
     <BundleResource Include="GoogleService-Info.plist" />
     <BundleResource Include="Resources\scheduleless-logo.png" />
+    <BundleResource Include="Resources\scheduleless-splash-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="LaunchScreen.storyboard" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
