@@ -8,7 +8,7 @@
     BackgroundColor="#ebf0f8"
 	Title="Shifts">
 	<page:ShiftsPageXaml.Content>
-        <StackLayout Orientation="Vertical">
+        <StackLayout Orientation="Vertical" IsVisible="{Binding DataLoaded}">
             <StackLayout Orientation="Vertical">
             
                 <StackLayout    

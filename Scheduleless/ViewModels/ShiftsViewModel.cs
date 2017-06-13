@@ -12,6 +12,13 @@ namespace Scheduleless.ViewModels
 {
     public class ShiftsViewModel : BaseViewModel
     {
+        private Boolean _dataLoaded = false;
+        public Boolean DataLoaded
+        {
+            get { return _dataLoaded; }
+            set { SetProperty(ref _dataLoaded, value); }
+        }
+
         // TODO: create a ShiftsService to manage all the shifts, but for now this is just POC
         private List<FutureShift> _futureShifts = new List<FutureShift>();
         public List<FutureShift> FutureShifts
@@ -90,7 +97,7 @@ namespace Scheduleless.ViewModels
             {
                 FeaturedShift = featured_response.Result;
             }
-
+            DataLoaded = true;
             IsBusy = false;
         }
 
