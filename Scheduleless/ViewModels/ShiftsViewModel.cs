@@ -12,6 +12,12 @@ namespace Scheduleless.ViewModels
 {
     public class ShiftsViewModel : BaseViewModel
     {
+        Command _refreshCommand;
+        public Command RefreshCommand
+        {
+            get { return _refreshCommand; }
+        }
+
         private Boolean _dataLoaded = false;
         public Boolean DataLoaded
         {
@@ -33,6 +39,8 @@ namespace Scheduleless.ViewModels
             get { return _featuredShift; }
             set { SetProperty(ref _featuredShift, value); }
         }
+
+
 
 
         public string FeaturedShiftMonth
@@ -67,6 +75,17 @@ namespace Scheduleless.ViewModels
         {
             _futureShiftsEndpoint = new FutureShiftsEndpoint();
             _featuredShiftEndpoint = new FeaturedShiftEndpoint();
+            _refreshCommand = new Command(RefreshList);
+        }
+
+        async void RefreshList()
+        {
+            IsRefreshing = true;
+            IsBusy = true;
+            FutureShifts = await ExecuteFetchShiftsLiteAsync();
+            FeaturedShift = await ExecuteFetchFeaturedShiftLiteAsync();
+            IsBusy = false;
+            IsRefreshing = false;
         }
 
         Command _fetchAllDataCommand;
@@ -101,32 +120,19 @@ namespace Scheduleless.ViewModels
             IsBusy = false;
         }
 
-        Command _fetchShiftsCommand;
-        public Command FetchShiftsCommand
+
+        async Task<List<FutureShift>> ExecuteFetchShiftsLiteAsync()
         {
-            get { return _fetchShiftsCommand ?? (_fetchShiftsCommand = new Command(async () => await ExecuteFetchShiftsCommandAsync())); }
+            var response = await _futureShiftsEndpoint.IndexAsync<FutureShift>();
+
+            return response.Result.ToList();
         }
 
-        private async Task ExecuteFetchShiftsCommandAsync()
+        async Task<FutureShift> ExecuteFetchFeaturedShiftLiteAsync()
         {
-            Debug.WriteLine("ExecuteFetchShiftsCommandAsync");
-            if (IsBusy)
-            {
-                return;
-            }
+            var response = await _featuredShiftEndpoint.FeaturedAsync<FutureShift>();
 
-            IsBusy = true;
-
-            DialogService.ShowLoading(string.Empty);
-            var response = await _futureShiftsEndpoint.IndexAsync<FutureShift>();
-            DialogService.HideLoading();
-
-            if (response.IsSuccess)
-            {
-                FutureShifts = response.Result.ToList();
-            }
-
-            IsBusy = false;
+            return response.Result;
         }
 
 

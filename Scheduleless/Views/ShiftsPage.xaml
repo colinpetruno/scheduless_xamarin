@@ -75,6 +75,8 @@
     			x:Name="FutureShiftsListView"
     			ItemsSource="{Binding FutureShifts}"
     			IsPullToRefreshEnabled="true"
+                RefreshCommand="{Binding RefreshCommand}" 
+                IsRefreshing="{Binding IsRefreshing}"
                 HasUnevenRows="true"
                 SeparatorVisibility="None"
     			BackgroundColor="#ebf0f8">

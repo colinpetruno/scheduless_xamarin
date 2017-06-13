@@ -15,6 +15,8 @@
 			x:Name="MyTradesListView"
 			ItemsSource="{Binding MyTrades}"
 			IsPullToRefreshEnabled="true"
+            RefreshCommand="{Binding RefreshCommand}" 
+            IsRefreshing="{Binding IsRefreshing}"
             HasUnevenRows="true"
             IsVisible="{Binding DataLoaded}"
 			BackgroundColor="#ebf0f8">

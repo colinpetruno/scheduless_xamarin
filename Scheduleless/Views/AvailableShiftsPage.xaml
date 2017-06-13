@@ -13,6 +13,8 @@
             x:Name="AvailableShiftsListView"
             ItemsSource="{Binding AvailableShifts}"
             IsPullToRefreshEnabled="true"
+            RefreshCommand="{Binding RefreshCommand}" 
+            IsRefreshing="{Binding IsRefreshing}"
             HasUnevenRows="true"
             SeparatorVisibility="None"
             IsVisible="{Binding DataLoaded}"

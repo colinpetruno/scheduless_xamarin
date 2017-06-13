@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Scheduleless.Endpoints;
@@ -18,6 +19,12 @@ namespace Scheduleless.ViewModels
             set { SetProperty(ref _dataLoaded, value); }
         }
 
+        Command _refreshCommand;
+        public Command RefreshCommand
+        {
+            get { return _refreshCommand; }
+        }
+
         // TODO: create a ShiftsService to manage all the shifts, but for now this is just POC
         private List<AvailableShift> _availableShifts = new List<AvailableShift>();
         public List<AvailableShift> AvailableShifts
@@ -31,7 +38,24 @@ namespace Scheduleless.ViewModels
         public AvailableShiftsViewModel()
         {
             _availableShiftsEndpoint = new AvailableShiftsEndpoint();
+            _refreshCommand = new Command(RefreshList);
         }
+
+        async void RefreshList()
+        {
+            AvailableShifts = await ExecuteFetchShiftsRefreshCommandAsync();
+        }
+
+        async Task<List<AvailableShift>> ExecuteFetchShiftsRefreshCommandAsync()
+        {
+            Debug.WriteLine("REFRESHING VIEW");
+            IsRefreshing = true;
+            var response = await _availableShiftsEndpoint.IndexAsync<AvailableShift>();
+            IsRefreshing = false;
+
+            return response.Result.ToList();
+        }
+
 
         Command _fetchShiftsCommand;
         public Command FetchShiftsCommand

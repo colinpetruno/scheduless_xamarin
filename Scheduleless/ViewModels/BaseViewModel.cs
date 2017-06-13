@@ -6,82 +6,90 @@ using Xamarin.Forms;
 
 namespace Scheduleless.ViewModels
 {
-	public class BaseViewModel : INotifyPropertyChanged
-	{
-		private string _title = string.Empty;
-		private string _subTitle = string.Empty;
-		private string _icon = null;
-		private bool isBusy;
+    public class BaseViewModel : INotifyPropertyChanged
+    {
+        private string _title = string.Empty;
+        private string _subTitle = string.Empty;
+        private string _icon = null;
+        private bool isBusy;
+        private bool isRefreshing;
 
-		public const string TitlePropertyName = "Title";
-		public const string IconPropertyName = "Icon";
-		public const string IsBusyPropertyName = "IsBusy";
+        public const string TitlePropertyName = "Title";
+        public const string IconPropertyName = "Icon";
+        public const string IsBusyPropertyName = "IsBusy";
 
-		public event PropertyChangingEventHandler PropertyChanging;
-		public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangingEventHandler PropertyChanging;
+        public event PropertyChangedEventHandler PropertyChanged;
 
-		public BaseViewModel() { }
+        public BaseViewModel() { }
 
-		public string Title
-		{
-			get { return _title; }
-			set { SetProperty(ref _title, value); }
-		}
+        public string Title
+        {
+            get { return _title; }
+            set { SetProperty(ref _title, value); }
+        }
 
-		public string Subtitle
-		{
-			get { return _subTitle; }
-			set { SetProperty(ref _subTitle, value); }
-		}
+        public string Subtitle
+        {
+            get { return _subTitle; }
+            set { SetProperty(ref _subTitle, value); }
+        }
 
-		public string Icon
-		{
-			get { return _icon; }
-			set { SetProperty(ref _icon, value); }
-		}
+        public string Icon
+        {
+            get { return _icon; }
+            set { SetProperty(ref _icon, value); }
+        }
 
-		public bool IsBusy
-		{
-			get { return isBusy; }
-			set { SetProperty(ref isBusy, value); }
-		}
+        public bool IsBusy
+        {
+            get { return isBusy; }
+            set { SetProperty(ref isBusy, value); }
+        }
 
-		protected void SetProperty<T>(
-			ref T backingStore, T value,
-			Action onChanged = null,
-			Action<T> onChanging = null,
-			[CallerMemberName] string propertyName = null)
-		{
-			if (EqualityComparer<T>.Default.Equals(backingStore, value))
-				return;
+        public bool IsRefreshing
+        {
+            get { return isRefreshing; }
+            set { SetProperty(ref isRefreshing, value); }
+        }
 
-			if (onChanging != null)
-				onChanging(value);
 
-			OnPropertyChanging(propertyName);
+        protected void SetProperty<T>(
+            ref T backingStore, T value,
+            Action onChanged = null,
+            Action<T> onChanging = null,
+            [CallerMemberName] string propertyName = null)
+        {
+            if (EqualityComparer<T>.Default.Equals(backingStore, value))
+                return;
 
-			backingStore = value;
+            if (onChanging != null)
+                onChanging(value);
 
-			if (onChanged != null)
-				onChanged();
+            OnPropertyChanging(propertyName);
 
-			OnPropertyChanged(propertyName);
-		}
+            backingStore = value;
 
-		public void OnPropertyChanging(string propertyName)
-		{
-			if (PropertyChanging == null)
-				return;
+            if (onChanged != null)
+                onChanged();
 
-			PropertyChanging(this, new PropertyChangingEventArgs(propertyName));
-		}
+            OnPropertyChanged(propertyName);
+        }
 
-		public void OnPropertyChanged(string propertyName)
-		{
-			if (PropertyChanged == null)
-				return;
+        public void OnPropertyChanging(string propertyName)
+        {
+            if (PropertyChanging == null)
+                return;
 
-			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
+            PropertyChanging(this, new PropertyChangingEventArgs(propertyName));
+        }
+
+        public void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged == null)
+                return;
+
+            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
 }

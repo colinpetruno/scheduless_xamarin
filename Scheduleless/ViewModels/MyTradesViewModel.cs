@@ -27,17 +27,44 @@ namespace Scheduleless.ViewModels
             set { SetProperty(ref _myTrades, value); }
         }
 
+        Command _refreshCommand;
+        public Command RefreshCommand
+        {
+            get
+            {
+                return _refreshCommand;
+            }
+        }
+
+
         private MyTradesEndpoint _myTradesEndpoint;
 
         public MyTradesViewModel()
         {
             _myTradesEndpoint = new MyTradesEndpoint();
+            _refreshCommand = new Command(RefreshList);
+        }
+
+        async void RefreshList()
+        {
+            MyTrades = await ExecuteFetchMyTradesLiteCommandAsync();
         }
 
         Command _fetchMyTradesCommand;
         public Command FetchMyTradesCommand
         {
             get { return _fetchMyTradesCommand ?? (_fetchMyTradesCommand = new Command(async () => await ExecuteFetchMyTradesCommandAsync())); }
+        }
+
+
+        async Task<List<Trade>> ExecuteFetchMyTradesLiteCommandAsync()
+        {
+            Debug.WriteLine("REFRESHING VIEW");
+            IsRefreshing = true;
+            var response = await _myTradesEndpoint.IndexAsync<Trade>();
+            IsRefreshing = false;
+
+            return response.Result.ToList();
         }
 
         private async Task ExecuteFetchMyTradesCommandAsync()

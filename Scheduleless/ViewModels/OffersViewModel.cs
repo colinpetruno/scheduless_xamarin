@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Scheduleless.Endpoints;
@@ -23,9 +24,31 @@ namespace Scheduleless.ViewModels
 
         private OffersEndpoint _offersEndpoint;
 
+        Command _refreshCommand;
+        public Command RefreshCommand
+        {
+            get { return _refreshCommand; }
+        }
+
         public OffersViewModel()
         {
             _offersEndpoint = new OffersEndpoint();
+            _refreshCommand = new Command(RefreshList);
+        }
+
+        async void RefreshList()
+        {
+            Offers = await ExecuteFetchOffersRefreshCommandAsync();
+        }
+
+        async Task<List<Offer>> ExecuteFetchOffersRefreshCommandAsync()
+        {
+            Debug.WriteLine("REFRESHING VIEW");
+            IsRefreshing = true;
+            var response = await _offersEndpoint.IndexAsync<Offer>(Trade);
+            IsRefreshing = false;
+
+            return response.Result.ToList();
         }
 
         Command _fetchOffersCommand;
