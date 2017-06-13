@@ -8,10 +8,18 @@ using Xamarin.Forms;
 
 namespace Scheduleless.Services
 {
+	public enum TabPageIndex
+	{
+		YourSchedule = 0,
+		AvailableShifts,
+		YourTrades
+	}
+
 	public class NavigationService
 	{
 		private static readonly Lazy<NavigationService> lazy = new Lazy<NavigationService>(() => new NavigationService());
 		private CredentialsService _credentialsService;
+		private TabbedPage TabbedPage { get; set; } = new TabbedPage();
 
 		private NavigationService()
 		{
@@ -32,12 +40,15 @@ namespace Scheduleless.Services
 		{
 			Debug.WriteLine($"GetInitialScreen");
 
-            if (_credentialsService.IsAuthenticated)
+			TabbedPage = GetInitialTabbedPages() as TabbedPage;
+			Navigation = TabbedPage.Navigation;
+
+			if (_credentialsService.IsAuthenticated)
 			{
 				Debug.WriteLine($"CredentialsSerivce Is Authenticated");
-				var tabbedPage = GetInitialTabbedPages();
-				Navigation = tabbedPage.Navigation;
-				return tabbedPage;
+				var return_page = TabbedPage;
+				Navigation = TabbedPage.Navigation;
+				return return_page;
 			}
 			else
 			{
@@ -51,16 +62,37 @@ namespace Scheduleless.Services
 
 		public async Task DisplayShiftsPageAsync(bool isFromLoginScreen)
 		{
-			if (isFromLoginScreen)
-			{
-				var tabbedPage = GetInitialTabbedPages();
-				await Navigation.PushModalAsync(tabbedPage);
-			}
-			else
-			{
-				var page = new ShiftsPage();
-				await Navigation.PushModalAsync(page.WithinNavigationPage());
-			}
+			TabbedPage = GetInitialTabbedPages() as TabbedPage;
+			await Navigation.PushModalAsync(TabbedPage);
+		}
+
+		public async Task DisplayNewTradePageAsync(ContentPage sourcePage, FutureShift futureShift)
+		{
+			var page = DisplayNewPage(sourcePage, new NewTradePage(futureShift));
+			await sourcePage.Navigation.PushAsync(page);
+		}
+
+		public async Task DisplayCancelShiftPageAsync(ContentPage sourcePage, FutureShift futureShift)
+		{
+			var page = DisplayNewPage(sourcePage, new CancelShiftPage(futureShift));
+			await sourcePage.Navigation.PushAsync(page);
+		}
+
+		internal void DisplayFutureShiftDetailFor(ContentPage sourcePage, FutureShift futureShift)
+		{
+			var page = DisplayNewPage(sourcePage, new FutureShiftDetailPage(futureShift));
+			sourcePage.Navigation.PushAsync(page);
+		}
+
+		public async Task GoToRoot()
+		{
+			Debug.WriteLine($"Going to root of tab");
+			await Navigation.PopToRootAsync();
+		}
+
+		public void DisplayTabFor(TabPageIndex tabPageIndex)
+		{
+			TabbedPage.CurrentPage = TabbedPage.Children[(int)tabPageIndex];
 		}
 
 		private Page GetInitialTabbedPages()
@@ -68,6 +100,18 @@ namespace Scheduleless.Services
 			var tabbedPage = new MainTabbedPage();
 			tabbedPage.SetupTabbedPages();
 			return tabbedPage;
+		}
+
+		/// <summary>
+		/// Wrapper to set the Navigation so it knows where it is at in the nav stack.
+		/// </summary>
+		/// <returns>The new page.</returns>
+		/// <param name="sourcePage">Source page.</param>
+		/// <param name="destinationPage">Destination page.</param>
+		private ContentPage DisplayNewPage(ContentPage sourcePage, ContentPage destinationPage)
+		{
+			Navigation = sourcePage.Navigation;
+			return destinationPage;
 		}
 	}
 }
