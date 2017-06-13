@@ -16,6 +16,7 @@
 				BasedOn="{StaticResource whiteLabelStyle}" />
 		</ResourceDictionary>
 	</page:LoginPageXaml.Resources>
+    
 	<xfg:ContentPageGloss.BackgroundGradient>
 		<xfg:Gradient
 			Rotation="150">
@@ -27,115 +28,78 @@
 				StepPercentage="1" />
 		</xfg:Gradient>
 	</xfg:ContentPageGloss.BackgroundGradient>
+    
 	<page:LoginPageXaml.Content>
-		<ScrollView>
-			<Grid
-				VerticalOptions="Fill">
+        <StackLayout Orientation="Vertical" VerticalOptions="Fill">
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Start">
+                <Image
+                   Source="scheduleless-logo.png"
+                   HeightRequest="300"
+                   WidthRequest="300" />
+    		</StackLayout>
 
-				<Grid.RowDefinitions>
-					<RowDefinition
-						Height="300" />
-					<RowDefinition
-						Height="Auto" />
-					<RowDefinition
-						Height="200" />
-				</Grid.RowDefinitions>
+        
+			<StackLayout
+                VerticalOptions="CenterAndExpand"
+				Orientation="Vertical">
 
-               
-					<StackLayout
-                        Grid.Row="0"
-						Padding="12,0"
-						HorizontalOptions="Center"
-						VerticalOptions="Center">
-                        <Image
-                           Source="scheduleless-logo.png"
-                           HeightRequest="300"
-                           WidthRequest="300" />
-						
-					</StackLayout>
+                <StackLayout
+                    Orientation="Horizontal"
+                    Padding="20,0">
 
-                    
-					<StackLayout
-						Grid.Row="1"
-						Spacing="20"
-						VerticalOptions="Center">
-                        
-						<StackLayout
-							Orientation="Vertical"
-							Spacing="10"
-							Padding="24,20"
-							HorizontalOptions="Fill">
+                    <iconize:IconImage 
+                        HeightRequest="20"
+                        Margin="0, 0, 10, 0"
+                        Icon="fa-user-o" 
+                        IconColor="#ffffff" 
+                        WidthRequest="20" />
 
-                            <StackLayout
-                                Orientation="Horizontal"
-                                Spacing="10">
-
-                                <iconize:IconImage 
-                                    HeightRequest="20"
-                                    Margin="0, 0, 10, 0"
-                                    Icon="fa-user-o" 
-                                    IconColor="#ffffff" 
-                                    WidthRequest="20" />
-
-                            
-                                <controls:SimpleEntry
-    								x:Name="EmailEntry"
-    								Keyboard="Text"
-    								Placeholder="Email"
-    								Text="{Binding Email}"
-    								HeightRequest="45"
-    								HorizontalOptions="FillAndExpand" />
-							</StackLayout>
-
-                            <StackLayout
-                                Orientation="Horizontal"
-                                Spacing="10">
-                        
-                                <iconize:IconImage 
-                                    HeightRequest="20" 
-                                    Margin="0, 0, 10, 0"
-                                    Icon="fa-key" 
-                                    IconColor="#ffffff" 
-                                    WidthRequest="20" />
-                            
-                                <controls:SimpleEntry
-    								x:Name="PasswordEntry"
-    								Keyboard="Text"
-    								Placeholder="Password"
-    								IsPassword="true"
-    								Text="{Binding Password}"
-    								HeightRequest="45"
-    								HorizontalOptions="FillAndExpand" />
-                            </StackLayout>
-						</StackLayout>
-					</StackLayout>
-
-
-
-                    <StackLayout
-						Grid.Row="2"
-						VerticalOptions="Center"
-						Padding="24,0"
-						HorizontalOptions="Center">
-						<Label
-							x:Name="FooterLabel"
-							FontSize="Small"
-							XAlign="Center" />
-					</StackLayout>
-			
-				<StackLayout
-					Padding="24"
-					Grid.Row="2"
-					VerticalOptions="End"
-					Spacing="10">
-					<controls:SimpleButton
-						Command="{Binding LoginCommand}"
-						Style="{StaticResource wizardButton}"
-						Text="{i18n:Translate Login}"
-						VerticalOptions="EndAndExpand"
+                
+                    <controls:SimpleEntry
+						x:Name="EmailEntry"
+						Keyboard="Text"
+						Placeholder="Email"
+						Text="{Binding Email}"
+						HeightRequest="45"
 						HorizontalOptions="FillAndExpand" />
 				</StackLayout>
-			</Grid>
-		</ScrollView>
+
+    
+                <StackLayout
+                    Orientation="Horizontal"
+                    Padding="20,0"
+                    Spacing="10">
+            
+                    <iconize:IconImage 
+                        HeightRequest="20" 
+                        Margin="0, 0, 10, 0"
+                        Icon="fa-key" 
+                        IconColor="#ffffff" 
+                        WidthRequest="20" />
+                
+                    <controls:SimpleEntry
+						x:Name="PasswordEntry"
+						Keyboard="Text"
+						Placeholder="Password"
+						IsPassword="true"
+						Text="{Binding Password}"
+						HeightRequest="45"
+						HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+			</StackLayout>
+	
+
+        	<StackLayout
+        		Padding="24"
+        		VerticalOptions="End"
+        		Spacing="10">
+        		<controls:SimpleButton
+        			Command="{Binding LoginCommand}"
+        			Style="{StaticResource wizardButton}"
+        			Text="{i18n:Translate Login}"
+        			VerticalOptions="EndAndExpand"
+        			HorizontalOptions="FillAndExpand" />
+        	</StackLayout>
+	    </StackLayout>
 	</page:LoginPageXaml.Content>
 </page:LoginPageXaml>
