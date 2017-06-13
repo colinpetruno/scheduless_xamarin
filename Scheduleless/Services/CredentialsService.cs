@@ -51,6 +51,11 @@ namespace Scheduleless.Services
             get { return !Credentials?.OAuthData.IsExpired ?? false; }
         }
 
+        public string Token
+        {
+            get { return Credentials.OAuthData.AccessToken; }
+        }
+
         public void UpdateCredentials(OAuth oAuthData)
         {
             if (oAuthData == null)

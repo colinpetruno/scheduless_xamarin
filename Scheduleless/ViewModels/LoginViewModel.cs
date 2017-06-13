@@ -54,6 +54,7 @@ namespace Scheduleless.ViewModels
             }
             else
             {
+                // TODO: SHOW TOAST MESSAGE
                 Debug.WriteLine($"Login failed: {response.Exception}");
                 DialogService.HideLoading();
             }

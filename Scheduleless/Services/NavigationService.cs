@@ -60,6 +60,13 @@ namespace Scheduleless.Services
             }
         }
 
+
+        public async Task DisplayLoginScreenAsync()
+        {
+            var page = new LoginPage();
+            await Navigation.PushModalAsync(page);
+        }
+
         public async Task DisplayShiftsPageAsync(bool isFromLoginScreen)
         {
             TabbedPage = GetInitialTabbedPages() as TabbedPage;

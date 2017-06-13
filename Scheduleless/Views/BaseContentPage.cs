@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using Scheduleless.Helpers;
 using Scheduleless.Interfaces;
 using Scheduleless.Renderers;
@@ -52,6 +53,19 @@ namespace Scheduleless.Views
             BarBackgroundColor = Colors.NavigationBarColor;
             BarTextColor = Colors.NavigationBarTextColor;
             BackgroundColor = Color.White;
+
+            var item = new ToolbarItem
+            {
+                Text = "Log Out",
+                Command = new Command(this.LogOut),
+            };
+            ToolbarItems.Add(item);
+        }
+
+        private async void LogOut()
+        {
+            Debug.WriteLine("Tapped Log Out");
+            await AuthenticationService.Instance.LogoutAsync(true);
         }
 
         public void HandleAddToolbarItem(string imageName, string buttonText, Command action)
