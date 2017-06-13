@@ -31,18 +31,29 @@ namespace Scheduleless.iOS.Providers
 		{
 			// TODO: check if user is null
 
-			// iOS 10
-			var authOptions = UNAuthorizationOptions.Alert | UNAuthorizationOptions.Badge | UNAuthorizationOptions.Sound;
-			UNUserNotificationCenter.Current.RequestAuthorization(authOptions, (granted, error) =>
+			// Register your app for remote notifications.
+			if (UIDevice.CurrentDevice.CheckSystemVersion (10, 0)) 
 			{
-				if (requestAuthPermissionCallback != null)
+				// iOS 10
+				var authOptions = UNAuthorizationOptions.Alert | UNAuthorizationOptions.Badge | UNAuthorizationOptions.Sound;
+				UNUserNotificationCenter.Current.RequestAuthorization(authOptions, (granted, error) =>
 				{
-					requestAuthPermissionCallback(granted, Token);
-				}
-			});
+					if (requestAuthPermissionCallback != null)
+					{
+						requestAuthPermissionCallback(granted, Token);
+					}
+				});
 
-			// For iOS 10 display notification (sent via APNS)
-			UNUserNotificationCenter.Current.Delegate = AppDelegate.Instance;
+				// For iOS 10 display notification (sent via APNS)
+				UNUserNotificationCenter.Current.Delegate = AppDelegate.Instance;
+			} 
+			else 
+			{
+				// iOS 9 or before
+				var allNotificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound;
+				var settings = UIUserNotificationSettings.GetSettingsForTypes(allNotificationTypes, null);
+				UIApplication.SharedApplication.RegisterUserNotificationSettings (settings);
+			}
 
 			UIApplication.SharedApplication.RegisterForRemoteNotifications();
 
