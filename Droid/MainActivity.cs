@@ -19,7 +19,7 @@ namespace Scheduleless.Droid
               Theme = "@style/MyTheme",
               MainLauncher = true,
               ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
-              ScreenOrientation = ScreenOrientation.Landscape)]
+              ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         static MainActivity _instance = null;

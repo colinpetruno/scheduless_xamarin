@@ -6,6 +6,7 @@
 	xmlns:controls="clr-namespace:Scheduleless.Controls;assembly=Scheduleless"
 	xmlns:page="clr-namespace:Scheduleless.Views;assembly=Scheduleless"
     BackgroundColor="#ebf0f8"
+    NavigationPage.BackButtonTitle="Back"
 	Title="Shifts">
 	<page:ShiftsPageXaml.Content>
         <StackLayout Orientation="Vertical" IsVisible="{Binding DataLoaded}">

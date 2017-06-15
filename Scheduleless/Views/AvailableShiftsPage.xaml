@@ -5,6 +5,7 @@
   x:Class="Scheduleless.Views.AvailableShiftsPage"
   xmlns:controls="clr-namespace:Scheduleless.Controls;assembly=Scheduleless"
   xmlns:page="clr-namespace:Scheduleless.Views;assembly=Scheduleless"
+  NavigationPage.BackButtonTitle="Back"
   Title="Available Shifts">
   
 	<page:AvailableShiftsPageXaml.Content>

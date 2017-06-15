@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:Scheduleless;assembly=Scheduleless"
 	xmlns:controls="clr-namespace:Scheduleless.Controls;assembly=Scheduleless"
 	xmlns:page="clr-namespace:Scheduleless.Views;assembly=Scheduleless"
+    NavigationPage.BackButtonTitle="Back"
 	Title="My Trades">
     
 	<page:MyTradesPageXaml.Content>

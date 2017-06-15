@@ -33,7 +33,7 @@
         <StackLayout Orientation="Vertical" VerticalOptions="Fill">
             <StackLayout HorizontalOptions="Center" VerticalOptions="Start">
                 <Image
-                   Source="scheduleless-logo.png"
+                   Source="scheduleless_logo.png"
                    HeightRequest="300"
                    WidthRequest="300" />
     		</StackLayout>

@@ -5,6 +5,7 @@
   xmlns:page="clr-namespace:Scheduleless.Views;assembly=Scheduleless" 
   xmlns:controls="clr-namespace:Scheduleless.Controls;assembly=Scheduleless"
   x:Class="Scheduleless.Views.NewTradePage"
+  NavigationPage.BackButtonTitle="Back"
   BackgroundColor="#ebf0f8"
   Title="Trade Shift">
 	<page:NewTradePageXaml.Content>

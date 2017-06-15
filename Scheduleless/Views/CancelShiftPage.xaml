@@ -6,6 +6,7 @@
   xmlns:controls="clr-namespace:Scheduleless.Controls;assembly=Scheduleless"
   x:Class="Scheduleless.Views.CancelShiftPage"
   BackgroundColor="#ebf0f8"
+  NavigationPage.BackButtonTitle="Back"
   Title="Cancel Shift">
 	<page:CancelShiftPageXaml.Content>
         <StackLayout 

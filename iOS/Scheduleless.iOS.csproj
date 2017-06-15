@@ -226,7 +226,7 @@
     <BundleResource Include="Resources\open-iconic.ttf" />
     <BundleResource Include="Resources\fontawesome.ttf" />
     <BundleResource Include="GoogleService-Info.plist" />
-    <BundleResource Include="Resources\scheduleless-logo.png" />
+    <BundleResource Include="Resources\scheduleless_logo.png" />
     <BundleResource Include="Resources\scheduleless-splash-1.png" />
   </ItemGroup>
   <ItemGroup>

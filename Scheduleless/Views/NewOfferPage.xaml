@@ -6,6 +6,7 @@
   xmlns:controls="clr-namespace:Scheduleless.Controls;assembly=Scheduleless"
   x:Class="Scheduleless.Views.NewOfferPage"
   BackgroundColor="#ebf0f8"
+  NavigationPage.BackButtonTitle="Back"
   Title="Make an Offer">
 	<page:NewOfferPageXaml.Content>
       <StackLayout 

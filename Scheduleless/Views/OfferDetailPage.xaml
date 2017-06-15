@@ -5,6 +5,7 @@
 	x:Class="Scheduleless.Views.OfferDetailPage"
 	xmlns:page="clr-namespace:Scheduleless.Views;assembly=Scheduleless"
     BackgroundColor="#ebf0f8"
+    NavigationPage.BackButtonTitle="Back"
 	Title="Offer">
 	<page:OfferDetailPageXaml.Content>
         <StackLayout Padding="5,10">
