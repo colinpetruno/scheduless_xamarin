@@ -16,6 +16,7 @@
             IsRefreshing="{Binding IsRefreshing}"
             HasUnevenRows="true"
             SeparatorVisibility="None"
+            VerticalOptions="StartAndExpand"
 			BackgroundColor="#ebf0f8">
 			<ListView.ItemTemplate>
 				<DataTemplate>
@@ -24,10 +25,12 @@
 				</DataTemplate>
 			</ListView.ItemTemplate>
 			<ListView.Footer>
-				<StackLayout Padding="0, 20, 0, 0">
+				<StackLayout Padding="0, 20, 0, 0" VerticalOptions="CenterAndExpand">
                     <Label 
+                      Margin="25, 150, 25, 0"
                       Text="No one has offered any shifts for yours yet. We will let you know when they do!" 
                       HorizontalOptions="Center"
+                      VerticalOptions="CenterAndExpand"
                       TextColor="#41454b"
                       HorizontalTextAlignment="Center"
                       IsVisible="{Binding Offers, Converter={StaticResource dataSourceConverter}}" />

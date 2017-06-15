@@ -13,7 +13,7 @@
           Padding="5,10"
           Orientation="Vertical">
         
-            <StackLayout VerticalOptions="Start">
+            <StackLayout VerticalOptions="Start" Margin="20, 25, 20, 0">
                 <Label 
                   TextColor="#41454b" 
                   FontSize = "20" 
@@ -21,13 +21,13 @@
                   Text="Let us know why are you canceling this shift." />
              </StackLayout>
             
-             <StackLayout VerticalOptions="Start">
+             <StackLayout VerticalOptions="Start"  Margin="20, 0, 20, 0">
                 <Editor Text="{Binding Note}" 
                    HeightRequest="150" 
                    VerticalOptions="Start" /> 
              </StackLayout>
              
-             <StackLayout VerticalOptions="StartAndExpand">
+             <StackLayout VerticalOptions="StartAndExpand"  Margin="20, 5, 20, 0">
                 <Label 
                   TextColor="#d9534f" 
                   FontSize = "14" 

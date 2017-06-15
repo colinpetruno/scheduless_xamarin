@@ -13,7 +13,7 @@
         Padding="5,10"
         Orientation="Vertical">
 
-         <StackLayout VerticalOptions="Start" Margin="0,15,0,0">
+         <StackLayout VerticalOptions="Start" Margin="20, 25, 20, 0">
              <Label 
                TextColor="#41454b" 
                FontSize = "16"
@@ -22,11 +22,11 @@
                Text="Select one of your shifts to trade with your coworker." />
          </StackLayout>
          
-         <StackLayout VerticalOptions="Start">
+         <StackLayout VerticalOptions="Start"  Margin="20, 0, 20, 0">
             <Picker ItemsSource="{Binding AvailableShifts}" SelectedIndex="{Binding SelectedShiftIndex}" />
          </StackLayout>
          
-         <StackLayout VerticalOptions="Start" Margin="0,15,0,0">
+         <StackLayout VerticalOptions="Start"  Margin="20, 50, 20, 0">
              <Label 
                TextColor="#41454b" 
                FontSize = "16"
@@ -35,7 +35,7 @@
                Text="Add a note that your coworker know what else they owe you!" />
          </StackLayout>
            
-         <StackLayout VerticalOptions="StartAndExpand">  
+         <StackLayout VerticalOptions="StartAndExpand"  Margin="20, 0, 20, 0">  
             <Editor Text="{Binding Note}" HeightRequest="150" VerticalOptions="Start" /> 
          </StackLayout>
          
