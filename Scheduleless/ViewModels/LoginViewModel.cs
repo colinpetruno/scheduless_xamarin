@@ -43,6 +43,18 @@ namespace Scheduleless.ViewModels
 				return;
 			}
 
+			if (!IsFieldValid(Email))
+			{
+				"Please enter an Email".ToastError();
+				return;
+			}
+
+			if (!IsFieldValid(Password))
+			{
+				"Please enter your password".ToastError();
+				return;
+			}
+
 			IsBusy = true;
 
 			DialogService.ShowLoading(TranslationService.Localize(LocalizationConstants.SigningIn));

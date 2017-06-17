@@ -28,7 +28,7 @@ namespace Scheduleless.ViewModels
 		private OffersEndpoint _offersEndpoint;
 		private string _note = string.Empty;
 
-		private int _selectedShiftIndex = 0;
+		private int _selectedShiftIndex = -1;
 		public int SelectedShiftIndex
 		{
 			get { return _selectedShiftIndex; }
@@ -57,6 +57,18 @@ namespace Scheduleless.ViewModels
 		{
 			if (IsBusy)
 			{
+				return;
+			}
+
+			if (SelectedShiftIndex == -1)
+			{
+				"Please select one of your shifts".ToastError();
+				return;
+			}
+
+			if (!IsFieldValid(Note))
+			{
+				"Please add a note so your coworker know what else they owe you".ToastError();
 				return;
 			}
 

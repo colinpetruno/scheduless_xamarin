@@ -43,6 +43,12 @@ namespace Scheduleless.ViewModels
 				return;
 			}
 
+			if (!IsFieldValid(Note))
+			{
+				"Please enter add a note of why you want to trade your shift".ToastError();
+				return;
+			}
+
 			IsBusy = true;
 
 			DialogService.ShowLoading();
