@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduleless.iOS", "iOS\Sch
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduleless.Android", "Droid\Scheduleless.Android.csproj", "{21F4389F-D002-43C9-97F1-43C7D3FB8BF8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageBarLib", "SupportingProjects\iOS\MessageBarLib\MessageBarLib.csproj", "{2848ABC8-92CF-4D70-BFD1-218E6D00D8BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,5 +55,17 @@ Global
 		{21F4389F-D002-43C9-97F1-43C7D3FB8BF8}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{21F4389F-D002-43C9-97F1-43C7D3FB8BF8}.Debug|iPhone.ActiveCfg = Debug|Any CPU
 		{21F4389F-D002-43C9-97F1-43C7D3FB8BF8}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{2848ABC8-92CF-4D70-BFD1-218E6D00D8BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2848ABC8-92CF-4D70-BFD1-218E6D00D8BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2848ABC8-92CF-4D70-BFD1-218E6D00D8BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2848ABC8-92CF-4D70-BFD1-218E6D00D8BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2848ABC8-92CF-4D70-BFD1-218E6D00D8BD}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{2848ABC8-92CF-4D70-BFD1-218E6D00D8BD}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{2848ABC8-92CF-4D70-BFD1-218E6D00D8BD}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{2848ABC8-92CF-4D70-BFD1-218E6D00D8BD}.Release|iPhone.Build.0 = Release|Any CPU
+		{2848ABC8-92CF-4D70-BFD1-218E6D00D8BD}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{2848ABC8-92CF-4D70-BFD1-218E6D00D8BD}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{2848ABC8-92CF-4D70-BFD1-218E6D00D8BD}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{2848ABC8-92CF-4D70-BFD1-218E6D00D8BD}.Debug|iPhone.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal
