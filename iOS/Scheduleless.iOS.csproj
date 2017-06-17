@@ -172,6 +172,10 @@
       <Project>{275FBE41-67A5-4DAB-BE84-74230EC0F944}</Project>
       <Name>Scheduleless</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SupportingProjects\iOS\MessageBarLib\MessageBarLib.csproj">
+      <Project>{2848ABC8-92CF-4D70-BFD1-218E6D00D8BD}</Project>
+      <Name>MessageBarLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -221,6 +225,7 @@
     <Compile Include="Fonts\FontAwesomeCollection.cs" />
     <Compile Include="Fonts\FontAwesomeModule.cs" />
     <Compile Include="Providers\PushNotificationService_iOS.cs" />
+    <Compile Include="Providers\ToastNotifier_iOS.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\open-iconic.ttf" />

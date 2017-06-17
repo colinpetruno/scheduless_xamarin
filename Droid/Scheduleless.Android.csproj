@@ -195,6 +195,7 @@
     <Compile Include="Fonts\FontAwesomeModule.cs" />
     <Compile Include="Providers\PushNotificationService_Droid.cs" />
     <Compile Include="Services\MyFirebaseIIDService.cs" />
+    <Compile Include="Providers\ToastNotifier_Droid.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

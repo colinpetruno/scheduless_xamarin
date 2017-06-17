@@ -83,10 +83,10 @@
     <Compile Include="Controls\SimpleEntry.cs" />
     <Compile Include="Interfaces\IApiRequest.cs" />
     <Compile Include="Models\ApiResponse.cs" />
-    <Compile Include="Extensions\JToken.cs" />
+    <Compile Include="Extensions\JTokenExtensions.cs" />
     <Compile Include="Endpoints\OAuthTokenEndpoint.cs" />
     <Compile Include="Models\OAuth.cs" />
-    <Compile Include="Extensions\DateTime.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Models\ApiRequest.cs" />
     <Compile Include="Interfaces\IOAuthTokenEndpoint.cs" />
     <Compile Include="Interfaces\IOAuthTokenResponse.cs" />
@@ -169,6 +169,8 @@
     </Compile>
     <Compile Include="ViewModels\NewOfferViewModel.cs" />
     <Compile Include="Endpoints\FeaturedShiftEndpoint.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Interfaces\IToastNotifier.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="XFGloss">
