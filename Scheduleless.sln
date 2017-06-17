@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduleless", "Scheduleles
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduleless.iOS", "iOS\Scheduleless.iOS.csproj", "{A71AD96D-DD42-47EC-83A5-297C81152055}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduleless.Droid", "Droid\Scheduleless.Droid.csproj", "{21F4389F-D002-43C9-97F1-43C7D3FB8BF8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduleless.Android", "Droid\Scheduleless.Android.csproj", "{21F4389F-D002-43C9-97F1-43C7D3FB8BF8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
