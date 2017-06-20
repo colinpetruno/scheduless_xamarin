@@ -31,11 +31,36 @@
 			name="windowActionModeOverlay">true</item>
 		<item
 			name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
+		<item
+			name="android:actionMenuTextColor">#747c85</item>
+	</style>
+	<style
+		name="MyApp.ActionBarTheme"
+		parent="ThemeOverlay.AppCompat.ActionBar">
+		<!-- THIS is where you can color the arrow! -->
+		<item
+			name="colorControlNormal">#747c85</item>
 	</style>
 	<style
 		name="AppCompatDialogStyle"
 		parent="Theme.AppCompat.Light.Dialog">
 		<item
 			name="colorAccent">#FF4081</item>
+	</style>
+	<style
+		name="LaunchTheme"
+		parent="android:Theme">
+		<item
+			name="android:windowNoTitle">true</item>
+		<item
+			name="android:windowIsTranslucent">false</item>
+		<item
+			name="android:windowIsFloating">false</item>
+		<item
+			name="android:backgroundDimEnabled">true</item>
+		<item
+			name="android:windowFullscreen">true</item>
+		<item
+			name="android:windowBackground">@drawable/LaunchView</item>
 	</style>
 </resources>

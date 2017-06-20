@@ -196,6 +196,7 @@
     <Compile Include="Providers\PushNotificationService_Droid.cs" />
     <Compile Include="Services\MyFirebaseIIDService.cs" />
     <Compile Include="Providers\ToastNotifier_Droid.cs" />
+    <Compile Include="LaunchActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -206,12 +207,14 @@
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Tabbar.axml" />
     <AndroidResource Include="Resources\layout\Toolbar.axml" />
-    <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\drawable\icon.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable\scheduleless_logo.png" />
+    <AndroidResource Include="Resources\drawable\LaunchView.axml" />
+    <AndroidResource Include="Resources\values-v21\styles.xml" />
+    <AndroidResource Include="Resources\drawable\splash.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Providers\" />
@@ -219,6 +222,8 @@
     <Folder Include="Localization\" />
     <Folder Include="Fonts\" />
     <Folder Include="Services\" />
+    <Folder Include="Resources\values-v21\" />
+    <Folder Include="Resources\values\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\fontawesome.ttf" />

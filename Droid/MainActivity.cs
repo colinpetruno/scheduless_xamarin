@@ -17,7 +17,6 @@ namespace Scheduleless.Droid
 	[Activity(Label = "Scheduleless",
 			  Icon = "@drawable/icon",
 			  Theme = "@style/MyTheme",
-			  MainLauncher = true,
 			  ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
 			  ScreenOrientation = ScreenOrientation.Portrait)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
