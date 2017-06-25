@@ -11,19 +11,18 @@ namespace Scheduleless.ViewModels
 {
 	public class LoginViewModel : BaseViewModel
 	{
-		// FIXME: change back
-		private string _email = "seedling.14@example.com";
-		//private string _email = string.Empty;
-
+		// INFO: uncomment for debug
+		//private string _email = "seedling.14@example.com";
+		private string _email = string.Empty;
 		public string Email
 		{
 			get { return _email; }
 			set { SetProperty(ref _email, value); }
 		}
 
-		// FIXME: change back
-		private string _password = "password";
-		//private string _password = string.Empty;
+		// INFO: for debug
+		//private string _password = "password";
+		private string _password = string.Empty;
 		public string Password
 		{
 			get { return _password; }
