@@ -36,6 +36,13 @@ namespace Scheduleless.ViewModels
 			get { return _cancelShiftCommand ?? (_cancelShiftCommand = new Command(async () => await ExecuteCancelShiftCommandAsync())); }
 		}
 
+		private bool _shouldDisplayFutureShifts = false;
+		public bool ShouldDisplayFutureShifts
+		{
+			get { return _shouldDisplayFutureShifts; }
+			set { SetProperty(ref _shouldDisplayFutureShifts, value); }
+		}
+
 		private async Task ExecuteCancelShiftCommandAsync()
 		{
 			if (IsBusy)

@@ -40,8 +40,12 @@ namespace Scheduleless.ViewModels
 			set { SetProperty(ref _featuredShift, value); }
 		}
 
-
-
+		private bool _shouldDisplayFeaturedShift = false;
+		public bool ShouldDisplayFeaturedShift
+		{
+			get { return _shouldDisplayFeaturedShift; }
+			set { SetProperty(ref _shouldDisplayFeaturedShift, value); }
+		}
 
 		public string FeaturedShiftMonth
 		{
@@ -102,9 +106,27 @@ namespace Scheduleless.ViewModels
 			}
 
 			DialogService.ShowLoading(string.Empty);
-			await Task.WhenAll(MakeFutureShiftsEndpointIndexCall(), MakeFeaturedShiftEndpointFeaturedCall());
-			DialogService.HideLoading();
-			DataLoaded = true;
+			try
+			{
+				await Task.WhenAll(MakeFutureShiftsEndpointIndexCall(), MakeFeaturedShiftEndpointFeaturedCall());
+				DialogService.HideLoading();
+				DataLoaded = true;
+
+				if (FeaturedShift != null || (FutureShifts != null && FutureShifts.Count > 0))
+				{
+					ShouldDisplayFeaturedShift = true;
+				}
+			}
+			catch (Exception ex)
+			{
+				if (FeaturedShift != null || (FutureShifts != null && FutureShifts.Count > 0))
+				{
+					ShouldDisplayFeaturedShift = true;
+				}
+
+				Debug.WriteLine(ex);
+			}
+
 			IsBusy = false;
 		}
 
@@ -127,6 +149,7 @@ namespace Scheduleless.ViewModels
 		{
 			get { return _checkInCommand ?? (_checkInCommand = new Command(async () => await ExecuteCheckInCommandAsync())); }
 		}
+
 
 		private async Task ExecuteCheckInCommandAsync()
 		{
