@@ -1,6 +1,7 @@
 ﻿using System;
 using Android.Gms.Common;
 using Firebase.Iid;
+using Scheduleless.Endpoints;
 using Scheduleless.Interfaces;
 
 [assembly: Xamarin.Forms.Dependency(typeof(Scheduleless.Droid.Providers.PushNotificationService_Droid))]
@@ -53,6 +54,16 @@ namespace Scheduleless.Droid.Providers
 			if (requestAuthPermissionCallback != null)
 			{
 				requestAuthPermissionCallback(IsPlayServicesAvailable(), Token);
+			}
+
+			// on startup, after authenticated, call OnTokenRefresh to send a token to the server
+			if (!string.IsNullOrEmpty(Token))
+			{
+				OnTokenRefresh(Token, async (registeredToken) =>
+				{
+					var endpoint = new PushNotificationsEndpoint();
+					await endpoint.UpdateAsync(registeredToken);
+				});
 			}
 		}
 

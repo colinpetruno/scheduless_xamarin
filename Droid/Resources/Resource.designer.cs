@@ -5906,14 +5906,26 @@ namespace Scheduleless.Droid
 			// aapt resource value: 0x7f08000f
 			public const int common_signin_button_text_long = 2131230735;
 			
-			// aapt resource value: 0x7f08009f
-			public const int firebase_database_url = 2131230879;
+			// aapt resource value: 0x7f0800a0
+			public const int default_web_client_id = 2131230880;
+			
+			// aapt resource value: 0x7f0800a1
+			public const int firebase_database_url = 2131230881;
 			
 			// aapt resource value: 0x7f08009e
 			public const int gcm_defaultSenderId = 2131230878;
 			
-			// aapt resource value: 0x7f0800a0
-			public const int google_storage_bucket = 2131230880;
+			// aapt resource value: 0x7f0800a2
+			public const int google_api_key = 2131230882;
+			
+			// aapt resource value: 0x7f08009f
+			public const int google_app_id = 2131230879;
+			
+			// aapt resource value: 0x7f0800a3
+			public const int google_crash_reporting_api_key = 2131230883;
+			
+			// aapt resource value: 0x7f0800a4
+			public const int google_storage_bucket = 2131230884;
 			
 			// aapt resource value: 0x7f080012
 			public const int hockeyapp_crash_dialog_app_name_fallback = 2131230738;

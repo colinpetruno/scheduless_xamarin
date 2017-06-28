@@ -33,12 +33,11 @@ namespace Scheduleless.Services
 		public void OnTokenRefresh(object deviceToken)
 		{
 			Debug.WriteLine("OnTokenRefresh");
-			// TODO: Make call to server
 
-			//if (FirebaseService.Instance.CurrentUser == null)
-			//{
-			//	return;
-			//}
+			if (!AuthenticationService.Instance.IsAuthenticated)
+			{
+				return;
+			}
 
 			DependencyService.Get<IPushNotificationService>().OnTokenRefresh(
 				deviceToken,

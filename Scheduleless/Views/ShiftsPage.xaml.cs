@@ -8,56 +8,55 @@ using Xamarin.Forms;
 
 namespace Scheduleless.Views
 {
-    public partial class ShiftsPage : ShiftsPageXaml
-    {
-        public ShiftsPage()
-        {
-            Initialize();
-        }
+	public partial class ShiftsPage : ShiftsPageXaml
+	{
+		public ShiftsPage()
+		{
+			Initialize();
+		}
 
-        protected override void Initialize()
-        {
-            InitializeComponent();
+		protected override void Initialize()
+		{
+			InitializeComponent();
 
-            SetupEventHandlers();
-        }
+			SetupEventHandlers();
+		}
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
+		protected override void OnAppearing()
+		{
+			base.OnAppearing();
 
-            if (ViewModel == null || ViewModel.IsBusy)
-            {
-                return;
-            }
+			if (ViewModel == null || ViewModel.IsBusy)
+			{
+				return;
+			}
 
-            ViewModel.FetchAllDataCommand.Execute(null);
-            PushNotificationService.Instance.HandleRegister(null);
-        }
+			ViewModel.FetchAllDataCommand.Execute(null);
+		}
 
-        private void SetupEventHandlers()
-        {
-            FutureShiftsListView.ItemSelected += (s, e) =>
-            {
-                FutureShiftsListView.SelectedItem = null;
-                if (e.SelectedItem == null)
-                {
-                    return; // ItemSelected is called on deselection, which results in SelectedItem being set to null
-                }
+		private void SetupEventHandlers()
+		{
+			FutureShiftsListView.ItemSelected += (s, e) =>
+			{
+				FutureShiftsListView.SelectedItem = null;
+				if (e.SelectedItem == null)
+				{
+					return; // ItemSelected is called on deselection, which results in SelectedItem being set to null
+				}
 
-                var futureShift = e.SelectedItem as FutureShift;
-                if (futureShift != null)
-                {
-                    NavigationService.Instance.DisplayFutureShiftDetailFor(this, futureShift);
-                }
-            };
-        }
+				var futureShift = e.SelectedItem as FutureShift;
+				if (futureShift != null)
+				{
+					NavigationService.Instance.DisplayFutureShiftDetailFor(this, futureShift);
+				}
+			};
+		}
 
-        public void TappedCheckInOutButton(object sender, EventArgs e)
-        {
+		public void TappedCheckInOutButton(object sender, EventArgs e)
+		{
 
-        }
-    }
+		}
+	}
 
-    public partial class ShiftsPageXaml : BaseContentPage<ShiftsViewModel> { }
+	public partial class ShiftsPageXaml : BaseContentPage<ShiftsViewModel> { }
 }
