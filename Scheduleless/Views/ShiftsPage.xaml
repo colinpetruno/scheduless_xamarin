@@ -10,78 +10,78 @@
     NavigationPage.BackButtonTitle="Back"
 	Title="Shifts">
 	<page:ShiftsPageXaml.Content>
-		<StackLayout Orientation="Vertical">
-			<StackLayout
-				IsVisible="{Binding ShouldDisplayFeaturedShift, Converter={x:Static local:IsNotNullToBoolConverter.Instance}}"
-				VerticalOptions="CenterAndExpand">
-				<Label
-					x:Name="EmptyListLabel"
-					Text="[place holder text for when there are no shifts]"
-					HorizontalTextAlignment="Center"
+        <StackLayout Orientation="Vertical" >
+            <StackLayout Orientation="Vertical" IsVisible="{Binding ShouldDisplayFeaturedShift}">
+                <StackLayout    
+                  BackgroundColor="#ebf0f8"
+                  Margin="20"
+                  VerticalOptions="Start">
+                   <StackLayout 
+                     BackgroundColor="#5f97ff"
+                     HorizontalOptions="FillAndExpand"
+                     Padding="15">
+                        <StackLayout 
+                          BackgroundColor="White"  
+                          VerticalOptions="CenterAndExpand"
+                          HorizontalOptions="FillAndExpand"
+                          Padding="10">
+                            <Label 
+                              TextColor="#5f97ff" 
+                              FontSize = "35" 
+                              Text="{Binding FeaturedShift.FeaturedDate}" 
+                              HorizontalOptions="Center"  
+                              Margin="0, 20, 0, 0" />
+                            <Label 
+                              TextColor="#41454b" 
+                              FontSize = "20" 
+                              Text="{Binding FeaturedShift.Label}" 
+                              HorizontalOptions="Center" />
+                            <controls:SimpleButton
+                                Text="Check In"
+                                TextColor="#ffffff"
+                                BorderColor="#ffb329"
+                                BackgroundColor="#ffbc42"
+                                Command="{Binding CheckInCommand}"
+                                IsVisible="{Binding FeaturedShift.CheckedOut}"
+                                BorderWidth="1" />
+                            <controls:SimpleButton
+                                Text="Check Out"
+                                TextColor="#747c85"
+                                BorderColor="#a0acb9"
+                                BackgroundColor="#ffffff"
+                                Command="{Binding CheckOutCommand}"
+                                IsVisible="{Binding FeaturedShift.CheckedIn}"
+                                BorderWidth="1" />
+                        </StackLayout>
+                   </StackLayout>
+                 </StackLayout>  
+            </StackLayout>
+			<StackLayout Orientation="Vertical">
+				<StackLayout
+					IsVisible="{Binding ShouldDisplayEmptyShiftsView}"
 					VerticalOptions="CenterAndExpand"
-					HorizontalOptions="CenterAndExpand"
-					Margin="5">
-				</Label>
-				<Label
-					Text="[detailed text placeholder]"
-					HorizontalTextAlignment="Center"
-					VerticalOptions="CenterAndExpand"
-					HorizontalOptions="CenterAndExpand"
-					Margin="5">
-				</Label>
-			</StackLayout>
-	        <StackLayout Orientation="Vertical" 
-				IsVisible="{Binding ShouldDisplayFeaturedShift}">
-	            <StackLayout Orientation="Vertical">
-	                <StackLayout    
-	                  BackgroundColor="#ebf0f8"
-	                  Margin="20"
-	                  VerticalOptions="Start">
-	                   <StackLayout 
-	                     BackgroundColor="#5f97ff"
-	                     HorizontalOptions="FillAndExpand"
-	                     Padding="15">
-	                        <StackLayout 
-	                          BackgroundColor="White"  
-	                          VerticalOptions="CenterAndExpand"
-	                          HorizontalOptions="FillAndExpand"
-	                          Padding="10">
-	                            <Label 
-	                              TextColor="#5f97ff" 
-	                              FontSize = "35" 
-	                              Text="{Binding FeaturedShift.FeaturedDate}" 
-	                              HorizontalOptions="Center"  
-	                              Margin="0, 20, 0, 0" />
-	                            <Label 
-	                              TextColor="#41454b" 
-	                              FontSize = "20" 
-	                              Text="{Binding FeaturedShift.Label}" 
-	                              HorizontalOptions="Center" />
-	                            <controls:SimpleButton
-	                                Text="Check In"
-	                                TextColor="#ffffff"
-	                                BorderColor="#ffb329"
-	                                BackgroundColor="#ffbc42"
-	                                Command="{Binding CheckInCommand}"
-	                                IsVisible="{Binding FeaturedShift.CheckedOut}"
-	                                BorderWidth="1" />
-	                                
-	                            <controls:SimpleButton
-	                                Text="Check Out"
-	                                TextColor="#747c85"
-	                                BorderColor="#a0acb9"
-	                                BackgroundColor="#ffffff"
-	                                Command="{Binding CheckOutCommand}"
-	                                IsVisible="{Binding FeaturedShift.CheckedIn}"
-	                                BorderWidth="1" />
-	                        </StackLayout>
-	                   </StackLayout>
-	                 </StackLayout>  
-	            </StackLayout>
+					Padding="0,50,0,0">
+					<Label
+						x:Name="EmptyListLabel"
+						Text="There are no future shifts"
+						HorizontalTextAlignment="Center"
+						VerticalOptions="CenterAndExpand"
+						HorizontalOptions="CenterAndExpand"
+						Margin="5">
+					</Label>
+					<Label
+						Text="Please check back a a little bit later!"
+						HorizontalTextAlignment="Center"
+						VerticalOptions="CenterAndExpand"
+						HorizontalOptions="CenterAndExpand"
+						Margin="5">
+					</Label>
+				</StackLayout>
 	    		<ListView
 	    			x:Name="FutureShiftsListView"
 	    			ItemsSource="{Binding FutureShifts}"
 	    			IsPullToRefreshEnabled="true"
+					IsVisible="{Binding FutureShifts, Converter={x:Static local:IsNotEmptyConverter.Instance}}"
 	                RefreshCommand="{Binding RefreshCommand}" 
 	                IsRefreshing="{Binding IsRefreshing}"
 	                HasUnevenRows="true"
@@ -99,6 +99,6 @@
 	    			</ListView.Footer>
 	    		</ListView>
 	        </StackLayout>
-			</StackLayout>
+		</StackLayout>
 	</page:ShiftsPageXaml.Content>
 </page:ShiftsPageXaml>

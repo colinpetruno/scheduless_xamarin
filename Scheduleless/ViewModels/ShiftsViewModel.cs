@@ -47,6 +47,13 @@ namespace Scheduleless.ViewModels
 			set { SetProperty(ref _shouldDisplayFeaturedShift, value); }
 		}
 
+		private bool _shouldDisplayEmptyShiftsView = false;
+		public bool ShouldDisplayEmptyShiftsView
+		{
+			get { return _shouldDisplayEmptyShiftsView; }
+			set { SetProperty(ref _shouldDisplayEmptyShiftsView, value); }
+		}
+
 		public string FeaturedShiftMonth
 		{
 			get
@@ -112,17 +119,11 @@ namespace Scheduleless.ViewModels
 				DialogService.HideLoading();
 				DataLoaded = true;
 
-				if (FeaturedShift != null || (FutureShifts != null && FutureShifts.Count > 0))
-				{
-					ShouldDisplayFeaturedShift = true;
-				}
+				HandlePageDisplay();
 			}
 			catch (Exception ex)
 			{
-				if (FeaturedShift != null || (FutureShifts != null && FutureShifts.Count > 0))
-				{
-					ShouldDisplayFeaturedShift = true;
-				}
+				HandlePageDisplay();
 
 				Debug.WriteLine(ex);
 			}
@@ -130,7 +131,28 @@ namespace Scheduleless.ViewModels
 			IsBusy = false;
 		}
 
-		async Task<List<FutureShift>> ExecuteFetchShiftsLiteAsync()
+		private void HandlePageDisplay()
+		{
+			if (FutureShifts == null || FutureShifts.Count == 0)
+			{
+				ShouldDisplayEmptyShiftsView = true;
+			}
+			else
+			{
+				ShouldDisplayEmptyShiftsView = false;
+			}
+
+			if (FeaturedShift != null || (FutureShifts != null && FutureShifts.Count > 0))
+			{
+				ShouldDisplayFeaturedShift = true;
+			}
+			else
+			{
+				ShouldDisplayFeaturedShift = false;
+			}
+		}
+
+		private async Task<List<FutureShift>> ExecuteFetchShiftsLiteAsync()
 		{
 			var response = await _futureShiftsEndpoint.IndexAsync<FutureShift>();
 
