@@ -190,6 +190,9 @@ namespace Scheduleless.Droid
 			global::HockeyApp.Resource.Style.HockeyApp_EditTextStyle = global::Scheduleless.Droid.Resource.Style.HockeyApp_EditTextStyle;
 			global::HockeyApp.Resource.Style.HockeyApp_SingleLineInputStyle = global::Scheduleless.Droid.Resource.Style.HockeyApp_SingleLineInputStyle;
 			global::Splat.Resource.String.library_name = global::Scheduleless.Droid.Resource.String.library_name;
+			global::Xamarin.Auth.Resource.Animation.slide_in_right = global::Scheduleless.Droid.Resource.Animation.slide_in_right;
+			global::Xamarin.Auth.Resource.Animation.slide_out_left = global::Scheduleless.Droid.Resource.Animation.slide_out_left;
+			global::Xamarin.Auth.Resource.Drawable.ic_arrow_back = global::Scheduleless.Droid.Resource.Drawable.ic_arrow_back;
 			global::Xamarin.Auth.Resource.Id.webview = global::Scheduleless.Droid.Resource.Id.webview;
 			global::Xamarin.Auth.Resource.Layout.activity_webview = global::Scheduleless.Droid.Resource.Layout.activity_webview;
 			global::Xamarin.Auth.Resource.String.library_name = global::Scheduleless.Droid.Resource.String.library_name;
@@ -5933,6 +5936,27 @@ namespace Scheduleless.Droid
 			// aapt resource value: 0x7f070011
 			public const int common_signin_button_text_long = 2131165201;
 			
+			// aapt resource value: 0x7f0700a0
+			public const int default_web_client_id = 2131165344;
+
+			// aapt resource value: 0x7f0700a1
+			public const int firebase_database_url = 2131165345;
+
+			// aapt resource value: 0x7f07009e
+			public const int gcm_defaultSenderId = 2131165342;
+
+			// aapt resource value: 0x7f0700a2
+			public const int google_api_key = 2131165346;
+
+			// aapt resource value: 0x7f07009f
+			public const int google_app_id = 2131165343;
+
+			// aapt resource value: 0x7f0700a3
+			public const int google_crash_reporting_api_key = 2131165347;
+
+			// aapt resource value: 0x7f0700a4
+			public const int google_storage_bucket = 2131165348;
+
 			// aapt resource value: 0x7f070051
 			public const int hockeyapp_crash_dialog_app_name_fallback = 2131165265;
 			

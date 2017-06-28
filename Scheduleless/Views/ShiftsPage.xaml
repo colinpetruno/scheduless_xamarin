@@ -78,6 +78,7 @@
 					</Label>
 					<Button Text="Refresh" Command="{Binding RefreshCommand}" />
 				</StackLayout>
+
 	    		<ListView
 	    			x:Name="FutureShiftsListView"
 	    			ItemsSource="{Binding FutureShifts}"

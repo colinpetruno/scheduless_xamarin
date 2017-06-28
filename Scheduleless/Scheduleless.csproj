@@ -63,6 +63,9 @@
     <EmbeddedResource Include="Views\NewOfferPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\TimeOffIndexPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -174,6 +177,13 @@
     <Compile Include="Helpers\Converters.cs" />
     <Compile Include="Services\RequestCacheService.cs" />
     <Compile Include="Models\RequestCache.cs" />
+    <Compile Include="Views\TimeOffIndexPage.xaml.cs">
+      <DependentUpon>TimeOffIndexPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\TimeOffIndexViewModel.cs" />
+    <Compile Include="Endpoints\TimeOffRequestEndpoint.cs" />
+    <Compile Include="Models\TimeOffRequest.cs" />
+    <Compile Include="Controls\TimeOffRequestCell.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="XFGloss">

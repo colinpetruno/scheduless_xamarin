@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page:TimeOffIndexPageXaml
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="Scheduleless.Views.TimeOffIndexPage"
+	xmlns:controls="clr-namespace:Scheduleless.Controls;assembly=Scheduleless"
+	xmlns:local="clr-namespace:Scheduleless.Helpers;assembly=Scheduleless"
+	xmlns:page="clr-namespace:Scheduleless.Views;assembly=Scheduleless"
+    BackgroundColor="#ebf0f8"
+    NavigationPage.BackButtonTitle="Back"
+	Title="Time Off Requests">
+	<page:TimeOffIndexPageXaml.Content>
+		<StackLayout Orientation="Vertical">
+			<ListView
+				x:Name="TimeOffRequestsListView"
+				ItemsSource="{Binding TimeOffRequests}"
+				IsPullToRefreshEnabled="true"
+	                RefreshCommand="{Binding RefreshCommand}"
+	                IsRefreshing="{Binding IsRefreshing}"
+	                HasUnevenRows="true"
+	                SeparatorVisibility="None"
+				BackgroundColor="#ebf0f8">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<controls:TimeOffRequestCell>
+						</controls:TimeOffRequestCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+				<ListView.Footer>
+					<Label
+						HeightRequest="0" />
+				</ListView.Footer>
+			</ListView>
+
+
+                 <Button
+                    VerticalOptions="End"
+                    Text="Request Time Off"
+                    TextColor="#ffffff"
+                    BackgroundColor="#6695fb"
+                    BorderColor="#6695fb"
+                    BorderWidth="1"
+                    Margin="15" />
+	        </StackLayout>
+
+	</page:TimeOffIndexPageXaml.Content>
+</page:TimeOffIndexPageXaml>

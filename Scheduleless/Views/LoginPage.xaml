@@ -17,20 +17,8 @@
 		</ResourceDictionary>
 	</page:LoginPageXaml.Resources>
     
-	<xfg:ContentPageGloss.BackgroundGradient>
-		<xfg:Gradient
-			Rotation="150">
-			<xfg:GradientStep
-				StepColor="#3562b5"
-				StepPercentage="0" />
-			<xfg:GradientStep
-				StepColor="#4975c5"
-				StepPercentage="1" />
-		</xfg:Gradient>
-	</xfg:ContentPageGloss.BackgroundGradient>
-    
 	<page:LoginPageXaml.Content>
-        <StackLayout Orientation="Vertical" VerticalOptions="Fill">
+        <StackLayout Orientation="Vertical" VerticalOptions="Fill" BackgroundColor="#6696fc">
             <StackLayout HorizontalOptions="Center" VerticalOptions="Start">
                 <Image
                    Source="scheduleless_logo.png"
@@ -52,13 +40,14 @@
                         Margin="0, 0, 10, 0"
                         Icon="fa-user-o" 
                         IconColor="#ffffff" 
-                        WidthRequest="20" />
+                        WidthRequest="30" />
 
                 
                     <controls:SimpleEntry
 						x:Name="EmailEntry"
 						Keyboard="Text"
 						Placeholder="Email"
+                        PlaceholderColor="#ffffff"
 						Text="{Binding Email}"
 						HeightRequest="45"
 						HorizontalOptions="FillAndExpand" />
@@ -75,12 +64,13 @@
                         Margin="0, 0, 10, 0"
                         Icon="fa-key" 
                         IconColor="#ffffff" 
-                        WidthRequest="20" />
+                        WidthRequest="26" />
                 
                     <controls:SimpleEntry
 						x:Name="PasswordEntry"
 						Keyboard="Text"
 						Placeholder="Password"
+                        PlaceholderColor="#ffffff"
 						IsPassword="true"
 						Text="{Binding Password}"
 						HeightRequest="45"

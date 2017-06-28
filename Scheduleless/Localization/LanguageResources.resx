@@ -1,48 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-	<resheader
-		name="resmimetype">
+	<resheader name="resmimetype">
 		<value>text/microsoft-resx</value>
 	</resheader>
-	<resheader
-		name="version">
+	<resheader name="version">
 		<value>2.0</value>
 	</resheader>
-	<resheader
-		name="reader">
+	<resheader name="reader">
 		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
-	<resheader
-		name="writer">
+	<resheader name="writer">
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
-	<data
-		name="AvailableShifts"
-		xml:space="preserve">
+	<data name="AvailableShifts" xml:space="preserve">
     	<value>Available Shifts</value>
     	<comment>Available Shifts</comment>
 	</data>
-	<data
-		name="Login"
-		xml:space="preserve">
+	<data name="Login" xml:space="preserve">
     	<value>Login</value>
     	<comment>Login</comment>
 	</data>
-	<data
-		name="SigningIn"
-		xml:space="preserve">
+	<data name="TimeOff" xml:space="preserve">
+        <value>Time Off</value>
+        <comment>Time Off</comment>
+    </data>
+	<data name="SigningIn" xml:space="preserve">
     	<value>Signing In...</value>
     	<comment>Signing In...</comment>
 	</data>
-	<data
-		name="YourSchedule"
-		xml:space="preserve">
+	<data name="YourSchedule" xml:space="preserve">
     	<value>Your Schedule</value>
     	<comment>Your Schedule</comment>
 	</data>
-	<data
-		name="YourTrades"
-		xml:space="preserve">
+	<data name="YourTrades" xml:space="preserve">
     	<value>Your Trades</value>
     	<comment>Your Trades</comment>
 	</data>
