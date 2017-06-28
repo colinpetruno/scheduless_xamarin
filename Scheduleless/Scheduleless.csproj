@@ -172,6 +172,8 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Interfaces\IToastNotifier.cs" />
     <Compile Include="Helpers\Converters.cs" />
+    <Compile Include="Services\RequestCacheService.cs" />
+    <Compile Include="Models\RequestCache.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="XFGloss">
