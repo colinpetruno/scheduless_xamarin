@@ -15,7 +15,7 @@ namespace Scheduleless.Interfaces
 		/// <param name="parameters">Any parameters to send along with the request.</param>
 		/// <param name="responseMapperKey">The key used to deserialze the response, if necessary.</param>
 		/// <typeparam name="T">The type of object returned from the request.</typeparam>
-		Task<ApiResponse<T>> GetAsync<T>(string relativeUrl, Dictionary<string, object> parameters = null, string responseMapperKey = null, RequestCachePolicy cachePolicy = RequestCachePolicy.Ignore);
+		Task<ApiResponse<T>> GetAsync<T>(string relativeUrl, Dictionary<string, object> parameters = null, string responseMapperKey = null, RequestCachePolicy cachePolicy = RequestCachePolicy.RefreshIfNeeded);
 
 		/// <summary>
 		/// Sends a RESTful POST request to the url provided.
@@ -26,7 +26,7 @@ namespace Scheduleless.Interfaces
 		/// <param name="responseMapperKey">The key used to deserialze the response, if necessary.</param>
 		/// <param name="forceLogoutOnUnauthorized">Whether or not to log the user out if a 401 response is recieved.</param>
 		/// <typeparam name="T">The type of object returned from the request.</typeparam>
-		Task<ApiResponse<T>> PostAsync<T>(string relativeUrl, Dictionary<string, object> parameters = null, string responseMapperKey = null, bool forceLogoutOnUnauthorized = true, RequestCachePolicy cachePolicy = RequestCachePolicy.Ignore);
+		Task<ApiResponse<T>> PostAsync<T>(string relativeUrl, Dictionary<string, object> parameters = null, string responseMapperKey = null, bool forceLogoutOnUnauthorized = true, RequestCachePolicy cachePolicy = RequestCachePolicy.RefreshIfNeeded);
 
 		/// <summary>
 		/// Sends a RESTful DELETE request to the url provided.
