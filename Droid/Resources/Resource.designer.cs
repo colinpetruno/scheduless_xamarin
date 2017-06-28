@@ -5906,6 +5906,15 @@ namespace Scheduleless.Droid
 			// aapt resource value: 0x7f08000f
 			public const int common_signin_button_text_long = 2131230735;
 			
+			// aapt resource value: 0x7f08009f
+			public const int firebase_database_url = 2131230879;
+			
+			// aapt resource value: 0x7f08009e
+			public const int gcm_defaultSenderId = 2131230878;
+			
+			// aapt resource value: 0x7f0800a0
+			public const int google_storage_bucket = 2131230880;
+			
 			// aapt resource value: 0x7f080012
 			public const int hockeyapp_crash_dialog_app_name_fallback = 2131230738;
 			
