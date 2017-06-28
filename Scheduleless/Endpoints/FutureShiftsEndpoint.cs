@@ -15,15 +15,15 @@ namespace Scheduleless.Endpoints
 		{
 		}
 
-		public async Task<ApiResponse<IEnumerable<FutureShift>>> IndexAsync<FutureShift>()
+		public async Task<ApiResponse<IEnumerable<FutureShift>>> IndexAsync<FutureShift>(
+			RequestCachePolicy cachePolicy = RequestCachePolicy.Ignore)
 		{
 			using (var client = new AuthenticatedApiRequest())
 			{
-				Debug.WriteLine("In Index Async Endpoint");
 				return await client.GetAsync<IEnumerable<FutureShift>>(
 					_baseRelativeUrl,
 					responseMapperKey: "future_shifts",
-					cachePolicy: RequestCachePolicy.RefreshIfNeeded
+					cachePolicy: cachePolicy
 				);
 			}
 		}

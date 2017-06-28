@@ -252,7 +252,7 @@ namespace Scheduleless.ViewModels
 
 		private async Task MakeFutureShiftsEndpointIndexCall()
 		{
-			var response = await _futureShiftsEndpoint.IndexAsync<FutureShift>();
+			var response = await _futureShiftsEndpoint.IndexAsync<FutureShift>(RequestCachePolicy.RefreshIfNeeded);
 			if (response.IsSuccess)
 			{
 				FutureShifts = response.Result.ToList();
