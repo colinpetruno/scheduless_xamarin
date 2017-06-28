@@ -10,84 +10,83 @@ using Xamarin.Forms;
 
 namespace Scheduleless.ViewModels
 {
-    public class MyTradesViewModel : BaseViewModel
-    {
-        private Boolean _dataLoaded = false;
-        public Boolean DataLoaded
-        {
-            get { return _dataLoaded; }
-            set { SetProperty(ref _dataLoaded, value); }
-        }
+	public class MyTradesViewModel : BaseViewModel
+	{
+		private Boolean _dataLoaded = false;
+		public Boolean DataLoaded
+		{
+			get { return _dataLoaded; }
+			set { SetProperty(ref _dataLoaded, value); }
+		}
 
-        // TODO: create a ShiftsService to manage all the shifts, but for now this is just POC
-        private List<Trade> _myTrades = new List<Trade>();
-        public List<Trade> MyTrades
-        {
-            get { return _myTrades; }
-            set { SetProperty(ref _myTrades, value); }
-        }
+		// TODO: create a ShiftsService to manage all the shifts, but for now this is just POC
+		private List<Trade> _myTrades = new List<Trade>();
+		public List<Trade> MyTrades
+		{
+			get { return _myTrades; }
+			set { SetProperty(ref _myTrades, value); }
+		}
 
-        Command _refreshCommand;
-        public Command RefreshCommand
-        {
-            get
-            {
-                return _refreshCommand;
-            }
-        }
-
-
-        private MyTradesEndpoint _myTradesEndpoint;
-
-        public MyTradesViewModel()
-        {
-            _myTradesEndpoint = new MyTradesEndpoint();
-            _refreshCommand = new Command(RefreshList);
-        }
-
-        async void RefreshList()
-        {
-            MyTrades = await ExecuteFetchMyTradesLiteCommandAsync();
-        }
-
-        Command _fetchMyTradesCommand;
-        public Command FetchMyTradesCommand
-        {
-            get { return _fetchMyTradesCommand ?? (_fetchMyTradesCommand = new Command(async () => await ExecuteFetchMyTradesCommandAsync())); }
-        }
+		Command _refreshCommand;
+		public Command RefreshCommand
+		{
+			get
+			{
+				return _refreshCommand;
+			}
+		}
 
 
-        async Task<List<Trade>> ExecuteFetchMyTradesLiteCommandAsync()
-        {
-            Debug.WriteLine("REFRESHING VIEW");
-            IsRefreshing = true;
-            var response = await _myTradesEndpoint.IndexAsync<Trade>();
-            IsRefreshing = false;
+		private MyTradesEndpoint _myTradesEndpoint;
 
-            return response.Result.ToList();
-        }
+		public MyTradesViewModel()
+		{
+			_myTradesEndpoint = new MyTradesEndpoint();
+			_refreshCommand = new Command(RefreshList);
+		}
 
-        private async Task ExecuteFetchMyTradesCommandAsync()
-        {
-            if (IsBusy)
-            {
-                return;
-            }
+		async void RefreshList()
+		{
+			MyTrades = await ExecuteFetchMyTradesLiteCommandAsync();
+		}
 
-            IsBusy = true;
+		Command _fetchMyTradesCommand;
+		public Command FetchMyTradesCommand
+		{
+			get { return _fetchMyTradesCommand ?? (_fetchMyTradesCommand = new Command(async () => await ExecuteFetchMyTradesCommandAsync())); }
+		}
 
-            DialogService.ShowLoading(string.Empty);
-            var response = await _myTradesEndpoint.IndexAsync<Trade>();
-            DialogService.HideLoading();
 
-            if (response.IsSuccess)
-            {
-                Debug.WriteLine("test");
-                MyTrades = response.Result.ToList();
-            }
+		async Task<List<Trade>> ExecuteFetchMyTradesLiteCommandAsync()
+		{
+			Debug.WriteLine("REFRESHING VIEW");
+			IsRefreshing = true;
+			var response = await _myTradesEndpoint.IndexAsync<Trade>();
+			IsRefreshing = false;
 
-            DataLoaded = true;
-            IsBusy = false;
-        }
-    }
+			return response.Result.ToList();
+		}
+
+		private async Task ExecuteFetchMyTradesCommandAsync()
+		{
+			if (IsBusy)
+			{
+				return;
+			}
+
+			IsBusy = true;
+
+			DialogService.ShowLoading(string.Empty);
+			var response = await _myTradesEndpoint.IndexAsync<Trade>();
+			DialogService.HideLoading();
+
+			if (response.IsSuccess)
+			{
+				MyTrades = response.Result.ToList();
+			}
+
+			DataLoaded = true;
+			IsBusy = false;
+		}
+	}
 }
