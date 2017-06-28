@@ -68,7 +68,7 @@ namespace Scheduleless.ViewModels
 			{
 				Debug.WriteLine($"Login failed: {response.Exception}");
 				DialogService.HideLoading();
-				"Login failed".ToastError();
+				"That username / password is not valid".ToastError();
 			}
 
 			IsBusy = false;
