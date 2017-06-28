@@ -59,6 +59,12 @@ namespace Scheduleless.Localization {
             }
         }
         
+        internal static string TimeOff {
+            get {
+                return ResourceManager.GetString("TimeOff", resourceCulture);
+            }
+        }
+
         internal static string SigningIn {
             get {
                 return ResourceManager.GetString("SigningIn", resourceCulture);
