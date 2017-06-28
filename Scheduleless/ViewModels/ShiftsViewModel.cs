@@ -154,14 +154,14 @@ namespace Scheduleless.ViewModels
 
 		private async Task<List<FutureShift>> ExecuteFetchShiftsLiteAsync()
 		{
-			var response = await _futureShiftsEndpoint.IndexAsync<FutureShift>();
+			var response = await _futureShiftsEndpoint.IndexAsync<FutureShift>(RequestCachePolicy.Ignore);
 
 			return response.Result.ToList();
 		}
 
 		async Task<FutureShift> ExecuteFetchFeaturedShiftLiteAsync()
 		{
-			var response = await _featuredShiftEndpoint.FeaturedAsync<FutureShift>();
+			var response = await _featuredShiftEndpoint.FeaturedAsync<FutureShift>(RequestCachePolicy.Ignore);
 
 			return response.Result;
 		}
@@ -252,7 +252,7 @@ namespace Scheduleless.ViewModels
 
 		private async Task MakeFutureShiftsEndpointIndexCall()
 		{
-			var response = await _futureShiftsEndpoint.IndexAsync<FutureShift>(RequestCachePolicy.RefreshIfNeeded);
+			var response = await _futureShiftsEndpoint.IndexAsync<FutureShift>();
 			if (response.IsSuccess)
 			{
 				FutureShifts = response.Result.ToList();

@@ -16,7 +16,7 @@ namespace Scheduleless.Endpoints
 		}
 
 		public async Task<ApiResponse<IEnumerable<FutureShift>>> IndexAsync<FutureShift>(
-			RequestCachePolicy cachePolicy = RequestCachePolicy.Ignore)
+			RequestCachePolicy cachePolicy = RequestCachePolicy.RefreshIfNeeded)
 		{
 			using (var client = new AuthenticatedApiRequest())
 			{
@@ -28,7 +28,8 @@ namespace Scheduleless.Endpoints
 			}
 		}
 
-		public async Task<ApiResponse<FutureShift>> CancelAsync<FutureShift>(string note, int shift_id)
+		public async Task<ApiResponse<FutureShift>> CancelAsync<FutureShift>(
+			string note, int shiftId, RequestCachePolicy cachePolicy = RequestCachePolicy.RefreshIfNeeded)
 		{
 			var parameters = new Dictionary<string, object>
 			{
@@ -42,10 +43,11 @@ namespace Scheduleless.Endpoints
 			using (var client = new AuthenticatedApiRequest())
 			{
 				return await client.PostAsync<FutureShift>(
-					$"/mobile_api/shifts/{shift_id}/cancel",
+					$"/mobile_api/shifts/{shiftId}/cancel",
 					parameters: parameters,
 					responseMapperKey: "cancellation",
-					forceLogoutOnUnauthorized: false
+					forceLogoutOnUnauthorized: false,
+					cachePolicy: cachePolicy
 				);
 			}
 		}
