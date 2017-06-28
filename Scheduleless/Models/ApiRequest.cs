@@ -29,25 +29,28 @@ namespace Scheduleless.Models
 		}
 
 		public async Task<ApiResponse<T>> GetAsync<T>(
-			string relativeUrl, Dictionary<string, object> parameters = null, string responseMapperKey = null)
+			string relativeUrl, Dictionary<string, object> parameters = null,
+			string responseMapperKey = null, RequestCachePolicy cachePolicy = RequestCachePolicy.Ignore)
 		{
 			SetInitialValues(relativeUrl, parameters);
-			return await MakeRequestAsync<T>(HttpMethod.Get, responseMapperKey);
+			return await MakeRequestAsync<T>(HttpMethod.Get, responseMapperKey, true, cachePolicy);
 
 		}
 
 		public async Task<ApiResponse<T>> PostAsync<T>(
-			string relativeUrl, Dictionary<string, object> parameters = null, string responseMapperKey = null, bool forceLogoutOnUnauthorized = true)
+			string relativeUrl, Dictionary<string, object> parameters = null, string responseMapperKey = null,
+			bool forceLogoutOnUnauthorized = true, RequestCachePolicy cachePolicy = RequestCachePolicy.Ignore)
 		{
 			SetInitialValues(relativeUrl, parameters);
-			return await MakeRequestAsync<T>(HttpMethod.Post, responseMapperKey, forceLogoutOnUnauthorized);
+			return await MakeRequestAsync<T>(HttpMethod.Post, responseMapperKey, forceLogoutOnUnauthorized, cachePolicy);
 		}
 
 		public async Task<ApiResponse<T>> DeleteAsync<T>(
-			string relativeUrl, Dictionary<string, object> parameters = null, string responseMapperKey = null)
+			string relativeUrl, Dictionary<string, object> parameters = null,
+			string responseMapperKey = null, RequestCachePolicy cachePolicy = RequestCachePolicy.Ignore)
 		{
 			SetInitialValues(relativeUrl, parameters);
-			return await MakeRequestAsync<T>(HttpMethod.Delete, responseMapperKey);
+			return await MakeRequestAsync<T>(HttpMethod.Delete, responseMapperKey, true, cachePolicy);
 		}
 
 		private void SetInitialValues(string relativeUrl, Dictionary<string, object> parameters = null)
@@ -56,7 +59,8 @@ namespace Scheduleless.Models
 			_parameters = parameters ?? new Dictionary<string, object>();
 		}
 
-		private async Task<ApiResponse<T>> MakeRequestAsync<T>(HttpMethod method, string responseMapperKey, bool forceLogoutOnUnauthorized = true)
+		private async Task<ApiResponse<T>> MakeRequestAsync<T>(
+			HttpMethod method, string responseMapperKey, bool forceLogoutOnUnauthorized = true, RequestCachePolicy cachePolicy = RequestCachePolicy.Ignore)
 		{
 			Debug.WriteLine($"MakeRequest: Request\nMethod: {method}\nURL: {FullUrl}\nParameters: {JsonConvert.SerializeObject(_parameters, Formatting.Indented)}");
 
@@ -70,10 +74,19 @@ namespace Scheduleless.Models
 					await HandleAuthenticationAsync();
 				}
 
-				response = await ActionForMethod(method);
-				response.EnsureSuccessStatusCode();
+				var rawResponseString = string.Empty;
+				if (cachePolicy != RequestCachePolicy.Ignore
+					&& RequestCacheService.Instance.DoesCacheKeyExistFor(FullUrl))
+				{
+					rawResponseString = RequestCacheService.Instance.GetResponseKeyFor(FullUrl);
+				}
+				else
+				{
+					response = await ActionForMethod(method);
+					response.EnsureSuccessStatusCode();
+					rawResponseString = await response.Content.ReadAsStringAsync();
+				}
 
-				var rawResponseString = await response.Content.ReadAsStringAsync();
 				Debug.WriteLine($"MakeRequest: Response\nMethod: {method}\nURL: {FullUrl}");
 
 				JToken jsonData = JObject.Parse(rawResponseString);
@@ -84,6 +97,9 @@ namespace Scheduleless.Models
 											? jsonData.SelectToken(responseMapperKey).ToString()
 											: rawResponseString;
 					apiResponse.Result = JsonConvert.DeserializeObject<T>(jsonString);
+
+					// cache data
+					RequestCacheService.Instance.SaveDataIfNeededFor(FullUrl, rawResponseString, cachePolicy);
 				}
 			}
 			catch (HttpRequestException ex)
