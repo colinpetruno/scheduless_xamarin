@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page:NewTimeOffRequestPageXaml
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:page="clr-namespace:Scheduleless.Views;assembly=Scheduleless"
+  xmlns:controls="clr-namespace:Scheduleless.Controls;assembly=Scheduleless"
+  xmlns:sys="clr-namespace:System;assembly=mscorlib"
+  x:Class="Scheduleless.Views.NewTimeOffRequestPage"
+  BackgroundColor="#ebf0f8"
+  NavigationPage.BackButtonTitle="Back"
+  Title="Request Time Off">
+	<page:NewTimeOffRequestPageXaml.Content>
+      <StackLayout
+        Padding="5,10"
+        Orientation="Vertical">
+
+
+        <StackLayout VerticalOptions="CenterAndExpand" Orientation="Vertical">
+          <Label
+                TextColor="#41454b"
+                HorizontalOptions="CenterAndExpand"
+                Text="Start Date"></Label>
+          <DatePicker
+            VerticalOptions="CenterAndExpand"
+            Date="{Binding StartDate}">
+             <DatePicker.Format>dddd, MMMM d, yyyy</DatePicker.Format>
+             <DatePicker.MinimumDate>
+                <sys:DateTime x:FactoryMethod="Parse">
+                   <x:Arguments>
+                      <x:String>Jan 1 2000</x:String>
+                   </x:Arguments>
+                </sys:DateTime>
+             </DatePicker.MinimumDate>
+             <DatePicker.MaximumDate>
+                <sys:DateTime x:FactoryMethod="Parse">
+                   <x:Arguments>
+                      <x:String>Dec 31 2050</x:String>
+                   </x:Arguments>
+                </sys:DateTime>
+             </DatePicker.MaximumDate>
+          </DatePicker>
+
+
+            <Label
+                TextColor="#41454b"
+                HorizontalOptions="CenterAndExpand"
+                Text="End Date"></Label>
+                <DatePicker
+            VerticalOptions="CenterAndExpand"
+            Date="{Binding EndDate}">
+
+             <DatePicker.Format>dddd, MMMM d, yyyy</DatePicker.Format>
+             <DatePicker.MinimumDate>
+                <sys:DateTime x:FactoryMethod="Parse">
+                   <x:Arguments>
+                      <x:String>Jan 1 2000</x:String>
+                   </x:Arguments>
+                </sys:DateTime>
+             </DatePicker.MinimumDate>
+             <DatePicker.MaximumDate>
+                <sys:DateTime x:FactoryMethod="Parse">
+                   <x:Arguments>
+                      <x:String>Dec 31 2050</x:String>
+                   </x:Arguments>
+                </sys:DateTime>
+             </DatePicker.MaximumDate>
+          </DatePicker>
+
+
+            <Label
+                Text="Start Time"
+                TextColor="#41454b"
+                HorizontalOptions="CenterAndExpand">
+            </Label>
+            <TimePicker Time="{Binding StartTime}"></TimePicker>
+
+            <Label
+                TextColor="#41454b"
+                HorizontalOptions="CenterAndExpand"
+                Text="End Time">
+            </Label>
+            <TimePicker Time="{Binding EndTime}"></TimePicker>
+         </StackLayout>
+
+
+
+
+         <StackLayout VerticalOptions="End">
+             <Button
+                Text="Request Time Off"
+                Command="{Binding RequestTimeOffCommand}"
+                VerticalOptions="End"
+                TextColor="#ffffff"
+                BackgroundColor="#6695fb"
+                BorderColor="#6695fb"
+                BorderWidth="1" />
+         </StackLayout>
+
+      </StackLayout>
+	</page:NewTimeOffRequestPageXaml.Content>
+</page:NewTimeOffRequestPageXaml>

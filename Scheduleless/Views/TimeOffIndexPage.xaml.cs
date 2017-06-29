@@ -38,6 +38,13 @@ namespace Scheduleless.Views
     {
 
     }
+
+    public void OnRequestTimeOffButtonClicked(object sender, EventArgs e)
+    {
+      Debug.WriteLine("Transitioning to Cancel Shift Page");
+
+      NavigationService.Instance.DisplayNewRequestTimeOffPageAsync(this);
+    }
   }
 
   public partial class TimeOffIndexPageXaml : BaseContentPage<TimeOffIndexViewModel> { }

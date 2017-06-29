@@ -18,14 +18,16 @@ namespace Scheduleless.Endpoints
       }
     }
 
-    public async Task<ApiResponse<TimeOffRequest>> CreateAsync<TimeOffRequest>(string note, FutureShift shift)
+    public async Task<ApiResponse<TimeOffRequest>> CreateAsync<TimeOffRequest>(DateTime endDate, TimeSpan endTime, DateTime startDate, TimeSpan startTime)
     {
       var parameters = new Dictionary<string, object>
             {
-                {"trade", new Dictionary<string, object>
+                {"time_off_request", new Dictionary<string, object>
                     {
-                        {"note", note},
-                        {"accept_offers", true}
+                        {"end_date", $"{endDate.Year}{endDate.Month.ToString().PadLeft(2, '0')}{endDate.Day.ToString().PadLeft(2, '0')}"},
+                        {"end_minutes", endTime.TotalMinutes.ToString()},
+                        {"start_date", $"{startDate.Year}{startDate.Month.ToString().PadLeft(2, '0')}{startDate.Day.ToString().PadLeft(2, '0')}"},
+                        {"start_minutes", startTime.TotalMinutes.ToString()}
                     }
                 }
             };
@@ -33,9 +35,9 @@ namespace Scheduleless.Endpoints
       using (var client = new AuthenticatedApiRequest())
       {
         return await client.PostAsync<TimeOffRequest>(
-            $"/mobile_api/shifts/{shift.Id}/trades",
+            $"/mobile_api/time_off_requests",
             parameters: parameters,
-            responseMapperKey: "trade",
+            responseMapperKey: "time_off_request",
             forceLogoutOnUnauthorized: false
         );
       }
