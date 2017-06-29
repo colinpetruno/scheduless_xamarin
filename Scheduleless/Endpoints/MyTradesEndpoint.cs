@@ -2,23 +2,25 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Scheduleless.Models;
+using Scheduleless.Services;
 
 namespace Scheduleless.Endpoints
 {
-	public class MyTradesEndpoint
-	{
-		private const string _baseRelativeUrl = "/mobile_api/my_trades";
+  public class MyTradesEndpoint
+  {
+    private const string _baseRelativeUrl = "/mobile_api/my_trades";
 
-		public MyTradesEndpoint()
-		{
-		}
+    public MyTradesEndpoint()
+    {
+    }
 
-		public async Task<ApiResponse<IEnumerable<Trade>>> IndexAsync<Trade>()
-		{
-			using (var client = new AuthenticatedApiRequest())
-			{
-				return await client.GetAsync<IEnumerable<Trade>>(_baseRelativeUrl, responseMapperKey: "my_trades");
-			}
-		}
-	}
+    public async Task<ApiResponse<IEnumerable<Trade>>> IndexAsync<Trade>(
+      RequestCachePolicy cachePolicy = RequestCachePolicy.RefreshIfNeeded)
+    {
+      using (var client = new AuthenticatedApiRequest())
+      {
+        return await client.GetAsync<IEnumerable<Trade>>(_baseRelativeUrl, responseMapperKey: "my_trades", cachePolicy: cachePolicy);
+      }
+    }
+  }
 }
