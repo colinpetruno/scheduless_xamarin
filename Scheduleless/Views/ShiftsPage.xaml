@@ -76,7 +76,14 @@
 						HorizontalOptions="CenterAndExpand"
 						Margin="5">
 					</Label>
-					<Button Text="Refresh" Command="{Binding RefreshCommand}" />
+
+                    <Button 
+                        TextColor="#747c85"
+                        BorderColor="#a0acb9"
+                        BackgroundColor="#ffffff"
+                        BorderWidth="1"
+                        Margin="15"
+                        Text="Refresh" Command="{Binding RefreshCommand}" />
 				</StackLayout>
 
 	    		<ListView
