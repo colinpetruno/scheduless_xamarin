@@ -11,64 +11,65 @@ using Xamarin.Forms;
 
 namespace Scheduleless.ViewModels
 {
-	public class NewTradeViewModel : BaseViewModel
-	{
-		public FutureShift Shift { get; set; }
+  public class NewTradeViewModel : BaseViewModel
+  {
+    public FutureShift Shift { get; set; }
 
-		private TradesEndpoint _tradesEndpoint;
+    private TradesEndpoint _tradesEndpoint;
 
-		private string _note = string.Empty;
 
-		public NewTradeViewModel()
-		{
-			_tradesEndpoint = new TradesEndpoint();
-		}
 
-		public string Note
-		{
-			get { return _note; }
-			set { SetProperty(ref _note, value); }
-		}
+    public NewTradeViewModel()
+    {
+      _tradesEndpoint = new TradesEndpoint();
+    }
 
-		Command _createTradeCommand;
-		public Command CreateTradeCommand
-		{
-			get { return _createTradeCommand ?? (_createTradeCommand = new Command(async () => await ExecuteCreateTradeCommandAsync())); }
-		}
+    private string _note = string.Empty;
+    public string Note
+    {
+      get { return _note; }
+      set { SetProperty(ref _note, value); }
+    }
 
-		private async Task ExecuteCreateTradeCommandAsync()
-		{
-			if (IsBusy)
-			{
-				return;
-			}
+    Command _createTradeCommand;
+    public Command CreateTradeCommand
+    {
+      get { return _createTradeCommand ?? (_createTradeCommand = new Command(async () => await ExecuteCreateTradeCommandAsync())); }
+    }
 
-			if (!IsFieldValid(Note))
-			{
-				"Please enter add a note of why you want to trade your shift".ToastError();
-				return;
-			}
+    private async Task ExecuteCreateTradeCommandAsync()
+    {
+      if (IsBusy)
+      {
+        return;
+      }
 
-			IsBusy = true;
+      if (!IsFieldValid(Note))
+      {
+        "Please enter add a note of why you want to trade your shift".ToastError();
+        return;
+      }
 
-			DialogService.ShowLoading();
-			var response = await _tradesEndpoint.CreateAsync<FutureShift>(Note, Shift);
-			DialogService.HideLoading();
+      IsBusy = true;
 
-			if (response.IsSuccess)
-			{
-				Debug.WriteLine($"Create Trade Succeeded: {response}");
-				await NavigationService.Instance.GoToRoot();
-			}
-			else
-			{
-				// TODO: BONUS: Report to bugsnag
-				Debug.WriteLine($"Create Trade Failed: {response.Exception}");
-				DialogService.HideLoading();
-				"Create Trade Failed".ToastError();
-			}
+      DialogService.ShowLoading();
+      var response = await _tradesEndpoint.CreateAsync<FutureShift>(Note, Shift);
+      DialogService.HideLoading();
 
-			IsBusy = false;
-		}
-	}
+      if (response.IsSuccess)
+      {
+        Debug.WriteLine($"Create Trade Succeeded: {response}");
+        await NavigationService.Instance.GoToRoot();
+      }
+      else
+      {
+        // TODO: BONUS: Report to bugsnag
+        Debug.WriteLine($"Create Trade Failed: {response.Exception}");
+        DialogService.HideLoading();
+        "Create Trade Failed".ToastError();
+      }
+
+      IsBusy = false;
+    }
+  }
 }

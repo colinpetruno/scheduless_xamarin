@@ -20,6 +20,7 @@
             IsRefreshing="{Binding IsRefreshing}"
             HasUnevenRows="true"
             IsVisible="{Binding DataLoaded}"
+            SeparatorVisibility="None"
 			BackgroundColor="#ebf0f8">
           
 			<ListView.ItemTemplate>

@@ -36,6 +36,7 @@
                  <Button
                     VerticalOptions="End"
                     Text="Request Time Off"
+                    Clicked="OnRequestTimeOffButtonClicked"
                     TextColor="#ffffff"
                     BackgroundColor="#6695fb"
                     BorderColor="#6695fb"
