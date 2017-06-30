@@ -22,22 +22,9 @@
                 Text="Start Date"></Label>
           <DatePicker
             VerticalOptions="CenterAndExpand"
+            x:Name="startDatepicker"
             Date="{Binding StartDate}">
              <DatePicker.Format>dddd, MMMM d, yyyy</DatePicker.Format>
-             <DatePicker.MinimumDate>
-                <sys:DateTime x:FactoryMethod="Parse">
-                   <x:Arguments>
-                      <x:String>Jan 1 2000</x:String>
-                   </x:Arguments>
-                </sys:DateTime>
-             </DatePicker.MinimumDate>
-             <DatePicker.MaximumDate>
-                <sys:DateTime x:FactoryMethod="Parse">
-                   <x:Arguments>
-                      <x:String>Dec 31 2050</x:String>
-                   </x:Arguments>
-                </sys:DateTime>
-             </DatePicker.MaximumDate>
           </DatePicker>
 
 
@@ -45,25 +32,13 @@
                 TextColor="#41454b"
                 HorizontalOptions="CenterAndExpand"
                 Text="End Date"></Label>
-                <DatePicker
-            VerticalOptions="CenterAndExpand"
-            Date="{Binding EndDate}">
+            <DatePicker
+                    VerticalOptions="CenterAndExpand"
+                    x:Name="endDatepicker"
+                    Date="{Binding EndDate}">
 
              <DatePicker.Format>dddd, MMMM d, yyyy</DatePicker.Format>
-             <DatePicker.MinimumDate>
-                <sys:DateTime x:FactoryMethod="Parse">
-                   <x:Arguments>
-                      <x:String>Jan 1 2000</x:String>
-                   </x:Arguments>
-                </sys:DateTime>
-             </DatePicker.MinimumDate>
-             <DatePicker.MaximumDate>
-                <sys:DateTime x:FactoryMethod="Parse">
-                   <x:Arguments>
-                      <x:String>Dec 31 2050</x:String>
-                   </x:Arguments>
-                </sys:DateTime>
-             </DatePicker.MaximumDate>
+
           </DatePicker>
 
 

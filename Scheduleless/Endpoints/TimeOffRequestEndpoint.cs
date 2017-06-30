@@ -14,7 +14,7 @@ namespace Scheduleless.Endpoints
     {
       using (var client = new AuthenticatedApiRequest())
       {
-        return await client.GetAsync<IEnumerable<TimeOffRequest>>(_baseRelativeUrl, responseMapperKey: "time_off_requests");
+        return await client.GetAsync<IEnumerable<TimeOffRequest>>(_baseRelativeUrl, responseMapperKey: "time_off_requests", cachePolicy: RequestCachePolicy.Ignore);
       }
     }
 

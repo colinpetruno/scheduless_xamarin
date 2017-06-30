@@ -30,7 +30,7 @@ namespace Scheduleless.Views
       {
         return;
       }
-
+      Debug.WriteLine("Fetching time off commands");
       ViewModel.FetchTimeOffRequestsCommand.Execute(null);
     }
 
@@ -41,7 +41,7 @@ namespace Scheduleless.Views
 
     public void OnRequestTimeOffButtonClicked(object sender, EventArgs e)
     {
-      Debug.WriteLine("Transitioning to Cancel Shift Page");
+      Debug.WriteLine("Transitioning to New Time Off Page");
 
       NavigationService.Instance.DisplayNewRequestTimeOffPageAsync(this);
     }

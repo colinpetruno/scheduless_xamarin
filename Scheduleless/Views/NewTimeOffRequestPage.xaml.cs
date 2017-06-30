@@ -26,6 +26,12 @@ namespace Scheduleless.Views
       {
         return;
       }
+
+      endDatepicker.MinimumDate = System.DateTime.Now;
+      endDatepicker.MaximumDate = System.DateTime.Now.AddMonths(6);
+
+      startDatepicker.MinimumDate = System.DateTime.Now;
+      startDatepicker.MaximumDate = System.DateTime.Now.AddMonths(7);
     }
   }
 
