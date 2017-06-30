@@ -41,7 +41,7 @@ namespace Scheduleless.Models
       string responseMapperKey = null, RequestCachePolicy cachePolicy = RequestCachePolicy.RefreshIfNeeded)
     {
       SetInitialValues(relativeUrl, parameters);
-      return await MakeRequestAsync<T>(HttpMethod.Get, responseMapperKey, true, cachePolicy);
+      return await MakeRequestAsync<T>(HttpMethod.Get, responseMapperKey, true, RequestCachePolicy.Ignore);
 
     }
 
@@ -50,7 +50,7 @@ namespace Scheduleless.Models
       bool forceLogoutOnUnauthorized = true, RequestCachePolicy cachePolicy = RequestCachePolicy.Ignore)
     {
       SetInitialValues(relativeUrl, parameters);
-      return await MakeRequestAsync<T>(HttpMethod.Post, responseMapperKey, forceLogoutOnUnauthorized, cachePolicy);
+      return await MakeRequestAsync<T>(HttpMethod.Post, responseMapperKey, forceLogoutOnUnauthorized, RequestCachePolicy.Ignore);
     }
 
     public async Task<ApiResponse<T>> DeleteAsync<T>(
@@ -58,7 +58,7 @@ namespace Scheduleless.Models
       string responseMapperKey = null, RequestCachePolicy cachePolicy = RequestCachePolicy.Ignore)
     {
       SetInitialValues(relativeUrl, parameters);
-      return await MakeRequestAsync<T>(HttpMethod.Delete, responseMapperKey, true, cachePolicy);
+      return await MakeRequestAsync<T>(HttpMethod.Delete, responseMapperKey, true, RequestCachePolicy.Ignore);
     }
 
     private void SetInitialValues(string relativeUrl, Dictionary<string, object> parameters = null)
