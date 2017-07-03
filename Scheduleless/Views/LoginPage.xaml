@@ -18,6 +18,7 @@
 	</page:LoginPageXaml.Resources>
     
 	<page:LoginPageXaml.Content>
+        <ScrollView>
         <StackLayout Orientation="Vertical" VerticalOptions="Fill" BackgroundColor="#6696fc">
             <StackLayout HorizontalOptions="Center" VerticalOptions="Start">
                 <Image
@@ -45,7 +46,7 @@
                 
                     <controls:SimpleEntry
 						x:Name="EmailEntry"
-						Keyboard="Text"
+						Keyboard="Email"
 						Placeholder="Email"
                         PlaceholderColor="#ffffff"
 						Text="{Binding Email}"
@@ -91,5 +92,6 @@
         			HorizontalOptions="FillAndExpand" />
         	</StackLayout>
 	    </StackLayout>
+        </ScrollView>
 	</page:LoginPageXaml.Content>
 </page:LoginPageXaml>
