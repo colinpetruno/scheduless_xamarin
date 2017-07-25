@@ -35,10 +35,6 @@ namespace Scheduleless.Services
 					_requestResponseData[requestKey] = new RequestCache { Data = responseData, CreatedAt = DateTime.UtcNow };
 					Debug.WriteLine($"RequestCacheService - cacheKey: {requestKey} does not exist. Creating a key.");
 				}
-				else
-				{
-					Debug.WriteLine($"RequestCacheService - Nothing to cache for cacheKey: {requestKey}");
-				}
 			}
 		}
 

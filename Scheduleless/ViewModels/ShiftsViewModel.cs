@@ -112,11 +112,9 @@ namespace Scheduleless.ViewModels
 				return;
 			}
 
-			DialogService.ShowLoading(string.Empty);
 			try
 			{
 				await Task.WhenAll(MakeFutureShiftsEndpointIndexCall(), MakeFeaturedShiftEndpointFeaturedCall());
-				DialogService.HideLoading();
 				DataLoaded = true;
 
 				HandlePageDisplay();
@@ -238,9 +236,7 @@ namespace Scheduleless.ViewModels
 
 			IsBusy = true;
 
-			DialogService.ShowLoading(string.Empty);
 			var response = await _featuredShiftEndpoint.FeaturedAsync<FutureShift>();
-			DialogService.HideLoading();
 
 			if (response.IsSuccess)
 			{
