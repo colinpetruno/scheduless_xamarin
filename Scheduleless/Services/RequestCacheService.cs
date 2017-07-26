@@ -71,6 +71,15 @@ namespace Scheduleless.Services
 			}
 		}
 
+		public void DeleteCacheKeyIfNeeded(string requestKey)
+		{
+			if (DoesCacheKeyExistFor(requestKey))
+			{
+				_requestResponseData.Remove(requestKey);
+				Debug.WriteLine($"RequestCacheService - Removing: {requestKey}.");
+			}
+		}
+
 		private bool HasCacheExpired(DateTime cacheCreateTime)
 		{
 			if (cacheCreateTime.AddMinutes(CacheExpireTimeInMinutes) <= DateTime.UtcNow)

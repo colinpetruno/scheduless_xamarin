@@ -20,11 +20,19 @@ namespace Scheduleless.Models
 		private Dictionary<string, object> _parameters;
 		protected bool _useAuthentication = false;
 
+		private string Domain
+		{
+			get
+			{
+				return "https://scheduleless.com";
+			}
+		}
+
 		private string FullUrl
 		{
 			get
 			{
-				return $"https://scheduleless.com{_relativeUrl}";
+				return $"{Domain}{_relativeUrl}";
 			}
 		}
 
@@ -61,10 +69,21 @@ namespace Scheduleless.Models
 			return await MakeRequestAsync<T>(HttpMethod.Delete, responseMapperKey, true, RequestCachePolicy.Ignore);
 		}
 
+		public void DeleteCacheKeyIfPresent(string method, string requestKey)
+		{
+			var cacheKey = $"{method}_{Domain}{requestKey}";
+			RequestCacheService.Instance.DeleteCacheKeyIfNeeded(cacheKey);
+		}
+
 		private void SetInitialValues(string relativeUrl, Dictionary<string, object> parameters = null)
 		{
 			_relativeUrl = relativeUrl;
 			_parameters = parameters ?? new Dictionary<string, object>();
+		}
+
+		private string FullUrlWithMethod(string method)
+		{
+			return $"{method}_{Domain}{_relativeUrl}";
 		}
 
 		private async Task<ApiResponse<T>> MakeRequestAsync<T>(
@@ -84,9 +103,9 @@ namespace Scheduleless.Models
 
 				var rawResponseString = string.Empty;
 				if (cachePolicy != RequestCachePolicy.Ignore
-				  && RequestCacheService.Instance.DoesCacheKeyExistFor(FullUrl))
+					&& RequestCacheService.Instance.DoesCacheKeyExistFor(FullUrlWithMethod(method.ToString())))
 				{
-					rawResponseString = RequestCacheService.Instance.GetResponseKeyFor(FullUrl);
+					rawResponseString = RequestCacheService.Instance.GetResponseKeyFor(FullUrlWithMethod(method.ToString()));
 				}
 				else
 				{
@@ -96,7 +115,7 @@ namespace Scheduleless.Models
 					rawResponseString = await response.Content.ReadAsStringAsync();
 				}
 
-				Debug.WriteLine($"MakeRequest: Response\nMethod: {method}\nURL: {FullUrl}");
+				Debug.WriteLine($"MakeRequest: Response\nMethod: {method}\nURL: {FullUrlWithMethod(method.ToString())}");
 
 				JToken jsonData = JObject.Parse(rawResponseString);
 				// TODO: handle value types
@@ -108,7 +127,7 @@ namespace Scheduleless.Models
 					apiResponse.Result = JsonConvert.DeserializeObject<T>(jsonString);
 
 					// cache data
-					RequestCacheService.Instance.SaveDataIfNeededFor(FullUrl, rawResponseString, cachePolicy);
+					RequestCacheService.Instance.SaveDataIfNeededFor(FullUrlWithMethod(method.ToString()), rawResponseString, cachePolicy);
 				}
 			}
 			catch (HttpRequestException ex)
