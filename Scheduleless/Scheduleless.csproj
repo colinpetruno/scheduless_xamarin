@@ -191,6 +191,9 @@
       <DependentUpon>NewTimeOffRequestPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\NewTimeOffRequestViewModel.cs" />
+    <Compile Include="Models\Features.cs" />
+    <Compile Include="Endpoints\FeaturesEndpoint.cs" />
+    <Compile Include="Services\FeaturesService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="XFGloss">
