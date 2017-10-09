@@ -83,6 +83,7 @@
                     BackgroundColor="#6695fb"
                     BorderColor="#6695fb"
                     BorderWidth="1"
+					IsVisible="{Binding ShouldDislpayTradeShiftButton}"
                     Clicked="OnTradeShiftButtonClicked" />
                     
                  <Button 

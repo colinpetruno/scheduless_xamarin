@@ -69,6 +69,9 @@
     <EmbeddedResource Include="Views\NewTimeOffRequestPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\RootPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -194,6 +197,10 @@
     <Compile Include="Models\Features.cs" />
     <Compile Include="Endpoints\FeaturesEndpoint.cs" />
     <Compile Include="Services\FeaturesService.cs" />
+    <Compile Include="Views\RootPage.xaml.cs">
+      <DependentUpon>RootPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\RootViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="XFGloss">

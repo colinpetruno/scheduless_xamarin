@@ -42,7 +42,7 @@
                                 BorderColor="#ffb329"
                                 BackgroundColor="#ffbc42"
                                 Command="{Binding CheckInCommand}"
-                                IsVisible="{Binding FeaturedShift.CheckedOut}"
+                                IsVisible="{Binding ShouldDisplayCheckInButton}"
                                 BorderWidth="1" />
                             <controls:SimpleButton
                                 Text="Check Out"
@@ -50,7 +50,7 @@
                                 BorderColor="#a0acb9"
                                 BackgroundColor="#ffffff"
                                 Command="{Binding CheckOutCommand}"
-                                IsVisible="{Binding FeaturedShift.CheckedIn}"
+                                IsVisible="{Binding ShouldDisplayCheckOutButton}"
                                 BorderWidth="1" />
                         </StackLayout>
                    </StackLayout>

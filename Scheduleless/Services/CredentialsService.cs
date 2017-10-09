@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using Scheduleless.Exceptions;
 using Scheduleless.Interfaces;
 using Scheduleless.Models;
@@ -18,6 +19,7 @@ namespace Scheduleless.Services
 	public class CredentialsService : ICredentialsService
 	{
 		private ISecuredDataProvider _secureDataProvider;
+		protected FeaturesService _featuresService;
 
 		public OAuth OAuthData
 		{
@@ -30,6 +32,7 @@ namespace Scheduleless.Services
 		public CredentialsService()
 		{
 			_secureDataProvider = DependencyService.Get<ISecuredDataProvider>();
+			_featuresService = FeaturesService.Instance;
 		}
 
 		private CredentialInfo _credentials;
@@ -54,6 +57,24 @@ namespace Scheduleless.Services
 		public string Token
 		{
 			get { return Credentials.OAuthData.AccessToken; }
+		}
+
+		public async Task<bool> IsAuthenticatedAsync()
+		{
+			if (IsAuthenticated)
+			{
+				await _featuresService.GetFeaturesAsync();
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
+		public async Task GetFeatureDataAsync()
+		{
+			await _featuresService.GetFeaturesAsync();
 		}
 
 		public void UpdateCredentials(OAuth oAuthData)
@@ -130,7 +151,7 @@ namespace Scheduleless.Services
 			);
 		}
 
-		private void FetchCredentials()
+		private async void FetchCredentials()
 		{
 			var userInfo = _secureDataProvider.Retrieve(CredentialsConstants.ProviderName);
 			if (userInfo.Count > 0)

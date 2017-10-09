@@ -37,7 +37,11 @@ namespace Scheduleless.ViewModels
 		public FutureShift FeaturedShift
 		{
 			get { return _featuredShift; }
-			set { SetProperty(ref _featuredShift, value); }
+			set
+			{
+				SetProperty(ref _featuredShift, value);
+				HandleCheckInOutButtonDisplay();
+			}
 		}
 
 		private bool _shouldDisplayFeaturedShift = false;
@@ -52,6 +56,20 @@ namespace Scheduleless.ViewModels
 		{
 			get { return _shouldDisplayEmptyShiftsView; }
 			set { SetProperty(ref _shouldDisplayEmptyShiftsView, value); }
+		}
+
+		private bool _shouldDisplayCheckInButton = false;
+		public bool ShouldDisplayCheckInButton
+		{
+			get { return _shouldDisplayCheckInButton; }
+			set { SetProperty(ref _shouldDisplayCheckInButton, value); }
+		}
+
+		private bool _shouldDisplayCheckOutButton = false;
+		public bool ShouldDisplayCheckOutButton
+		{
+			get { return _shouldDisplayCheckOutButton; }
+			set { SetProperty(ref _shouldDisplayCheckOutButton, value); }
 		}
 
 		public string FeaturedShiftMonth
@@ -265,6 +283,15 @@ namespace Scheduleless.ViewModels
 			if (response.IsSuccess)
 			{
 				FeaturedShift = response.Result;
+			}
+		}
+
+		private void HandleCheckInOutButtonDisplay()
+		{
+			if (FeaturesService.Instance.TimeClock && FeaturedShift != null)
+			{
+				ShouldDisplayCheckInButton = FeaturedShift.CheckedIn;
+				ShouldDisplayCheckOutButton = FeaturedShift.CheckedOut;
 			}
 		}
 	}

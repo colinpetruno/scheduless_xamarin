@@ -6,6 +6,7 @@ namespace Scheduleless.Helpers
 	public static class Colors
 	{
 		// General
+		public static readonly Color PrimaryColor = Color.FromHex("#6696fc");
 		public static readonly Color BackgroundColor = Color.FromHex("EBF0F8");
 		public static readonly Color LightGray = Color.FromHex("C7C7CD");
 		public static readonly Color DarkGray = Color.FromHex("3d3d3d");
