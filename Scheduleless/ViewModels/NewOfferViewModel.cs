@@ -121,9 +121,7 @@ namespace Scheduleless.ViewModels
 
 			IsBusy = true;
 
-			DialogService.ShowLoading(string.Empty);
 			var response = await _futureShiftsEndpoint.IndexAsync<FutureShift>();
-			DialogService.HideLoading();
 
 			if (response.IsSuccess)
 			{

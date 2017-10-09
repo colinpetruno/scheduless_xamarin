@@ -13,11 +13,13 @@ namespace Scheduleless.Endpoints
 		{
 		}
 
-		public async Task<ApiResponse<IEnumerable<AvailableShift>>> IndexAsync<AvailableShift>()
+		public async Task<ApiResponse<IEnumerable<AvailableShift>>> IndexAsync<AvailableShift>(
+			RequestCachePolicy cachePolicy = RequestCachePolicy.RefreshIfNeeded)
 		{
 			using (var client = new AuthenticatedApiRequest())
 			{
-				return await client.GetAsync<IEnumerable<AvailableShift>>(_baseRelativeUrl, responseMapperKey: "trades");
+				return await client.GetAsync<IEnumerable<AvailableShift>>(
+					_baseRelativeUrl, responseMapperKey: "trades", cachePolicy: cachePolicy);
 			}
 		}
 

@@ -61,7 +61,7 @@ namespace Scheduleless.ViewModels
 		{
 			Debug.WriteLine("REFRESHING VIEW");
 			IsRefreshing = true;
-			var response = await _myTradesEndpoint.IndexAsync<Trade>();
+			var response = await _myTradesEndpoint.IndexAsync<Trade>(RequestCachePolicy.Ignore);
 			IsRefreshing = false;
 
 			return response.Result.ToList();
@@ -76,9 +76,7 @@ namespace Scheduleless.ViewModels
 
 			IsBusy = true;
 
-			DialogService.ShowLoading(string.Empty);
 			var response = await _myTradesEndpoint.IndexAsync<Trade>();
-			DialogService.HideLoading();
 
 			if (response.IsSuccess)
 			{

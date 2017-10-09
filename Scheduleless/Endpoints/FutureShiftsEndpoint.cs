@@ -42,13 +42,16 @@ namespace Scheduleless.Endpoints
 
 			using (var client = new AuthenticatedApiRequest())
 			{
-				return await client.PostAsync<FutureShift>(
+				var result = await client.PostAsync<FutureShift>(
 					$"/mobile_api/shifts/{shiftId}/cancel",
 					parameters: parameters,
 					responseMapperKey: "cancellation",
 					forceLogoutOnUnauthorized: false,
 					cachePolicy: cachePolicy
 				);
+
+				client.DeleteCacheKeyIfPresent("GET", _baseRelativeUrl);
+				return result;
 			}
 		}
 	}
