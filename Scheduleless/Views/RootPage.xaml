@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page:RootPageXaml
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:local="clr-namespace:Scheduleless.Helpers;assembly=Scheduleless"
+	xmlns:page="clr-namespace:Scheduleless.Views;assembly=Scheduleless"
+	x:Class="Scheduleless.Views.RootPage">
+	<page:RootPageXaml.Content>
+		<StackLayout BackgroundColor="{x:Static local:Colors.PrimaryColor}"/>
+	</page:RootPageXaml.Content>
+</page:RootPageXaml>

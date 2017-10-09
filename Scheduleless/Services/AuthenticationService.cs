@@ -37,6 +37,18 @@ namespace Scheduleless.Services
 			}
 		}
 
+		public async Task<bool> IsAuthenticatedAsync()
+		{
+			if (await _credentialsService.IsAuthenticatedAsync())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
 		public async Task<ApiResponse<TL>> AuthenticateAsync<TL>(string email, string password) where TL : IOAuthTokenResponse
 		{
 			var response = await _oAuthTokenEndpoint.CreateAsync<TL>(email, password);
@@ -44,6 +56,7 @@ namespace Scheduleless.Services
 			{
 				// SL NOTE: the IOAuthTokenResponse is just returning OAuth
 				_credentialsService.SetCredentials(email, password, response.Result.OAuth);
+				await _credentialsService.GetFeatureDataAsync();
 			}
 			return response;
 		}
